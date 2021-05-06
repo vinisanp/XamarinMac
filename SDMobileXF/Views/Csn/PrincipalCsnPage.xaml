@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="SDMobileXF.Views.PrincipalCsnPage"
+             IsBusy="{Binding Ocupado}"
+             Title="{Binding Titulo}"
+             Style="{DynamicResource EstiloPage}"
+             x:Name="principalPageCsn">
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <ScrollView x:Name="scrollMenu" AbsoluteLayout.LayoutFlags="SizeProportional" AbsoluteLayout.LayoutBounds="0,0,1,1">
+                <StackLayout Orientation="Vertical" Spacing="10" Margin="0">
+                    <Image x:Name="imgLogo" Source="{Binding Logo512}" WidthRequest="32"  HeightRequest="32" Margin="0"/>
+
+                    <Label Text="{Binding TextoBemVindo}" Margin="0"  HorizontalTextAlignment="Center" Style="{DynamicResource EstiloLabelBoasVindas}"/>
+                    
+                    <Frame Style="{DynamicResource EstiloFrame}" Margin="0, 1, 0, 2">
+                        <StackLayout Orientation="Vertical">
+                            <Label Text="Relato de Anomalia" HorizontalTextAlignment="Center" Style="{DynamicResource EstiloLabelCampo}"
+                                   BackgroundColor="LightGray" TextColor="DarkBlue"/>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50*" />
+                                    <ColumnDefinition Width="50*" />
+                                </Grid.ColumnDefinitions>
+
+                                <StackLayout Grid.Column="0" Grid.Row="0">
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="RegistrarDNA_Tapped" />
+                                    </StackLayout.GestureRecognizers>
+                                    <Image Source="DNAMenu.png" />
+                                    <Label Text="Registrar Ocorrências" Grid.Column="0" HorizontalTextAlignment="Center" LineBreakMode="WordWrap" TextColor="#03267f" Margin="0, -5, 0, 0"/>
+                                </StackLayout>
+                                <StackLayout Grid.Column="1">
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="AcompanharDNA_Tapped" />
+                                    </StackLayout.GestureRecognizers>
+                                    <Image Source="DNAMenuAcomp.png" />
+                                    <Label Text="Acompanhe Ocorr. Cadastradas" LineBreakMode="WordWrap" Grid.Column="1" HorizontalTextAlignment="Center" TextColor="#03267f" Margin="0, -5, 0, 0"/>
+                                </StackLayout>
+                            </Grid>
+                        </StackLayout>
+                    </Frame>
+                    
+                    <StackLayout Margin="0, 5, 0, 0">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Sair_Tapped" />
+                        </StackLayout.GestureRecognizers>
+                        <Image Source="SairMenuAzul.png" />
+                        <Label Text="Sair" Grid.Column="0" HorizontalTextAlignment="Center" LineBreakMode="CharacterWrap" TextColor="#03267f" Margin="0, -5, 0, 0" />
+                    </StackLayout>
+                    
+                </StackLayout>
+            </ScrollView>
+
+            <ActivityIndicator HorizontalOptions="Center" VerticalOptions="Center"
+                               IsRunning="{Binding Ocupado}" IsVisible="{Binding Ocupado}"
+                               HeightRequest="50"  WidthRequest="50" AbsoluteLayout.LayoutFlags="PositionProportional" 
+                               AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1"/>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

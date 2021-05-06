@@ -1,0 +1,63 @@
+{
+  "version": 2,
+  "dgSpecHash": "nAfkJTqI2wN/SPgv/I4ZIFp0U/3OHLMpRQwSqKEYV4pkd8fkJ91Ox9cPf/VnSl9q21PMb+6Ehj+JRuLTIHdqGQ==",
+  "success": true,
+  "projectFilePath": "C:\\Projetos\\Xamarin\\SDMobileXF\\SDMobileXF.UWP\\SDMobileXF.UWP.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Vinicius\\.nuget\\packages\\microsoft.net.native.compiler\\2.2.8-rel-28605-00\\microsoft.net.native.compiler.2.2.8-rel-28605-00.nupkg.sha512",
+    "C:\\Users\\Vinicius\\.nuget\\packages\\microsoft.net.uwpcoreruntimesdk\\2.2.10\\microsoft.net.uwpcoreruntimesdk.2.2.10.nupkg.sha512",
+    "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\microsoft.netcore.platforms\\2.1.0\\microsoft.netcore.platforms.2.1.0.nupkg.sha512",
+    "C:\\Users\\Vinicius\\.nuget\\packages\\microsoft.netcore.universalwindowsplatform\\6.2.10\\microsoft.netcore.universalwindowsplatform.6.2.10.nupkg.sha512",
+    "C:\\Users\\Vinicius\\.nuget\\packages\\microsoft.ui.xaml\\2.3.191211002\\microsoft.ui.xaml.2.3.191211002.nupkg.sha512",
+    "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
+    "C:\\Users\\Vinicius\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
+    "C:\\Users\\Vinicius\\.nuget\\packages\\runtime.win10-arm-aot.microsoft.netcore.universalwindowsplatform\\6.2.10\\runtime.win10-arm-aot.microsoft.netcore.universalwindowsplatform.6.2.10.nupkg.sha512",
+    "C:\\Users\\Vinicius\\.nuget\\packages\\runtime.win10-arm.microsoft.net.native.compiler\\2.2.8-rel-28605-00\\runtime.win10-arm.microsoft.net.native.compiler.2.2.8-rel-28605-00.nupkg.sha512",
+    "C:\\Users\\Vinicius\\.nuget\\packages\\runtime.win10-arm.microsoft.net.native.sharedlibrary\\2.2.7-rel-28605-00\\runtime.win10-arm.microsoft.net.native.sharedlibrary.2.2.7-rel-28605-00.nupkg.sha512",
+    "C:\\Users\\Vinicius\\.nuget\\packages\\runtime.win10-arm.microsoft.net.uwpcoreruntimesdk\\2.2.10\\runtime.win10-arm.microsoft.net.uwpcoreruntimesdk.2.2.10.nupkg.sha512",
+    "C:\\Users\\Vinicius\\.nuget\\packages\\runtime.win10-arm.microsoft.netcore.universalwindowsplatform\\6.2.10\\runtime.win10-arm.microsoft.netcore.universalwindowsplatform.6.2.10.nupkg.sha512",
+    "C:\\Users\\Vinicius\\.nuget\\packages\\runtime.win10-arm64-aot.microsoft.netcore.universalwindowsplatform\\6.2.10\\runtime.win10-arm64-aot.microsoft.netcore.universalwindowsplatform.6.2.10.nupkg.sha512",
+    "C:\\Users\\Vinicius\\.nuget\\packages\\runtime.win10-arm64.microsoft.net.native.compiler\\2.2.8-rel-28605-00\\runtime.win10-arm64.microsoft.net.native.compiler.2.2.8-rel-28605-00.nupkg.sha512",
+    "C:\\Users\\Vinicius\\.nuget\\packages\\runtime.win10-arm64.microsoft.net.native.sharedlibrary\\2.2.7-rel-28605-00\\runtime.win10-arm64.microsoft.net.native.sharedlibrary.2.2.7-rel-28605-00.nupkg.sha512",
+    "C:\\Users\\Vinicius\\.nuget\\packages\\runtime.win10-x64-aot.microsoft.netcore.universalwindowsplatform\\6.2.10\\runtime.win10-x64-aot.microsoft.netcore.universalwindowsplatform.6.2.10.nupkg.sha512",
+    "C:\\Users\\Vinicius\\.nuget\\packages\\runtime.win10-x64.microsoft.net.native.compiler\\2.2.8-rel-28605-00\\runtime.win10-x64.microsoft.net.native.compiler.2.2.8-rel-28605-00.nupkg.sha512",
+    "C:\\Users\\Vinicius\\.nuget\\packages\\runtime.win10-x64.microsoft.net.native.sharedlibrary\\2.2.7-rel-28605-00\\runtime.win10-x64.microsoft.net.native.sharedlibrary.2.2.7-rel-28605-00.nupkg.sha512",
+    "C:\\Users\\Vinicius\\.nuget\\packages\\runtime.win10-x64.microsoft.net.uwpcoreruntimesdk\\2.2.10\\runtime.win10-x64.microsoft.net.uwpcoreruntimesdk.2.2.10.nupkg.sha512",
+    "C:\\Users\\Vinicius\\.nuget\\packages\\runtime.win10-x64.microsoft.netcore.universalwindowsplatform\\6.2.10\\runtime.win10-x64.microsoft.netcore.universalwindowsplatform.6.2.10.nupkg.sha512",
+    "C:\\Users\\Vinicius\\.nuget\\packages\\runtime.win10-x86-aot.microsoft.netcore.universalwindowsplatform\\6.2.10\\runtime.win10-x86-aot.microsoft.netcore.universalwindowsplatform.6.2.10.nupkg.sha512",
+    "C:\\Users\\Vinicius\\.nuget\\packages\\runtime.win10-x86.microsoft.net.native.compiler\\2.2.8-rel-28605-00\\runtime.win10-x86.microsoft.net.native.compiler.2.2.8-rel-28605-00.nupkg.sha512",
+    "C:\\Users\\Vinicius\\.nuget\\packages\\runtime.win10-x86.microsoft.net.native.sharedlibrary\\2.2.7-rel-28605-00\\runtime.win10-x86.microsoft.net.native.sharedlibrary.2.2.7-rel-28605-00.nupkg.sha512",
+    "C:\\Users\\Vinicius\\.nuget\\packages\\runtime.win10-x86.microsoft.net.uwpcoreruntimesdk\\2.2.10\\runtime.win10-x86.microsoft.net.uwpcoreruntimesdk.2.2.10.nupkg.sha512",
+    "C:\\Users\\Vinicius\\.nuget\\packages\\runtime.win10-x86.microsoft.netcore.universalwindowsplatform\\6.2.10\\runtime.win10-x86.microsoft.netcore.universalwindowsplatform.6.2.10.nupkg.sha512",
+    "C:\\Users\\Vinicius\\.nuget\\packages\\sqlite-net-pcl\\1.7.335\\sqlite-net-pcl.1.7.335.nupkg.sha512",
+    "C:\\Users\\Vinicius\\.nuget\\packages\\sqlitepclraw.bundle_green\\2.0.3\\sqlitepclraw.bundle_green.2.0.3.nupkg.sha512",
+    "C:\\Users\\Vinicius\\.nuget\\packages\\sqlitepclraw.core\\2.0.3\\sqlitepclraw.core.2.0.3.nupkg.sha512",
+    "C:\\Users\\Vinicius\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3\\2.0.3\\sqlitepclraw.lib.e_sqlite3.2.0.3.nupkg.sha512",
+    "C:\\Users\\Vinicius\\.nuget\\packages\\sqlitepclraw.provider.e_sqlite3\\2.0.3\\sqlitepclraw.provider.e_sqlite3.2.0.3.nupkg.sha512",
+    "C:\\Users\\Vinicius\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",
+    "C:\\Users\\Vinicius\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.5.2\\system.runtime.compilerservices.unsafe.4.5.2.nupkg.sha512",
+    "C:\\Users\\Vinicius\\.nuget\\packages\\win2d.uwp\\1.20.0\\win2d.uwp.1.20.0.nupkg.sha512",
+    "C:\\Users\\Vinicius\\.nuget\\packages\\xam.plugin.media\\5.0.1\\xam.plugin.media.5.0.1.nupkg.sha512",
+    "C:\\Users\\Vinicius\\.nuget\\packages\\xamarin.essentials\\1.5.3.2\\xamarin.essentials.1.5.3.2.nupkg.sha512",
+    "C:\\Users\\Vinicius\\.nuget\\packages\\xamarin.forms\\4.6.0.800\\xamarin.forms.4.6.0.800.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1605",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Downgrade de pacote detectado: Xamarin.Forms de 4.7.0.1142 para 4.6.0.800. Referencie o pacote diretamente do projeto para selecionar uma versão diferente. \r\n SDMobileXF.UWP -> SDMobileXF -> Xamarin.Forms (>= 4.7.0.1142) \r\n SDMobileXF.UWP -> Xamarin.Forms (>= 4.6.0.800)",
+      "libraryId": "Xamarin.Forms",
+      "targetGraphs": [
+        "UAP,Version=v10.0.16299",
+        "UAP,Version=v10.0.16299/win10-arm",
+        "UAP,Version=v10.0.16299/win10-arm-aot",
+        "UAP,Version=v10.0.16299/win10-arm64-aot",
+        "UAP,Version=v10.0.16299/win10-x64",
+        "UAP,Version=v10.0.16299/win10-x64-aot",
+        "UAP,Version=v10.0.16299/win10-x86",
+        "UAP,Version=v10.0.16299/win10-x86-aot"
+      ]
+    }
+  ]
+}

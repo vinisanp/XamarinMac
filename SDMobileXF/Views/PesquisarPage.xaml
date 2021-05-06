@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="SDMobileXF.Views.PesquisarPage"
+             IsBusy="{Binding Ocupado}"
+             Title="{Binding Titulo}"
+             Style="{DynamicResource EstiloPage}">
+        <StackLayout Orientation="Vertical" BackgroundColor="Transparent" Margin="0">
+            
+            <StackLayout Margin="0" Orientation="Horizontal" Style="{DynamicResource EstiloTituloStackLayout}">
+            <StackLayout.HeightRequest>
+                <OnPlatform x:TypeArguments="x:Double">
+                    <OnPlatform.Platforms>
+                        <On Platform="Android" Value="55"/>
+                        <On Platform="iOS" Value="87"/>
+                    </OnPlatform.Platforms>
+                </OnPlatform>
+            </StackLayout.HeightRequest>
+            <Label Text="{Binding Cabecalho}" 
+                       FontSize="17"                       
+                       HorizontalTextAlignment="Start"                       
+                       Style="{DynamicResource EstiloLabelTitulo}"
+                       HorizontalOptions="FillAndExpand" Margin="15">
+                <Label.VerticalTextAlignment>
+                    <OnPlatform x:TypeArguments="TextAlignment">
+                        <On Platform="Android" Value="Center"/>
+                        <On Platform="iOS" Value="End"/>
+                    </OnPlatform>
+                </Label.VerticalTextAlignment>
+            </Label>
+            <ImageButton Source="CancelarAcao.png"
+                             BackgroundColor="Transparent"                                                           
+                             HorizontalOptions="End"                             
+                             Clicked="FecharTela">
+                <ImageButton.VerticalOptions>
+                    <OnPlatform x:TypeArguments="LayoutOptions">
+                        <On Platform="Android" Value="Center"/>
+                        <On Platform="iOS" Value="EndAndExpand"/>
+                    </OnPlatform>
+                </ImageButton.VerticalOptions>
+                <ImageButton.Margin>
+                    <OnPlatform x:TypeArguments="Thickness">
+                        <OnPlatform.Platforms>
+                            <On Platform="Android" Value="0,4,10,0"/>
+                            <On Platform="iOS" Value="0,0,10,2"/>
+                        </OnPlatform.Platforms>
+                    </OnPlatform>
+                </ImageButton.Margin>
+            </ImageButton>
+            </StackLayout>
+
+            <StackLayout Margin="20,10,20,20">
+                <SearchBar x:Name="barraPesquisa"                                                       
+                           SearchCommand="{Binding ProcurarCommand}"
+                           SearchCommandParameter="{Binding Text, Source={x:Reference barraPesquisa}}"
+                           TextChanged="barraPesquisa_TextChanged"                                
+                           Placeholder="Digite para filtrar" 
+                           Style="{DynamicResource EstiloSearchBar}"/>
+
+            <ActivityIndicator IsRunning="{Binding Ocupado}" IsVisible="{Binding Ocupado}" />
+                
+            <ListView x:Name="listaPesquisa"
+                      ItemsSource="{Binding Lista}"
+                      SelectedItem="{Binding Selecionado}"
+                      HasUnevenRows="true"
+                      SeparatorVisibility="Default" 
+                      Style="{DynamicResource EstiloListView}">
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Label Text="{Binding Path=CodigoDescricao}" 
+                                       Margin="10"
+                                       Style="{DynamicResource EstiloLabel}"
+                                       VerticalOptions="Center"/>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </StackLayout>
+</ContentPage>

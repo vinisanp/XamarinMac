@@ -1,0 +1,313 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:SDMobileXF.Classes"
+             xmlns:converter="clr-namespace:SDMobileXF.Classes"
+             mc:Ignorable="d"
+             x:Class="SDMobileXF.Views.OcorrenciasCsnPage"
+             x:Name="pageRelato"
+             Title="{Binding Titulo}"
+             Style="{DynamicResource EstiloPage}">
+    <ContentPage.Resources>
+        <converter:InverseBoolConverter x:Key="InverseBoolConverter" />
+    </ContentPage.Resources>
+
+    <AbsoluteLayout>
+        <ScrollView x:Name="scrollRelato" Scrolled="scrollRelato_Scrolled"
+                    AbsoluteLayout.LayoutFlags="SizeProportional" 
+                    AbsoluteLayout.LayoutBounds="0,0,1,1">
+            <StackLayout Orientation="Vertical" Spacing="30" Margin="20,10,20,20">
+
+                <StackLayout Orientation="Vertical" Spacing="10">
+                    <Label Text="{Binding Textos.Identificacao}" Style="{DynamicResource EstiloLabelGrande}"/>
+
+
+                    <Label Text="{Binding Textos.Numero}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap" IsVisible="{Binding ExibirNumero}"/>
+                    <Frame Style="{DynamicResource EstiloFrame}" IsVisible="{Binding ExibirNumero}">
+                        <Entry Text="{Binding Numero, Mode=TwoWay}" IsReadOnly="True" Style="{DynamicResource EstiloEntry}"/>
+                    </Frame>
+
+                    <Label Text="{Binding Textos.TituloAnomalia}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap"/>
+                    <Frame Style="{DynamicResource EstiloFrame}">
+                        <Entry Text="{Binding TituloAnomalia, Mode=TwoWay}" Style="{DynamicResource EstiloEntry}"/>
+                    </Frame>
+
+                    <StackLayout Orientation="Horizontal">
+                        <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                            <Label Text="{Binding Textos.Data}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap"/>
+                            <Frame Style="{DynamicResource EstiloFrame}">
+                                <DatePicker MinimumDate="{Binding DataMinima}" MaximumDate="{Binding DataMaxima}" Date="{Binding Data}" 
+                                            Style="{DynamicResource EstiloDatePicker}" x:Name="pickerData"/>
+                            </Frame>
+                        </StackLayout>
+                        <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                            <Label Text="{Binding Textos.Hora}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap"/>
+                            <Frame Style="{DynamicResource EstiloFrame}">
+                                <TimePicker Time="{Binding Hora}" Style="{DynamicResource EstiloTimePicker}" x:Name="pickerHora"/>
+                            </Frame>
+                        </StackLayout>
+                    </StackLayout>
+                    
+                    <Label Text="{Binding Textos.Dia}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap"/>
+                    <Frame Style="{DynamicResource EstiloFrame}">
+                        <Entry Text="{Binding Dia.Descricao, Mode=TwoWay}" IsReadOnly="True" Style="{DynamicResource EstiloEntry}"/>
+                    </Frame>
+                </StackLayout>
+
+
+                <StackLayout Orientation="Vertical" Spacing="10">
+                    <Label Text="{Binding Textos.Localizacao}" Style="{DynamicResource EstiloLabelGrande}"/>
+
+
+                    <Label Text="{Binding Textos.RegiaoSetor}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap"/>
+                    <StackLayout Orientation="Horizontal">
+                        <Frame Style="{DynamicResource EstiloFrame}">
+                            <Entry IsReadOnly="True" Text="{Binding RegiaoSetor.CodigoDescricao, Mode=TwoWay}" Style="{DynamicResource EstiloEntry}"/>
+                        </Frame>
+                        <ImageButton x:Name="btnRegiaoSetor" Source="pesquisar.png" Clicked="btnRegiaoSetor_Clicked"
+                                     BackgroundColor="Transparent" Style="{StaticResource EstiloImgButton}" IsEnabled="{Binding EmEdicao}"/>
+                    </StackLayout>
+
+
+                    <Label Text="{Binding Textos.Letra}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap"/>
+                    <StackLayout Orientation="Horizontal">
+                        <Frame Style="{DynamicResource EstiloFrame}">
+                            <Entry IsReadOnly="True" Text="{Binding Letra.CodigoDescricao, Mode=TwoWay}" Style="{DynamicResource EstiloEntry}"/>
+                        </Frame>
+                        <ImageButton x:Name="btnLetra" Source="pesquisar.png" Clicked="btnLetra_Clicked"
+                                     BackgroundColor="Transparent" Style="{StaticResource EstiloImgButton}" IsEnabled="{Binding EmEdicao}"/>
+                    </StackLayout>
+
+
+                    <Label Text="{Binding Textos.Turno}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap"/>
+                    <StackLayout Orientation="Horizontal">
+                        <Frame Style="{DynamicResource EstiloFrame}">
+                            <Entry IsReadOnly="True" Text="{Binding Turno.CodigoDescricao, Mode=TwoWay}" Style="{DynamicResource EstiloEntry}"/>
+                        </Frame>
+                        <ImageButton x:Name="btnTurno" Source="pesquisar.png" Clicked="btnTurno_Clicked"
+                                     BackgroundColor="Transparent" Style="{StaticResource EstiloImgButton}" IsEnabled="{Binding EmEdicao}"/>
+                    </StackLayout>
+                </StackLayout>
+
+
+                <StackLayout Orientation="Vertical" Spacing="10">
+                    <Label Text="{Binding Textos.AreasAnormalidade}" Style="{DynamicResource EstiloLabelGrande}"/>
+
+
+                    <Label Text="{Binding Textos.GerenciaGeral}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap"/>
+                    <StackLayout Orientation="Horizontal">
+                        <Frame Style="{DynamicResource EstiloFrame}">
+                            <Entry IsReadOnly="True" Text="{Binding GerenciaGeral.CodigoDescricao, Mode=TwoWay}" Style="{DynamicResource EstiloEntry}"/>
+                        </Frame>
+                        <ImageButton x:Name="btnGerenciaGeral" Source="pesquisar.png" Clicked="btnGerenciaGeral_Clicked"
+                                     BackgroundColor="Transparent" Style="{StaticResource EstiloImgButton}" IsEnabled="{Binding EmEdicao}"/>
+                    </StackLayout>
+
+
+                    <Label Text="{Binding Textos.Gerencia}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap"/>
+                    <StackLayout Orientation="Horizontal">
+                        <Frame Style="{DynamicResource EstiloFrame}">
+                            <Entry IsReadOnly="True" Text="{Binding Gerencia.CodigoDescricao, Mode=TwoWay}" Style="{DynamicResource EstiloEntry}"/>
+                        </Frame>
+                        <ImageButton x:Name="btnGerencia" Source="pesquisar.png" Clicked="btnGerencia_Clicked"
+                                     BackgroundColor="Transparent" Style="{StaticResource EstiloImgButton}" IsEnabled="{Binding EmEdicao}"/>
+                    </StackLayout>
+
+
+                    <Label Text="{Binding Textos.AreaEquipamento}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap"/>
+                    <StackLayout Orientation="Horizontal">
+                        <Frame Style="{DynamicResource EstiloFrame}">
+                            <Entry IsReadOnly="True" Text="{Binding AreaEquipamento.CodigoDescricao, Mode=TwoWay}" Style="{DynamicResource EstiloEntry}"/>
+                        </Frame>
+                        <ImageButton x:Name="btnAreaEquipamento" Source="pesquisar.png" Clicked="btnAreaEquipamento_Clicked"
+                                     BackgroundColor="Transparent" Style="{StaticResource EstiloImgButton}" IsEnabled="{Binding EmEdicao}"/>
+                    </StackLayout>
+
+
+                    <Label Text="{Binding Textos.LocalEquipamento}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap"/>
+                    <StackLayout Orientation="Horizontal">
+                        <Frame Style="{DynamicResource EstiloFrame}">
+                            <Entry IsReadOnly="True" Text="{Binding LocalEquipamento.CodigoDescricao, Mode=TwoWay}" Style="{DynamicResource EstiloEntry}"/>
+                        </Frame>
+                        <ImageButton x:Name="btnLocalEquipamento" Source="pesquisar.png" Clicked="btnLocalEquipamento_Clicked"
+                                     BackgroundColor="Transparent" Style="{StaticResource EstiloImgButton}" IsEnabled="{Binding EmEdicao}"/>
+                    </StackLayout>
+
+
+                    <Label Text="{Binding Textos.LocalAnomalia}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap"/>
+                    <Frame Style="{DynamicResource EstiloFrame}">
+                        <Entry Text="{Binding LocalAnomalia, Mode=TwoWay}" Style="{DynamicResource EstiloEntry}"/>
+                    </Frame>
+
+
+                    <Label Text="{Binding Textos.DescricaoPreliminar}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap" IsVisible="{Binding ExibirDescricaoAcoesImediatas}"/>
+                    <Frame Style="{DynamicResource EstiloFrame}">
+                        <Editor Text="{Binding DescricaoPreliminar, Mode=TwoWay}" Style="{DynamicResource EstiloEditor}" />
+                    </Frame>
+                </StackLayout>
+
+
+                <StackLayout Orientation="Vertical" Spacing="10">
+                    <Label Text="{Binding Textos.AcoesImediatas}" Style="{DynamicResource EstiloLabelGrande}"/>
+
+
+                    <Label Text="{Binding Textos.ForamTomadasAcoesImediatas}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap"/>
+                    <Frame Style="{DynamicResource EstiloFrame}" BackgroundColor="#7F85CC">
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                            <RadioButton Text="{Binding Textos.Sim}" IsChecked="{Binding AcoesImediatasSim}" 
+                                            Style="{DynamicResource EstiloRadioButton}" GroupName="AcoesImediatas" IsEnabled="{Binding EmEdicao}"/>
+                            <RadioButton Text="{Binding Textos.Nao}" IsChecked="{Binding AcoesImediatasNao}"
+                                            Style="{DynamicResource EstiloRadioButton}" GroupName="AcoesImediatas" IsEnabled="{Binding EmEdicao}" />
+                        </StackLayout>
+                    </Frame>
+
+                    <Label Text="{Binding Textos.RemocaoSintomas}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap" IsVisible="{Binding ExibirDescricaoAcoesImediatas}"/>
+                    <Frame Style="{DynamicResource EstiloFrame}">
+                        <Editor Text="{Binding RemocaoSintomas, Mode=TwoWay}" Style="{DynamicResource EstiloEditor}" />
+                    </Frame>
+                </StackLayout>
+                                
+
+                <StackLayout Orientation="Vertical" Spacing="10">
+                    <Label Text="{Binding Textos.Dados}" Style="{DynamicResource EstiloLabelGrande}"/>
+
+
+                    <Label Text="{Binding Textos.OrigemAnomalia}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap"/>
+                    <StackLayout Orientation="Horizontal">
+                        <Frame Style="{DynamicResource EstiloFrame}">
+                            <Entry IsReadOnly="True" Text="{Binding OrigemAnomalia.CodigoDescricao, Mode=TwoWay}" Style="{DynamicResource EstiloEntry}"/>
+                        </Frame>
+                        <ImageButton x:Name="btnOrigemAnomalia" Source="pesquisar.png" Clicked="btnOrigemAnomalia_Clicked"
+                                     BackgroundColor="Transparent" Style="{StaticResource EstiloImgButton}" IsEnabled="{Binding EmEdicao}"/>
+                    </StackLayout>
+
+
+                    <Label Text="{Binding Textos.TipoAnomalia}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap"/>
+                    <StackLayout Orientation="Horizontal">
+                        <Frame Style="{DynamicResource EstiloFrame}">
+                            <Entry IsReadOnly="True" Text="{Binding TipoAnomalia.CodigoDescricao, Mode=TwoWay}" Style="{DynamicResource EstiloEntry}"/>
+                        </Frame>
+                        <ImageButton x:Name="btnTipoAnomalia" Source="pesquisar.png" Clicked="btnTipoAnomalia_Clicked"
+                                     BackgroundColor="Transparent" Style="{StaticResource EstiloImgButton}" IsEnabled="{Binding EmEdicao}"/>
+                    </StackLayout>
+
+
+                    <Label Text="{Binding Textos.ClassificacaoTipo}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap"/>
+                    <StackLayout Orientation="Horizontal">
+                        <Frame Style="{DynamicResource EstiloFrame}">
+                            <Entry IsReadOnly="True" Text="{Binding ClassificacaoTipo.CodigoDescricao, Mode=TwoWay}" Style="{DynamicResource EstiloEntry}" />
+                        </Frame>
+                        <ImageButton x:Name="btnClassificacaoTipo" Source="pesquisar.png" Clicked="btnClassificacaoTipo_Clicked"
+                                     BackgroundColor="Transparent" Style="{StaticResource EstiloImgButton}" IsEnabled="{Binding EmEdicao}"/>
+                    </StackLayout>
+                    
+                </StackLayout>
+
+
+                <StackLayout Orientation="Vertical" Spacing="10">
+                    <Label Text="{Binding Textos.CaractExposicao}" Style="{DynamicResource EstiloLabelGrande}"/>
+
+
+                    <Label Text="{Binding Textos.Probabilidade}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap"/>
+                    <StackLayout Orientation="Horizontal">
+                        <Frame Style="{DynamicResource EstiloFrame}">
+                            <Entry IsReadOnly="True" Text="{Binding Probabilidade.CodigoDescricao, Mode=TwoWay}" Style="{DynamicResource EstiloEntry}" />
+                        </Frame>
+                        <ImageButton x:Name="btnProbabilidade" Source="pesquisar.png" Clicked="btnProbabilidade_Clicked"
+                                     BackgroundColor="Transparent" Style="{StaticResource EstiloImgButton}" IsEnabled="{Binding EmEdicao}"/>
+                    </StackLayout>
+
+
+                    <Label Text="{Binding Textos.Severidade}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap"/>
+                    <StackLayout Orientation="Horizontal">
+                        <Frame Style="{DynamicResource EstiloFrame}">
+                            <Entry IsReadOnly="True" Text="{Binding Severidade.CodigoDescricao, Mode=TwoWay}" Style="{DynamicResource EstiloEntry}" />
+                        </Frame>
+                        <ImageButton x:Name="btnSeveridade" Source="pesquisar.png" Clicked="btnSeveridade_Clicked"
+                                     BackgroundColor="Transparent" Style="{StaticResource EstiloImgButton}" IsEnabled="{Binding EmEdicao}"/>
+                    </StackLayout>
+
+
+                    <Label Text="{Binding Textos.ProdutoAB}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap"/>
+                    <Frame Style="{DynamicResource EstiloFrame}">
+                        <Entry IsReadOnly="True" Text="{Binding ProdutoAB}" Style="{DynamicResource EstiloEntry}" />
+                    </Frame>
+
+
+                    <Label Text="{Binding Textos.ResultadoClassificacaoRisco}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap"/>
+                    <Frame Style="{DynamicResource EstiloFrame}">
+                        <Entry IsReadOnly="True" Text="{Binding ResultadoClassificacaoRisco.Descricao}" Style="{DynamicResource EstiloEntry}" />
+                    </Frame>
+
+                </StackLayout>
+
+                
+                <StackLayout Orientation="Vertical" Spacing="10">
+                    <Label Text="{Binding Textos.Responsaveis}" Padding="0" Style="{DynamicResource EstiloLabelGrande}"/>
+
+
+                    <Label Text="{Binding Textos.RegistradoPor}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap" IsVisible="{Binding ExibirIdentificacao}"/>
+                    <StackLayout Orientation="Horizontal">
+                        <Frame Style="{DynamicResource EstiloFrame}">
+                            <Entry IsReadOnly="True" Text="{Binding RegistradoPor.CodigoDescricao, Mode=TwoWay}" Style="{DynamicResource EstiloEntry}"/>
+                        </Frame>
+                        <ImageButton x:Name="btnRegistradoPor" Source="pesquisar.png" Clicked="btnRegistradoPor_Clicked" IsVisible="{Binding ExibirIdentificacao}"
+                                     BackgroundColor="Transparent" Style="{StaticResource EstiloImgButton}" IsEnabled="{Binding EmEdicao}"/>
+                    </StackLayout>
+
+
+                    <Label Text="{Binding Textos.RelatadoPor}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap" IsVisible="{Binding ExibirIdentificacao}"/>
+                    <StackLayout Orientation="Horizontal">
+                        <Frame Style="{DynamicResource EstiloFrame}">
+                            <Entry IsReadOnly="True" Text="{Binding RelatadoPor.CodigoDescricao, Mode=TwoWay}" Style="{DynamicResource EstiloEntry}"/>
+                        </Frame>
+                        <ImageButton x:Name="btnRelatadoPor" Source="pesquisar.png" Clicked="btnRelatadoPor_Clicked" IsVisible="{Binding ExibirIdentificacao}"
+                                     BackgroundColor="Transparent" Style="{StaticResource EstiloImgButton}" IsEnabled="{Binding EmEdicao}"/>
+                    </StackLayout>
+
+
+                    <Label Text="{Binding Textos.SupervisorImediato}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap" IsVisible="{Binding ExibirIdentificacao}"/>
+                    <StackLayout Orientation="Horizontal">
+                        <Frame Style="{DynamicResource EstiloFrame}">
+                            <Entry IsReadOnly="True" Text="{Binding SupervisorImediato.CodigoDescricao, Mode=TwoWay}" Style="{DynamicResource EstiloEntry}"/>
+                        </Frame>
+                        <ImageButton x:Name="btnSupervisorImediato" Source="pesquisar.png" Clicked="btnSupervisorImediato_Clicked" IsVisible="{Binding ExibirIdentificacao}"
+                                     BackgroundColor="Transparent" Style="{StaticResource EstiloImgButton}" IsEnabled="{Binding EmEdicao}"/>
+                    </StackLayout>
+
+
+                    <Label Text="{Binding Textos.Assinatura}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap" IsVisible="{Binding ExibirIdentificacao}"/>
+                    <StackLayout Orientation="Horizontal">
+                        <Frame Style="{DynamicResource EstiloFrame}">
+                            <Entry IsReadOnly="True" Text="{Binding Assinatura.CodigoDescricao, Mode=TwoWay}" Style="{DynamicResource EstiloEntry}"/>
+                        </Frame>
+                        <ImageButton x:Name="btnAssinatura" Source="pesquisar.png" Clicked="btnAssinatura_Clicked" IsVisible="{Binding ExibirIdentificacao}"
+                                     BackgroundColor="Transparent" Style="{StaticResource EstiloImgButton}" IsEnabled="{Binding EmEdicao}"/>
+                    </StackLayout>
+                </StackLayout>
+
+
+                <StackLayout Orientation="Vertical" Spacing="10" IsVisible="{Binding EmEdicao}">
+                    <Button Text="{Binding Textos.Salvar}" HorizontalOptions="FillAndExpand" BackgroundColor="#009245" 
+                            Command="{Binding BindingContext.SalvarCommand, Source={x:Reference pageRelato}}" IsEnabled="{Binding EmEdicao}"
+                            Style="{DynamicResource EstiloBtn}"/>
+                    <Button Text="{Binding Textos.Cancelar}" HorizontalOptions="FillAndExpand" BackgroundColor="#F26869" 
+                            Command="{Binding BindingContext.CancelarCommand, Source={x:Reference pageRelato}}" IsEnabled="{Binding EmEdicao}"
+                            Style="{DynamicResource EstiloBtn}"/>
+                </StackLayout>
+
+            </StackLayout>
+        </ScrollView>
+        
+        
+        <ActivityIndicator HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           IsRunning="{Binding Ocupado}"
+                           IsVisible="{Binding Ocupado}"
+                           HeightRequest="50" 
+                           WidthRequest="50"
+                           AbsoluteLayout.LayoutFlags="PositionProportional" 
+                           AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1"/>
+    </AbsoluteLayout>
+</ContentPage>

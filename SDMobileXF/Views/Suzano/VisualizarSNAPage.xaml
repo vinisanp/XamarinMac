@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SDMobileXF.Views.VisualizarSNAPage"
+             xmlns:converter="clr-namespace:SDMobileXF.Classes"
+             IsBusy="{Binding Ocupado}"
+             Title="{Binding Titulo}"
+             Style="{DynamicResource EstiloPage}">
+    <ContentPage.Resources>
+        <converter:StatusConverter x:Key="StatusConverter" />
+        <converter:DescricaoStatusConverter x:Key="DescricaoStatusConverter" />
+        <converter:DataToStringConverter x:Key="DataToStringConverter" />
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <StackLayout Orientation="Vertical"
+                         Spacing="10"
+                         Margin="10"
+                         AbsoluteLayout.LayoutFlags="SizeProportional" 
+                         AbsoluteLayout.LayoutBounds="0,0,1,1">
+
+                <Label Text="{Binding Textos.SelecioneOperiodo}"
+                       Padding="10" 
+                       FontSize="Subtitle" 
+                       Style="{DynamicResource EstiloLabelSubTitulo}" 
+                       HorizontalOptions="FillAndExpand"/>
+
+                <StackLayout Orientation="Horizontal" Spacing="10" >
+
+                    <StackLayout Orientation="Vertical" Spacing="10">
+                        <Label Text="{Binding Textos.DataInicial}" 
+                               LineBreakMode="NoWrap" 
+                               Style="{DynamicResource EstiloLabelCampo}"/>
+                        <Frame Style="{DynamicResource EstiloFrame}">
+                            <DatePicker HorizontalOptions="StartAndExpand" 
+                                        Style="{DynamicResource EstiloDatePicker}" 
+                                        Date="{Binding DtInicial}"/>
+                        </Frame>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Vertical" Spacing="10">
+                        <Label Text="{Binding Textos.DataFinal}" 
+                               LineBreakMode="NoWrap" 
+                               Style="{DynamicResource EstiloLabelCampo}"/>
+                        <Frame Style="{DynamicResource EstiloFrame}">
+                            <DatePicker HorizontalOptions="EndAndExpand"
+                                        Style="{DynamicResource EstiloDatePicker}" 
+                                        Date="{Binding DtFinal}"/>
+                        </Frame>
+                    </StackLayout>
+
+                    <ImageButton x:Name="btnUnidade" 
+                                 Source="pesquisar.png" 
+                                 Command="{Binding PesquisarCommand}" 
+                                 VerticalOptions="End"
+                                 BackgroundColor="Transparent" 
+                                 Style="{StaticResource EstiloImgButton}">
+                        <ImageButton.Margin>
+                            <OnPlatform x:TypeArguments="Thickness">
+                                <OnPlatform.Platforms>
+                                    <On Platform="iOS" Value="0,20,0,0"/>
+                                    <On Platform="Android" Value="0,3,0,0"/>
+                                </OnPlatform.Platforms>
+                            </OnPlatform>
+                        </ImageButton.Margin>
+                    </ImageButton>
+
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" 
+                             Style="{DynamicResource EstiloStackLayoutSubTitulo}" 
+                             Padding="10">
+                    <Label Text="{Binding Textos.SNAsCadastrados}" 
+                           FontSize="Small" 
+                           Style="{DynamicResource EstiloLabelSubTitulo}" 
+                           HorizontalOptions="FillAndExpand"/>
+                    <Label Text="{Binding QtdRegistros}" 
+                           HorizontalOptions="End" 
+                           FontSize="Small" 
+                           Style="{DynamicResource EstiloLabelSubTitulo}"/>
+                </StackLayout>
+
+                <ListView x:Name="lstSNAs" 
+                          ItemsSource="{Binding Lista}" 
+                          HasUnevenRows="True" 
+                          SelectedItem="{Binding ItemSelecionado}" 
+                          ItemSelected="ListView_ItemSelected"
+                          SeparatorVisibility="Default">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Spacing="0" Margin="3,10,10,10">
+                                    <StackLayout Orientation="Horizontal" Margin="0" Padding="0">
+                                        <Label Text="{Binding CODIGO}" 
+                                               FontAttributes="Bold" 
+                                               TextColor="CadetBlue" 
+                                               Style="{DynamicResource EstiloLabel}"/>
+
+                                        <Label Text="{Binding DATA, Converter={StaticResource DataToStringConverter}}" 
+                                                Style="{DynamicResource EstiloLabelDataVisOcorrencia}" 
+                                                VerticalOptions="Start"/>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="{Binding DS_TEMA_ABORDADO}" 
+                                               Style="{DynamicResource EstiloLabel}" 
+                                               LineBreakMode="WordWrap" 
+                                               VerticalOptions="Start"/>
+                                        <Label Text=">" 
+                                               VerticalOptions="Center" 
+                                               FontSize="17" 
+                                               HorizontalOptions="EndAndExpand"/>
+                                    </StackLayout>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+            </StackLayout>
+
+
+            <StackLayout x:Name="Loading" 
+                         IsVisible="{Binding Ocupado}" 
+                         Padding="10" 
+                         AbsoluteLayout.LayoutFlags="PositionProportional" 
+                         AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1">
+                <ActivityIndicator IsRunning="{Binding Ocupado}" 
+                                   HeightRequest="50" 
+                                   WidthRequest="50"/>
+                <Label Text="{Binding Textos.Carregando}" 
+                       HorizontalOptions="Center" 
+                       VerticalOptions="Center" />
+            </StackLayout>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

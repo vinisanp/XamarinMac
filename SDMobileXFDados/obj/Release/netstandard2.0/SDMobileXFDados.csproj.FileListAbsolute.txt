@@ -1,0 +1,9 @@
+C:\Projetos\Xamarin\SDMobileXF\SDMobileXFDados\bin\Release\netstandard2.0\SDMobileXFDados.deps.json
+C:\Projetos\Xamarin\SDMobileXF\SDMobileXFDados\bin\Release\netstandard2.0\SDMobileXFDados.dll
+C:\Projetos\Xamarin\SDMobileXF\SDMobileXFDados\bin\Release\netstandard2.0\SDMobileXFDados.pdb
+C:\Projetos\Xamarin\SDMobileXF\SDMobileXFDados\obj\Release\netstandard2.0\SDMobileXFDados.csprojAssemblyReference.cache
+C:\Projetos\Xamarin\SDMobileXF\SDMobileXFDados\obj\Release\netstandard2.0\SDMobileXFDados.AssemblyInfoInputs.cache
+C:\Projetos\Xamarin\SDMobileXF\SDMobileXFDados\obj\Release\netstandard2.0\SDMobileXFDados.AssemblyInfo.cs
+C:\Projetos\Xamarin\SDMobileXF\SDMobileXFDados\obj\Release\netstandard2.0\SDMobileXFDados.csproj.CoreCompileInputs.cache
+C:\Projetos\Xamarin\SDMobileXF\SDMobileXFDados\obj\Release\netstandard2.0\SDMobileXFDados.dll
+C:\Projetos\Xamarin\SDMobileXF\SDMobileXFDados\obj\Release\netstandard2.0\SDMobileXFDados.pdb

@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:SDMobileXF.Views"
+             xmlns:classes="clr-namespace:SDMobileXF.Classes"
+             x:Class="SDMobileXF.Views.MasterViewCsnPage">
+    <MasterDetailPage.Master>
+        <ContentPage Title="Menu" Padding="0">
+            <StackLayout VerticalOptions="Start">
+                <StackLayout Orientation="Horizontal"  BackgroundColor="#03267F" HeightRequest="100">
+                    <Image Source="usuario.png" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" Margin="10,0,0,0"/>
+
+                    <StackLayout Orientation="Vertical" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Margin="10,0,0,0">
+                        <Label Text="{Binding Textos.ST_NivelProjeto}" TextColor="White" FontAttributes="Bold"/>
+                        <Label x:Name="lblBemVindo" Text="Administrador" Style="{DynamicResource EstiloLabelBoasVindas}"/>
+                    </StackLayout>
+                </StackLayout>
+                <ListView x:Name="lvMenu" HasUnevenRows="True" HeightRequest="210" SeparatorVisibility="None" ItemSelected="lvMenu_ItemSelected">
+                    <ListView.ItemsSource>
+                        <x:Array Type="{x:Type classes:ItemMenu}">
+                            <classes:ItemMenu Codigo="inicio" Nome="Início" Imagem="casa.png"/>
+                            <classes:ItemMenu Codigo="config" Nome="Configurações" Imagem="configMenu.png"/>
+                            <classes:ItemMenu Codigo="sobre" Nome="Sobre" Imagem="infoMenu.png"/>
+                            <classes:ItemMenu Codigo="sair" Nome="Sair" Imagem="sairMenu.png"/>
+                        </x:Array>
+                    </ListView.ItemsSource>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid Padding="5,10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="30"/>
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="30" />
+                                    </Grid.RowDefinitions>
+                                    <Image Grid.Row="0" Grid.Column="0" Source="{Binding Imagem}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
+                                    <Label Grid.Row="0" Grid.Column="1" Text="{Binding Nome}" Margin="10,3,0,0"  Style="{DynamicResource EstiloLabel}"/>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <BoxView Grid.Row="1" WidthRequest="1" HeightRequest="1"  Style="{DynamicResource EstiloLinha}" />
+            </StackLayout>
+        </ContentPage>
+    </MasterDetailPage.Master>
+    <MasterDetailPage.Detail>
+        <NavigationPage BarBackgroundColor="#03267F">
+            <x:Arguments>
+                <views:PrincipalCsnPage />
+            </x:Arguments>
+        </NavigationPage>
+    </MasterDetailPage.Detail>
+</MasterDetailPage>

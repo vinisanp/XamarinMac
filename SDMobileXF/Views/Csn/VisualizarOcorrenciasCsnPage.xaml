@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:converter="clr-namespace:SDMobileXF.Classes"
+             mc:Ignorable="d"
+             x:Class="SDMobileXF.Views.VisualizarOcorrenciasCsnPage"
+             IsBusy="{Binding Ocupado}"
+             Title="{Binding Titulo}"
+             Style="{DynamicResource EstiloPage}">
+    <ContentPage.Resources>
+        <converter:StatusConverter x:Key="StatusConverter" />
+        <converter:DescricaoStatusConverter x:Key="DescricaoStatusConverter" />
+        <converter:DataToStringConverter x:Key="DataToStringConverter" />
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <StackLayout Orientation="Vertical"
+                         Spacing="10"
+                         Margin="10"
+                         AbsoluteLayout.LayoutFlags="SizeProportional" 
+                         AbsoluteLayout.LayoutBounds="0,0,1,1">
+
+                <Label Text="{Binding Textos.SelecioneOperiodo}"
+                       Padding="10" 
+                       FontSize="Subtitle" 
+                       Style="{DynamicResource EstiloLabelSubTitulo}" 
+                       HorizontalOptions="FillAndExpand"/>
+
+                <StackLayout Orientation="Horizontal" Spacing="10" >
+
+                    <StackLayout Orientation="Vertical" Spacing="10">
+                        <Label Text="{Binding Textos.DataInicial}" 
+                               LineBreakMode="NoWrap" 
+                               Style="{DynamicResource EstiloLabelCampo}"/>
+                        <Frame Style="{DynamicResource EstiloFrame}">
+                            <DatePicker HorizontalOptions="StartAndExpand" 
+                                        Style="{DynamicResource EstiloDatePicker}" 
+                                        Date="{Binding DtInicial}"/>
+                        </Frame>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Vertical" Spacing="10">
+                        <Label Text="{Binding Textos.DataFinal}" 
+                               LineBreakMode="NoWrap" 
+                               Style="{DynamicResource EstiloLabelCampo}"/>
+                        <Frame Style="{DynamicResource EstiloFrame}">
+                            <DatePicker HorizontalOptions="EndAndExpand"
+                                        Style="{DynamicResource EstiloDatePicker}" 
+                                        Date="{Binding DtFinal}"/>
+                        </Frame>
+                    </StackLayout>
+                    
+                    <ImageButton x:Name="btnUnidade" 
+                                 Source="pesquisar.png" 
+                                 Command="{Binding PesquisarCommand}" 
+                                 VerticalOptions="End"
+                                 BackgroundColor="Transparent" 
+                                 Style="{StaticResource EstiloImgButton}"/>
+
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" 
+                             Style="{DynamicResource EstiloStackLayoutSubTitulo}" 
+                             Padding="10" >
+                    <Label Text="{Binding Textos.OcorrenciasCadastradas}" 
+                           FontSize="Subtitle" 
+                           Style="{DynamicResource EstiloLabelSubTitulo}" 
+                           HorizontalOptions="FillAndExpand"/>
+                    <Label Text="{Binding QtdRegistros}" 
+                           HorizontalOptions="End" 
+                           FontSize="Subtitle" 
+                           Style="{DynamicResource EstiloLabelSubTitulo}"/>
+                </StackLayout>
+                
+                <ListView x:Name="lstOcorrencias" 
+                          ItemsSource="{Binding Lista}" 
+                          HasUnevenRows="True" 
+                          SelectedItem="{Binding ItemSelecionado}" 
+                          ItemSelected="ListView_ItemSelected"
+                          SeparatorVisibility="Default">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Spacing="0" Margin="0,10,10,10">
+                                    <StackLayout Orientation="Horizontal" Margin="0" Padding="0">
+                                        <Label Text="{Binding CODIGO}" 
+                                               FontAttributes="Bold" 
+                                               TextColor="CadetBlue" 
+                                               Style="{DynamicResource EstiloLabel}"/>
+                                        <BoxView CornerRadius="7" 
+                                                 WidthRequest="10" 
+                                                 HeightRequest="10" 
+                                                 BackgroundColor="{Binding STATUS, Converter={StaticResource StatusConverter}}" 
+                                                 HorizontalOptions="End" 
+                                                 VerticalOptions="Center" />
+                                        <Label Text="{Binding STATUS, Converter={StaticResource DescricaoStatusConverter}}" 
+                                               Style="{DynamicResource EstiloLabel}"    
+                                               TextColor="{Binding STATUS, Converter={StaticResource StatusConverter}}" 
+                                               HorizontalOptions="EndAndExpand"/>
+                                    </StackLayout>
+                                        
+                                    <Label Text="{Binding DATA, Converter={StaticResource DataToStringConverter}}" 
+                                           Style="{DynamicResource EstiloLabelDataVisOcorrencia}" 
+                                           VerticalOptions="Start"/>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="{Binding TITULO}" 
+                                               Style="{DynamicResource EstiloLabel}" 
+                                               LineBreakMode="WordWrap" 
+                                               VerticalOptions="Start"/>
+                                        <Label Text=">" 
+                                               VerticalOptions="Center" 
+                                               FontSize="17" 
+                                               HorizontalOptions="EndAndExpand"/>
+                                    </StackLayout>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                
+            </StackLayout>
+
+            
+            <StackLayout x:Name="Loading" 
+                         IsVisible="{Binding Ocupado}" 
+                         Padding="10" 
+                         AbsoluteLayout.LayoutFlags="PositionProportional" 
+                         AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1">
+                <ActivityIndicator IsRunning="{Binding Ocupado}" 
+                                   HeightRequest="50" 
+                                   WidthRequest="50"/>
+                <Label Text="{Binding Textos.Carregando}" 
+                       HorizontalOptions="Center" 
+                       VerticalOptions="Center" />
+            </StackLayout>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

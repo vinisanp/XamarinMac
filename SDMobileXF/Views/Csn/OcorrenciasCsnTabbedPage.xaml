@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+            xmlns:pagina="clr-namespace:SDMobileXF.Views"
+            mc:Ignorable="d"
+            x:Class="SDMobileXF.Views.OcorrenciasCsnTabbedPage" 
+            BarTextColor="Black"
+            Style="{DynamicResource EstiloTabPage}">
+    <!--Pages can be added as references or inline-->
+    <pagina:VisualizarOcorrenciasCsnPage Title="Cadastradas" />
+    <pagina:VisualizarOcorrenciasCsnSQLitePage Title="Pendentes" />
+</TabbedPage>

@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="SDMobileXF.Views.LoginPage"
+             IsBusy="{Binding Ocupado}"    
+             Title="{Binding Titulo}"
+             Style="{DynamicResource EstiloPage}">
+    <AbsoluteLayout>
+        <ScrollView AbsoluteLayout.LayoutFlags="SizeProportional" 
+                         AbsoluteLayout.LayoutBounds="0,0,1,1">
+            <StackLayout Orientation="Vertical" Margin="20,10,20,10" Spacing="20" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                <Image x:Name="imgLogo" Source="{Binding Logo512}" Margin="20,0,20,20"/>
+
+                <Label Text="{Binding Textos.LoginInfo}"
+                       VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="Start"
+                       Style="{DynamicResource EstiloLabelGrande}"/>
+
+                <Entry x:Name="txtUsuario" 
+                        Placeholder="{Binding Textos.PlaceHolderUsuario}"
+                        Keyboard="Default"
+                        Text="{Binding Login}" 
+                        Style="{DynamicResource EstiloEntry}"/>
+
+                <Entry x:Name="txtSenha" 
+                            Placeholder="{Binding Textos.PlaceHolderSenha}"
+                            Keyboard="Default"
+                            IsPassword="True"                 
+                            Text="{Binding Senha}"
+                            Style="{DynamicResource EstiloEntry}"/>
+
+                <ImageButton x:Name="imgOlho" Source="olhoaberto.png" BackgroundColor="Transparent" Clicked="VisualizarSenha_Clicked" HorizontalOptions="End">
+                    <ImageButton.Margin>
+                        <OnPlatform x:TypeArguments="Thickness">
+                            <OnPlatform.Platforms>
+                                <On Platform="iOS" Value="0,-59,5,10"/>
+                                <On Platform="Android" Value="0,-55,0,10"/>
+                            </OnPlatform.Platforms>
+                        </OnPlatform>
+                    </ImageButton.Margin>
+                </ImageButton>
+
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="{Binding Textos.LembrarMe}"
+                           HorizontalOptions="Start"
+                           VerticalOptions="Center" 
+                           Style="{DynamicResource EstiloLabel}"/>
+                    <CheckBox IsChecked="{Binding LembrarMe}" 
+                              Style="{DynamicResource EstiloCheckBox}"
+                              HorizontalOptions="End"
+                              VerticalOptions="Center"/>
+                </StackLayout>
+
+                <Image Source="LogoSeguranca.png" VerticalOptions="CenterAndExpand" HorizontalOptions="Center"/>
+                
+                <Button x:Name="btnLogin" 
+                        Text="{Binding Textos.Entrar}"
+                        Style="{DynamicResource EstiloBtn}"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="EndAndExpand"
+                        Command="{Binding LoginCommand}"/>
+            </StackLayout>
+        </ScrollView>
+
+        <ActivityIndicator HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           IsRunning="{Binding Ocupado}"
+                           IsVisible="{Binding Ocupado}"
+                           HeightRequest="50" 
+                           WidthRequest="50"
+                           AbsoluteLayout.LayoutFlags="PositionProportional" 
+                           AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1"/>
+    </AbsoluteLayout>
+</ContentPage>

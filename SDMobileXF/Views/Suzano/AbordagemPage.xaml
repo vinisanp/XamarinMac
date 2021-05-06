@@ -1,0 +1,856 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:SDMobileXF.Classes"
+             xmlns:converter="clr-namespace:SDMobileXF.Classes"
+             mc:Ignorable="d"
+             x:Class="SDMobileXF.Views.AbordagemPage"
+             x:Name="pageORT"
+             Title="{Binding Titulo}"
+             Style="{DynamicResource EstiloPage}">
+    <ContentPage.Resources>
+        <converter:InverseBoolConverter x:Key="InverseBoolConverter" />
+    </ContentPage.Resources>
+
+    <AbsoluteLayout>
+        <ScrollView x:Name="scrollORT" Scrolled="scrollORT_Scrolled"
+                         AbsoluteLayout.LayoutFlags="SizeProportional" 
+                         AbsoluteLayout.LayoutBounds="0,0,1,1">
+            <StackLayout Orientation="Vertical" Spacing="30" Margin="20,10,20,20">
+                <StackLayout Orientation="Vertical" Spacing="10">
+                    <Label Text="{Binding Textos.Identificacao}" Style="{DynamicResource EstiloLabelGrande}"/>
+
+
+                    <Label Text="{Binding Textos.Numero}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap" IsVisible="{Binding ExibirNumero}"/>
+                    <Frame Style="{DynamicResource EstiloFrame}" IsVisible="{Binding ExibirNumero}">
+                        <Entry Text="{Binding Numero}" IsReadOnly="True" Style="{DynamicResource EstiloEntry}"/>
+                    </Frame>
+
+                    <StackLayout Orientation="Horizontal">
+                        <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                            <Label Text="{Binding Textos.Data}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap"/>
+                            <Frame Style="{DynamicResource EstiloFrame}">
+                                <DatePicker MinimumDate="{Binding DataMinima}" MaximumDate="{Binding DataMaxima}" Date="{Binding Data}" 
+                                            Style="{DynamicResource EstiloDatePicker}" x:Name="pickerData"/>
+                            </Frame>
+                        </StackLayout>
+                        <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                            <Label Text="{Binding Textos.Hora}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap"/>
+                            <Frame Style="{DynamicResource EstiloFrame}">
+                                <TimePicker Time="{Binding Hora}" Style="{DynamicResource EstiloTimePicker}" x:Name="pickerHora"/>
+                            </Frame>
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+
+
+                <StackLayout Orientation="Vertical" Spacing="10">
+                    <Label Text="{Binding Textos.Localizacao}" Style="{DynamicResource EstiloLabelGrande}"/>
+
+
+                    <Label Text="{Binding Textos.EmpresaObservada}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap"/>
+                    <StackLayout Orientation="Horizontal">
+                        <Frame Style="{DynamicResource EstiloFrame}" Margin="2">
+                            <Entry IsReadOnly="True" Text="{Binding Fornecedor.CodigoDescricao, Mode=TwoWay}" Style="{DynamicResource EstiloEntry}" />
+                        </Frame>
+                        <ImageButton x:Name="btnFornecedor" Source="pesquisar.png" Clicked="btnFornecedor_Clicked"
+                                        BackgroundColor="Transparent" Style="{StaticResource EstiloImgButton}" IsEnabled="{Binding EmEdicao}"/>
+                    </StackLayout>
+
+
+                    <Label Text="{Binding Textos.UnidadeAbordagem}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap"/>
+                    <StackLayout Orientation="Horizontal">
+                        <Frame Style="{DynamicResource EstiloFrame}">
+                            <Entry IsReadOnly="True" Text="{Binding UnidadeAbordagem.CodigoDescricao, Mode=TwoWay}" Style="{DynamicResource EstiloEntry}"/>
+                        </Frame>
+                        <ImageButton x:Name="btnUnidade" Source="pesquisar.png" Clicked="btnUnidade_Clicked"
+                                     BackgroundColor="Transparent" Style="{StaticResource EstiloImgButton}" IsEnabled="{Binding EmEdicao}"/>
+                    </StackLayout>
+
+
+                    <Label Text="{Binding Textos.GerenciaAbordagem}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap"/>
+                    <StackLayout Orientation="Horizontal">
+                        <Frame Style="{DynamicResource EstiloFrame}">
+                            <Entry IsReadOnly="True" Text="{Binding GerenciaAbordagem.CodigoDescricao, Mode=TwoWay}" Style="{DynamicResource EstiloEntry}"/>
+                        </Frame>
+                        <ImageButton x:Name="btnGerencia" Source="pesquisar.png" Clicked="btnGerencia_Clicked"
+                                     BackgroundColor="Transparent" Style="{StaticResource EstiloImgButton}" IsEnabled="{Binding EmEdicao}"/>
+                    </StackLayout>
+
+
+                    <Label Text="{Binding Textos.AreaAbordagem}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap"/>
+                    <StackLayout Orientation="Horizontal">
+                        <Frame Style="{DynamicResource EstiloFrame}">
+                            <Entry IsReadOnly="True" Text="{Binding AreaAbordagem.CodigoDescricao, Mode=TwoWay}" Style="{DynamicResource EstiloEntry}" />
+                        </Frame>
+                        <ImageButton x:Name="btnArea" Source="pesquisar.png" Clicked="btnArea_Clicked"
+                                     BackgroundColor="Transparent" Style="{StaticResource EstiloImgButton}" IsEnabled="{Binding EmEdicao}"/>
+                    </StackLayout>
+
+
+                    <Label Text="{Binding Textos.LocalAbordagem}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap"/>
+                    <StackLayout Orientation="Horizontal">
+                        <Frame Style="{DynamicResource EstiloFrame}">
+                            <Entry IsReadOnly="True" Text="{Binding LocalAbordagem.CodigoDescricao, Mode=TwoWay}" Style="{DynamicResource EstiloEntry}" />
+                        </Frame>
+                        <ImageButton x:Name="btnLocal" Source="pesquisar.png" Clicked="btnLocal_Clicked"
+                                     BackgroundColor="Transparent" Style="{StaticResource EstiloImgButton}" IsEnabled="{Binding EmEdicao}"/>
+                    </StackLayout>
+                </StackLayout>
+
+
+                <StackLayout Orientation="Vertical" Spacing="10">
+                    <Label Text="{Binding Textos.DadosAtividade}" Style="{DynamicResource EstiloLabelGrande}"/>
+
+                    <Label Text="{Binding Textos.DescAtividadeSituacao}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap"/>
+                    <Frame Style="{DynamicResource EstiloFrame}">
+                        <Editor Text="{Binding DescAtividadeSituacao}" Style="{DynamicResource EstiloEditor}" Keyboard="Text" IsReadOnly="{Binding EmEdicao, Converter={StaticResource InverseBoolConverter}}"/>
+                    </Frame>
+                </StackLayout>
+
+
+                <StackLayout Orientation="Vertical" Spacing="10">
+                    <Label Text="{Binding Textos.EPIeEPC}" Style="{DynamicResource EstiloLabelGrande}"/>
+
+
+                    <Label Text="{Binding Textos.InerentesAtividade}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap" IsVisible="{Binding LabelPickerVisivel}"/>
+                    <Frame Style="{DynamicResource EstiloFrame}" >
+                        <Picker Title="{Binding Textos.InerentesAtividade}"
+                                TitleColor="{Binding CorTituloPicker}"
+                                ItemsSource="{Binding InerentesAtividadeLst}" 
+                                SelectedItem="{Binding InerentesAtividade}"
+                                ItemDisplayBinding="{Binding Descricao}" 
+                                Style="{DynamicResource EstiloPicker}"/>
+                    </Frame>
+                    <StackLayout Orientation="Horizontal">
+                        <CheckBox IsChecked="{Binding InerentesAtividade.Marcado}" Style="{DynamicResource EstiloCheckBox}" IsEnabled="{Binding EmEdicao}"/>
+                        <Label Text="{Binding Textos.VerAgir}" Style="{DynamicResource EstiloLabel}" 
+                               LineBreakMode="NoWrap" Padding="0">
+                            <Label.Margin>
+                                <OnPlatform x:TypeArguments="Thickness">
+                                    <OnPlatform.Platforms>
+                                        <On Platform="iOS" Value="0,14,0,0"/>
+                                        <On Platform="Android" Value="0,5,0,0"/>
+                                    </OnPlatform.Platforms>
+                                </OnPlatform>
+                            </Label.Margin>
+                        </Label>
+                    </StackLayout>
+
+
+                    <Label Text="{Binding Textos.RelacaoComRiscos}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap" IsVisible="{Binding LabelPickerVisivel}"/>
+                    <Frame Style="{DynamicResource EstiloFrame}" >
+                        <Picker Title="{Binding Textos.RelacaoComRiscos}"
+                                TitleColor="{Binding CorTituloPicker}"
+                                ItemsSource="{Binding RelacaoComRiscosLst}" 
+                                SelectedItem="{Binding RelacaoComRiscos}"
+                                ItemDisplayBinding="{Binding Descricao}" 
+                                Style="{DynamicResource EstiloPicker}"/>
+                    </Frame>
+                    <StackLayout Orientation="Horizontal">
+                        <CheckBox IsChecked="{Binding RelacaoComRiscos.Marcado}" Style="{DynamicResource EstiloCheckBox}" IsEnabled="{Binding EmEdicao}"/>
+                        <Label Text="{Binding Textos.VerAgir}" Style="{DynamicResource EstiloLabel}"
+                               LineBreakMode="NoWrap" Padding="0">
+                            <Label.Margin>
+                                <OnPlatform x:TypeArguments="Thickness">
+                                    <OnPlatform.Platforms>
+                                        <On Platform="iOS" Value="0,14,0,0"/>
+                                        <On Platform="Android" Value="0,5,0,0"/>
+                                    </OnPlatform.Platforms>
+                                </OnPlatform>
+                            </Label.Margin>
+                        </Label>
+                    </StackLayout>
+
+
+                    <Label Text="{Binding Textos.ConservacaoAdequada}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap" IsVisible="{Binding LabelPickerVisivel}"/>
+                    <Frame Style="{DynamicResource EstiloFrame}" >
+                        <Picker Title="{Binding Textos.ConservacaoAdequada}"
+                                TitleColor="{Binding CorTituloPicker}"
+                                ItemsSource="{Binding ConservacaoAdequadaLst}" 
+                                SelectedItem="{Binding ConservacaoAdequada}"
+                                ItemDisplayBinding="{Binding Descricao}" 
+                                Style="{DynamicResource EstiloPicker}"/>
+                    </Frame>
+                    <StackLayout Orientation="Horizontal">
+                        <CheckBox IsChecked="{Binding ConservacaoAdequada.Marcado}" Style="{DynamicResource EstiloCheckBox}" IsEnabled="{Binding EmEdicao}"/>
+                        <Label Text="{Binding Textos.VerAgir}" Style="{DynamicResource EstiloLabel}"
+                               LineBreakMode="NoWrap" Padding="0">
+                            <Label.Margin>
+                                <OnPlatform x:TypeArguments="Thickness">
+                                    <OnPlatform.Platforms>
+                                        <On Platform="iOS" Value="0,14,0,0"/>
+                                        <On Platform="Android" Value="0,5,0,0"/>
+                                    </OnPlatform.Platforms>
+                                </OnPlatform>
+                            </Label.Margin>
+                        </Label>
+                    </StackLayout>
+
+
+                    <Label Text="{Binding Textos.UtilizacaoCorretaFixacaoDistancia}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap" IsVisible="{Binding LabelPickerVisivel}"/>
+                    <Frame Style="{DynamicResource EstiloFrame}" >
+                        <Picker Title="{Binding Textos.UtilizacaoCorretaFixacaoDistancia}"
+                                TitleColor="{Binding CorTituloPicker}"
+                                ItemsSource="{Binding UtilizacaoCorretaFixacaoDistanciaLst}" 
+                                SelectedItem="{Binding UtilizacaoCorretaFixacaoDistancia}"
+                                ItemDisplayBinding="{Binding Descricao}" 
+                                Style="{DynamicResource EstiloPicker}"/>
+                    </Frame>
+                    <StackLayout Orientation="Horizontal">
+                        <CheckBox IsChecked="{Binding UtilizacaoCorretaFixacaoDistancia.Marcado}" Style="{DynamicResource EstiloCheckBox}" IsEnabled="{Binding EmEdicao}"/>
+                        <Label Text="{Binding Textos.VerAgir}" Style="{DynamicResource EstiloLabel}"
+                               LineBreakMode="NoWrap" Padding="0">
+                            <Label.Margin>
+                                <OnPlatform x:TypeArguments="Thickness">
+                                    <OnPlatform.Platforms>
+                                        <On Platform="iOS" Value="0,14,0,0"/>
+                                        <On Platform="Android" Value="0,5,0,0"/>
+                                    </OnPlatform.Platforms>
+                                </OnPlatform>
+                            </Label.Margin>
+                        </Label>
+                    </StackLayout>
+                </StackLayout>
+
+
+                <StackLayout Orientation="Vertical" Spacing="10">
+                    <Label Text="{Binding Textos.MaquinasVeiculosEquip}" Style="{DynamicResource EstiloLabelGrande}"/>
+
+
+                    <Label Text="{Binding Textos.IdentificacaoRiscosMapeados}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap" IsVisible="{Binding LabelPickerVisivel}"/>
+                    <Frame Style="{DynamicResource EstiloFrame}" >
+                        <Picker Title="{Binding Textos.IdentificacaoRiscosMapeados}"
+                                TitleColor="{Binding CorTituloPicker}"
+                                ItemsSource="{Binding IdentificacaoRiscosMapeadosLst}" 
+                                SelectedItem="{Binding IdentificacaoRiscosMapeados}"
+                                ItemDisplayBinding="{Binding Descricao}" 
+                                Style="{DynamicResource EstiloPicker}"/>
+                    </Frame>
+                    <StackLayout Orientation="Horizontal">
+                        <CheckBox IsChecked="{Binding IdentificacaoRiscosMapeados.Marcado}" Style="{DynamicResource EstiloCheckBox}" IsEnabled="{Binding EmEdicao}"/>
+                        <Label Text="{Binding Textos.VerAgir}" Style="{DynamicResource EstiloLabel}"
+                               LineBreakMode="NoWrap" Padding="0">
+                            <Label.Margin>
+                                <OnPlatform x:TypeArguments="Thickness">
+                                    <OnPlatform.Platforms>
+                                        <On Platform="iOS" Value="0,14,0,0"/>
+                                        <On Platform="Android" Value="0,5,0,0"/>
+                                    </OnPlatform.Platforms>
+                                </OnPlatform>
+                            </Label.Margin>
+                        </Label>
+                    </StackLayout>
+
+
+                    <Label Text="{Binding Textos.MedidasPrevencao}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap" IsVisible="{Binding LabelPickerVisivel}"/>
+                    <Frame Style="{DynamicResource EstiloFrame}" >
+                        <Picker Title="{Binding Textos.MedidasPrevencao}"
+                                TitleColor="{Binding CorTituloPicker}"
+                                ItemsSource="{Binding MedidasPrevencaoLst}" 
+                                SelectedItem="{Binding MedidasPrevencao}"
+                                ItemDisplayBinding="{Binding Descricao}" 
+                                Style="{DynamicResource EstiloPicker}"/>
+                    </Frame>
+                    <StackLayout Orientation="Horizontal">
+                        <CheckBox IsChecked="{Binding MedidasPrevencao.Marcado}" Style="{DynamicResource EstiloCheckBox}" IsEnabled="{Binding EmEdicao}"/>
+                        <Label Text="{Binding Textos.VerAgir}" Style="{DynamicResource EstiloLabel}"
+                               LineBreakMode="NoWrap" Padding="0">
+                            <Label.Margin>
+                                <OnPlatform x:TypeArguments="Thickness">
+                                    <OnPlatform.Platforms>
+                                        <On Platform="iOS" Value="0,14,0,0"/>
+                                        <On Platform="Android" Value="0,5,0,0"/>
+                                    </OnPlatform.Platforms>
+                                </OnPlatform>
+                            </Label.Margin>
+                        </Label>
+                    </StackLayout>
+
+
+                    <Label Text="{Binding Textos.BoasCondicoesUso}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap" IsVisible="{Binding LabelPickerVisivel}"/>
+                    <Frame Style="{DynamicResource EstiloFrame}" >
+                        <Picker Title="{Binding Textos.BoasCondicoesUso}"
+                                TitleColor="{Binding CorTituloPicker}"
+                                ItemsSource="{Binding BoasCondicoesUsoLst}" 
+                                SelectedItem="{Binding BoasCondicoesUso}"
+                                ItemDisplayBinding="{Binding Descricao}" 
+                                Style="{DynamicResource EstiloPicker}"/>
+                    </Frame>
+                    <StackLayout Orientation="Horizontal">
+                        <CheckBox IsChecked="{Binding BoasCondicoesUso.Marcado}" Style="{DynamicResource EstiloCheckBox}" IsEnabled="{Binding EmEdicao}"/>
+                        <Label Text="{Binding Textos.VerAgir}" Style="{DynamicResource EstiloLabel}"
+                               LineBreakMode="NoWrap" Padding="0">
+                            <Label.Margin>
+                                <OnPlatform x:TypeArguments="Thickness">
+                                    <OnPlatform.Platforms>
+                                        <On Platform="iOS" Value="0,14,0,0"/>
+                                        <On Platform="Android" Value="0,5,0,0"/>
+                                    </OnPlatform.Platforms>
+                                </OnPlatform>
+                            </Label.Margin>
+                        </Label>
+                    </StackLayout>
+
+
+                    <Label Text="{Binding Textos.UtilizacaoCorreta}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap" IsVisible="{Binding LabelPickerVisivel}"/>
+                    <Frame Style="{DynamicResource EstiloFrame}" >
+                        <Picker Title="{Binding Textos.UtilizacaoCorreta}"
+                                TitleColor="{Binding CorTituloPicker}"
+                                ItemsSource="{Binding UtilizacaoCorretaLst}" 
+                                SelectedItem="{Binding UtilizacaoCorreta}"
+                                ItemDisplayBinding="{Binding Descricao}" 
+                                Style="{DynamicResource EstiloPicker}"/>
+                    </Frame>
+                    <StackLayout Orientation="Horizontal">
+                        <CheckBox IsChecked="{Binding UtilizacaoCorreta.Marcado}" Style="{DynamicResource EstiloCheckBox}" IsEnabled="{Binding EmEdicao}"/>
+                        <Label Text="{Binding Textos.VerAgir}" Style="{DynamicResource EstiloLabel}"
+                               LineBreakMode="NoWrap" Padding="0">
+                            <Label.Margin>
+                                <OnPlatform x:TypeArguments="Thickness">
+                                    <OnPlatform.Platforms>
+                                        <On Platform="iOS" Value="0,14,0,0"/>
+                                        <On Platform="Android" Value="0,5,0,0"/>
+                                    </OnPlatform.Platforms>
+                                </OnPlatform>
+                            </Label.Margin>
+                        </Label>
+                    </StackLayout>
+
+
+                    <Label Text="{Binding Textos.DestinadosAtividade}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap" IsVisible="{Binding LabelPickerVisivel}"/>
+                    <Frame Style="{DynamicResource EstiloFrame}" >
+                        <Picker Title="{Binding Textos.DestinadosAtividade}"
+                                TitleColor="{Binding CorTituloPicker}"
+                                ItemsSource="{Binding DestinadosAtividadeLst}" 
+                                SelectedItem="{Binding DestinadosAtividade}"
+                                ItemDisplayBinding="{Binding Descricao}" 
+                                Style="{DynamicResource EstiloPicker}"/>
+                    </Frame>
+                    <StackLayout Orientation="Horizontal">
+                        <CheckBox IsChecked="{Binding DestinadosAtividade.Marcado}" Style="{DynamicResource EstiloCheckBox}" IsEnabled="{Binding EmEdicao}"/>
+                        <Label Text="{Binding Textos.VerAgir}" Style="{DynamicResource EstiloLabel}"
+                               LineBreakMode="NoWrap" Padding="0">
+                            <Label.Margin>
+                                <OnPlatform x:TypeArguments="Thickness">
+                                    <OnPlatform.Platforms>
+                                        <On Platform="iOS" Value="0,14,0,0"/>
+                                        <On Platform="Android" Value="0,5,0,0"/>
+                                    </OnPlatform.Platforms>
+                                </OnPlatform>
+                            </Label.Margin>
+                        </Label>
+                    </StackLayout>
+
+                </StackLayout>
+
+
+                <StackLayout Orientation="Vertical" Spacing="10">
+                    <Label Text="{Binding Textos.ProgramaBomCenso}" Style="{DynamicResource EstiloLabelGrande}"/>
+
+
+                    <Label Text="{Binding Textos.LocalLimpo}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap" IsVisible="{Binding LabelPickerVisivel}"/>
+                    <Frame Style="{DynamicResource EstiloFrame}" >
+                        <Picker Title="{Binding Textos.LocalLimpo}"
+                                TitleColor="{Binding CorTituloPicker}"
+                                ItemsSource="{Binding LocalLimpoLst}" 
+                                SelectedItem="{Binding LocalLimpo}"
+                                ItemDisplayBinding="{Binding Descricao}" 
+                                Style="{DynamicResource EstiloPicker}"/>
+                    </Frame>
+                    <StackLayout Orientation="Horizontal">
+                        <CheckBox IsChecked="{Binding LocalLimpo.Marcado}" Style="{DynamicResource EstiloCheckBox}" IsEnabled="{Binding EmEdicao}"/>
+                        <Label Text="{Binding Textos.VerAgir}" Style="{DynamicResource EstiloLabel}"
+                               LineBreakMode="NoWrap" Padding="0">
+                            <Label.Margin>
+                                <OnPlatform x:TypeArguments="Thickness">
+                                    <OnPlatform.Platforms>
+                                        <On Platform="iOS" Value="0,14,0,0"/>
+                                        <On Platform="Android" Value="0,5,0,0"/>
+                                    </OnPlatform.Platforms>
+                                </OnPlatform>
+                            </Label.Margin>
+                        </Label>
+                    </StackLayout>
+
+
+                    <Label Text="{Binding Textos.MateriaisOrganizados}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap" IsVisible="{Binding LabelPickerVisivel}"/>
+                    <Frame Style="{DynamicResource EstiloFrame}" >
+                        <Picker Title="{Binding Textos.MateriaisOrganizados}"
+                                TitleColor="{Binding CorTituloPicker}"
+                                ItemsSource="{Binding MateriaisOrganizadosLst}" 
+                                SelectedItem="{Binding MateriaisOrganizados}"
+                                ItemDisplayBinding="{Binding Descricao}" 
+                                Style="{DynamicResource EstiloPicker}"/>
+                    </Frame>
+                    <StackLayout Orientation="Horizontal">
+                        <CheckBox IsChecked="{Binding MateriaisOrganizados.Marcado}" Style="{DynamicResource EstiloCheckBox}" IsEnabled="{Binding EmEdicao}"/>
+                        <Label Text="{Binding Textos.VerAgir}" Style="{DynamicResource EstiloLabel}"
+                               LineBreakMode="NoWrap" Padding="0">
+                            <Label.Margin>
+                                <OnPlatform x:TypeArguments="Thickness">
+                                    <OnPlatform.Platforms>
+                                        <On Platform="iOS" Value="0,14,0,0"/>
+                                        <On Platform="Android" Value="0,5,0,0"/>
+                                    </OnPlatform.Platforms>
+                                </OnPlatform>
+                            </Label.Margin>
+                        </Label>
+                    </StackLayout>
+
+
+                    <Label Text="{Binding Textos.DescarteResiduos}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap" IsVisible="{Binding LabelPickerVisivel}"/>
+                    <Frame Style="{DynamicResource EstiloFrame}" >
+                        <Picker Title="{Binding Textos.DescarteResiduos}"
+                                TitleColor="{Binding CorTituloPicker}"
+                                ItemsSource="{Binding DescarteResiduosLst}" 
+                                SelectedItem="{Binding DescarteResiduos}"
+                                ItemDisplayBinding="{Binding Descricao}" 
+                                Style="{DynamicResource EstiloPicker}"/>
+                    </Frame>
+                    <StackLayout Orientation="Horizontal">
+                        <CheckBox IsChecked="{Binding DescarteResiduos.Marcado}" Style="{DynamicResource EstiloCheckBox}" IsEnabled="{Binding EmEdicao}"/>
+                        <Label Text="{Binding Textos.VerAgir}" Style="{DynamicResource EstiloLabel}"
+                               LineBreakMode="NoWrap" Padding="0">
+                            <Label.Margin>
+                                <OnPlatform x:TypeArguments="Thickness">
+                                    <OnPlatform.Platforms>
+                                        <On Platform="iOS" Value="0,14,0,0"/>
+                                        <On Platform="Android" Value="0,5,0,0"/>
+                                    </OnPlatform.Platforms>
+                                </OnPlatform>
+                            </Label.Margin>
+                        </Label>
+                    </StackLayout>
+
+                </StackLayout>
+                                
+
+                <StackLayout Orientation="Vertical" Spacing="10">
+                    <Label Text="{Binding Textos.AcidentesIncidentesDesvios}" Style="{DynamicResource EstiloLabelGrande}"/>
+
+
+                    <Label Text="{Binding Textos.IdentificacaoTratativaRiscos}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap"
+                           IsVisible="{Binding LabelPickerVisivel}"/>
+                    <Frame Style="{DynamicResource EstiloFrame}" >
+                        <Picker Title="{Binding Textos.IdentificacaoTratativaRiscos}"
+                                TitleColor="{Binding CorTituloPicker}"
+                                ItemsSource="{Binding IdentificacaoTratativaRiscosLst}" 
+                                SelectedItem="{Binding IdentificacaoTratativaRiscos}"
+                                ItemDisplayBinding="{Binding Descricao}" 
+                                Style="{DynamicResource EstiloPicker}"/>
+                    </Frame>
+                    <StackLayout Orientation="Horizontal">
+                        <CheckBox IsChecked="{Binding IdentificacaoTratativaRiscos.Marcado}" Style="{DynamicResource EstiloCheckBox}" IsEnabled="{Binding EmEdicao}"/>
+                        <Label Text="{Binding Textos.VerAgir}" Style="{DynamicResource EstiloLabel}"
+                               LineBreakMode="NoWrap" Padding="0">
+                            <Label.Margin>
+                                <OnPlatform x:TypeArguments="Thickness">
+                                    <OnPlatform.Platforms>
+                                        <On Platform="iOS" Value="0,14,0,0"/>
+                                        <On Platform="Android" Value="0,5,0,0"/>
+                                    </OnPlatform.Platforms>
+                                </OnPlatform>
+                            </Label.Margin>
+                        </Label>
+                    </StackLayout>
+
+
+                    <Label Text="{Binding Textos.LinhaFogo}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap"
+                           IsVisible="{Binding LabelPickerVisivel}"/>
+                    <Frame Style="{DynamicResource EstiloFrame}" >
+                        <Picker Title="{Binding Textos.LinhaFogo}"
+                                TitleColor="{Binding CorTituloPicker}"
+                                ItemsSource="{Binding LinhaFogoLst}" 
+                                SelectedItem="{Binding LinhaFogo}"
+                                ItemDisplayBinding="{Binding Descricao}" 
+                                Style="{DynamicResource EstiloPicker}"/>
+                    </Frame>
+                    <StackLayout Orientation="Horizontal">
+                        <CheckBox IsChecked="{Binding LinhaFogo.Marcado}" Style="{DynamicResource EstiloCheckBox}" IsEnabled="{Binding EmEdicao}"/>
+                        <Label Text="{Binding Textos.VerAgir}" Style="{DynamicResource EstiloLabel}"
+                               LineBreakMode="NoWrap" Padding="0">
+                            <Label.Margin>
+                                <OnPlatform x:TypeArguments="Thickness">
+                                    <OnPlatform.Platforms>
+                                        <On Platform="iOS" Value="0,14,0,0"/>
+                                        <On Platform="Android" Value="0,5,0,0"/>
+                                    </OnPlatform.Platforms>
+                                </OnPlatform>
+                            </Label.Margin>
+                        </Label>
+                    </StackLayout>
+
+
+                    <Label Text="{Binding Textos.PosturasErgoAdequadas}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap"
+                           IsVisible="{Binding LabelPickerVisivel}"/>
+                    <Frame Style="{DynamicResource EstiloFrame}" >
+                        <Picker Title="{Binding Textos.PosturasErgoAdequadas}"
+                                TitleColor="{Binding CorTituloPicker}"
+                                ItemsSource="{Binding PosturasErgoAdequadasLst}" 
+                                SelectedItem="{Binding PosturasErgoAdequadas}"
+                                ItemDisplayBinding="{Binding Descricao}" 
+                                Style="{DynamicResource EstiloPicker}"/>
+                    </Frame>
+                    <StackLayout Orientation="Horizontal">
+                        <CheckBox IsChecked="{Binding PosturasErgoAdequadas.Marcado}" Style="{DynamicResource EstiloCheckBox}" IsEnabled="{Binding EmEdicao}"/>
+                        <Label Text="{Binding Textos.VerAgir}" Style="{DynamicResource EstiloLabel}"
+                               LineBreakMode="NoWrap" Padding="0">
+                            <Label.Margin>
+                                <OnPlatform x:TypeArguments="Thickness">
+                                    <OnPlatform.Platforms>
+                                        <On Platform="iOS" Value="0,14,0,0"/>
+                                        <On Platform="Android" Value="0,5,0,0"/>
+                                    </OnPlatform.Platforms>
+                                </OnPlatform>
+                            </Label.Margin>
+                        </Label>
+                    </StackLayout>
+
+
+                    <Label Text="{Binding Textos.ConcentracaoTarefa}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap"
+                           IsVisible="{Binding LabelPickerVisivel}"/>
+                    <Frame Style="{DynamicResource EstiloFrame}" >
+                        <Picker Title="{Binding Textos.ConcentracaoTarefa}"
+                                TitleColor="{Binding CorTituloPicker}"
+                                ItemsSource="{Binding ConcentracaoTarefaLst}" 
+                                SelectedItem="{Binding ConcentracaoTarefa}"
+                                ItemDisplayBinding="{Binding Descricao}" 
+                                Style="{DynamicResource EstiloPicker}"/>
+                    </Frame>
+                    <StackLayout Orientation="Horizontal">
+                        <CheckBox IsChecked="{Binding ConcentracaoTarefa.Marcado}" Style="{DynamicResource EstiloCheckBox}" IsEnabled="{Binding EmEdicao}"/>
+                        <Label Text="{Binding Textos.VerAgir}" Style="{DynamicResource EstiloLabel}"
+                               LineBreakMode="NoWrap" Padding="0">
+                            <Label.Margin>
+                                <OnPlatform x:TypeArguments="Thickness">
+                                    <OnPlatform.Platforms>
+                                        <On Platform="iOS" Value="0,14,0,0"/>
+                                        <On Platform="Android" Value="0,5,0,0"/>
+                                    </OnPlatform.Platforms>
+                                </OnPlatform>
+                            </Label.Margin>
+                        </Label>
+                    </StackLayout>
+                    
+                </StackLayout>
+                
+
+                <StackLayout Orientation="Vertical" Spacing="10">
+                    <Label Text="{Binding Textos.PlanejamentoProcedimentoInstrucao}" Style="{DynamicResource EstiloLabelGrande}"/>
+
+
+                    <Label Text="{Binding Textos.ConhecimentoProcedimentos}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap"
+                           IsVisible="{Binding LabelPickerVisivel}"/>
+                    <Frame Style="{DynamicResource EstiloFrame}" >
+                        <Picker Title="{Binding Textos.ConhecimentoProcedimentos}"
+                                TitleColor="{Binding CorTituloPicker}"
+                                ItemsSource="{Binding ConhecimentoProcedimentosLst}" 
+                                SelectedItem="{Binding ConhecimentoProcedimentos}"
+                                ItemDisplayBinding="{Binding Descricao}" 
+                                Style="{DynamicResource EstiloPicker}"/>
+                    </Frame>
+                    <StackLayout Orientation="Horizontal">
+                        <CheckBox IsChecked="{Binding ConhecimentoProcedimentos.Marcado}" Style="{DynamicResource EstiloCheckBox}" IsEnabled="{Binding EmEdicao}"/>
+                        <Label Text="{Binding Textos.VerAgir}" Style="{DynamicResource EstiloLabel}"
+                               LineBreakMode="NoWrap" Padding="0">
+                            <Label.Margin>
+                                <OnPlatform x:TypeArguments="Thickness">
+                                    <OnPlatform.Platforms>
+                                        <On Platform="iOS" Value="0,14,0,0"/>
+                                        <On Platform="Android" Value="0,5,0,0"/>
+                                    </OnPlatform.Platforms>
+                                </OnPlatform>
+                            </Label.Margin>
+                        </Label>
+                    </StackLayout>
+
+
+                    <Label Text="{Binding Textos.ConhecimentoRiscos}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap"
+                           IsVisible="{Binding LabelPickerVisivel}"/>
+                    <Frame Style="{DynamicResource EstiloFrame}" >
+                        <Picker Title="{Binding Textos.ConhecimentoRiscos}"
+                                TitleColor="{Binding CorTituloPicker}"
+                                ItemsSource="{Binding ConhecimentoRiscosLst}" 
+                                SelectedItem="{Binding ConhecimentoRiscos}"
+                                ItemDisplayBinding="{Binding Descricao}" 
+                                Style="{DynamicResource EstiloPicker}"/>
+                    </Frame>
+                    <StackLayout Orientation="Horizontal">
+                        <CheckBox IsChecked="{Binding ConhecimentoRiscos.Marcado}" Style="{DynamicResource EstiloCheckBox}" IsEnabled="{Binding EmEdicao}"/>
+                        <Label Text="{Binding Textos.VerAgir}" Style="{DynamicResource EstiloLabel}"
+                               LineBreakMode="NoWrap" Padding="0">
+                            <Label.Margin>
+                                <OnPlatform x:TypeArguments="Thickness">
+                                    <OnPlatform.Platforms>
+                                        <On Platform="iOS" Value="0,14,0,0"/>
+                                        <On Platform="Android" Value="0,5,0,0"/>
+                                    </OnPlatform.Platforms>
+                                </OnPlatform>
+                            </Label.Margin>
+                        </Label>
+                    </StackLayout>
+
+
+                    <Label Text="{Binding Textos.DireitoRecusa}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap"
+                           IsVisible="{Binding LabelPickerVisivel}"/>
+                    <Frame Style="{DynamicResource EstiloFrame}" >
+                        <Picker Title="{Binding Textos.DireitoRecusa}"
+                                TitleColor="{Binding CorTituloPicker}"
+                                ItemsSource="{Binding DireitoRecusaLst}" 
+                                SelectedItem="{Binding DireitoRecusa}"
+                                ItemDisplayBinding="{Binding Descricao}" 
+                                Style="{DynamicResource EstiloPicker}"/>
+                    </Frame>
+                    <StackLayout Orientation="Horizontal">
+                        <CheckBox IsChecked="{Binding DireitoRecusa.Marcado}" Style="{DynamicResource EstiloCheckBox}" IsEnabled="{Binding EmEdicao}"/>
+                        <Label Text="{Binding Textos.VerAgir}" Style="{DynamicResource EstiloLabel}"
+                               LineBreakMode="NoWrap" Padding="0">
+                            <Label.Margin>
+                                <OnPlatform x:TypeArguments="Thickness">
+                                    <OnPlatform.Platforms>
+                                        <On Platform="iOS" Value="0,14,0,0"/>
+                                        <On Platform="Android" Value="0,5,0,0"/>
+                                    </OnPlatform.Platforms>
+                                </OnPlatform>
+                            </Label.Margin>
+                        </Label>
+                    </StackLayout>
+
+
+                    <Label Text="{Binding Textos.AcoesEmergencia}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap"
+                           IsVisible="{Binding LabelPickerVisivel}"/>
+                    <Frame Style="{DynamicResource EstiloFrame}" >
+                        <Picker Title="{Binding Textos.AcoesEmergencia}"
+                                TitleColor="{Binding CorTituloPicker}"
+                                ItemsSource="{Binding AcoesEmergenciaLst}" 
+                                SelectedItem="{Binding AcoesEmergencia}"
+                                ItemDisplayBinding="{Binding Descricao}" 
+                                Style="{DynamicResource EstiloPicker}"/>
+                    </Frame>
+                    <StackLayout Orientation="Horizontal">
+                        <CheckBox IsChecked="{Binding AcoesEmergencia.Marcado}" Style="{DynamicResource EstiloCheckBox}" IsEnabled="{Binding EmEdicao}"/>
+                        <Label Text="{Binding Textos.VerAgir}" Style="{DynamicResource EstiloLabel}"
+                               LineBreakMode="NoWrap" Padding="0">
+                            <Label.Margin>
+                                <OnPlatform x:TypeArguments="Thickness">
+                                    <OnPlatform.Platforms>
+                                        <On Platform="iOS" Value="0,14,0,0"/>
+                                        <On Platform="Android" Value="0,5,0,0"/>
+                                    </OnPlatform.Platforms>
+                                </OnPlatform>
+                            </Label.Margin>
+                        </Label>
+                    </StackLayout>
+
+
+                    <Label Text="{Binding Textos.RealizaProcessoRotina}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap"
+                           IsVisible="{Binding LabelPickerVisivel}"/>
+                    <Frame Style="{DynamicResource EstiloFrame}" >
+                        <Picker Title="{Binding Textos.RealizaProcessoRotina}"
+                                TitleColor="{Binding CorTituloPicker}"
+                                ItemsSource="{Binding RealizaProcessoRotinaLst}" 
+                                SelectedItem="{Binding RealizaProcessoRotina}"
+                                ItemDisplayBinding="{Binding Descricao}" 
+                                Style="{DynamicResource EstiloPicker}"/>
+                    </Frame>
+                    <StackLayout Orientation="Horizontal">
+                        <CheckBox IsChecked="{Binding RealizaProcessoRotina.Marcado}" Style="{DynamicResource EstiloCheckBox}" IsEnabled="{Binding EmEdicao}"/>
+                        <Label Text="{Binding Textos.VerAgir}" Style="{DynamicResource EstiloLabel}"
+                               LineBreakMode="NoWrap" Padding="0">
+                            <Label.Margin>
+                                <OnPlatform x:TypeArguments="Thickness">
+                                    <OnPlatform.Platforms>
+                                        <On Platform="iOS" Value="0,14,0,0"/>
+                                        <On Platform="Android" Value="0,5,0,0"/>
+                                    </OnPlatform.Platforms>
+                                </OnPlatform>
+                            </Label.Margin>
+                        </Label>
+                    </StackLayout>
+
+                </StackLayout>
+                
+
+                <StackLayout Orientation="Vertical" Spacing="10">
+                    <Label Text="{Binding Textos.AtividadesComportamento}" Style="{DynamicResource EstiloLabelGrande}"/>
+
+
+                    <Label Text="{Binding Textos.Cognitivos}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap"/>
+                    <Frame Style="{DynamicResource EstiloFrame}" VerticalOptions="Fill">
+                        <ListView SeparatorVisibility="None" ItemsSource="{Binding Cognitivos}" SelectedItem="{Binding Cognitivo, Mode=TwoWay}"
+                                  Margin="5" x:Name="LstCognitivos" RowHeight="30" HasUnevenRows="true" ItemSelected="ListView_ItemSelected">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <ViewCell.View>
+                                            <StackLayout Orientation="Horizontal" Padding="0" Margin="0">
+                                                <CheckBox IsChecked="{Binding ST_MARCADO, Mode=TwoWay}" Style="{DynamicResource EstiloCheckBox}"/>
+                                                <Label Text="{Binding DS_COGNITIVO}" Style="{DynamicResource EstiloLabel}" LineBreakMode="WordWrap" Padding="0">
+                                                    <Label.Margin>
+                                                        <OnPlatform x:TypeArguments="Thickness">
+                                                            <OnPlatform.Platforms>
+                                                                <On Platform="iOS" Value="0,7,0,0"/>
+                                                                <On Platform="Android" Value="0,2,0,0"/>
+                                                            </OnPlatform.Platforms>
+                                                        </OnPlatform>
+                                                    </Label.Margin>
+                                                </Label>
+                                            </StackLayout>
+                                        </ViewCell.View>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </Frame>
+
+
+                    <Label Text="{Binding Textos.Fisiologicos}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap"/>
+                    <Frame Style="{DynamicResource EstiloFrame}">
+                        <ListView HasUnevenRows="true" SeparatorVisibility="None" ItemsSource="{Binding Fisiologicos}" SelectedItem="{Binding Fisiologico, Mode=TwoWay}" 
+                                  Margin="5" x:Name="LstFisiologicos" RowHeight="28" ItemSelected="ListView_ItemSelected">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <ViewCell.View>
+                                            <StackLayout Orientation="Horizontal">
+                                                <CheckBox IsChecked="{Binding ST_MARCADO, Mode=TwoWay}" Style="{DynamicResource EstiloCheckBox}"/>
+                                                <Label Text="{Binding DS_FISIOLOGICO}" Style="{DynamicResource EstiloLabel}" LineBreakMode="WordWrap" Padding="0">
+                                                    <Label.Margin>
+                                                        <OnPlatform x:TypeArguments="Thickness">
+                                                            <OnPlatform.Platforms>
+                                                                <On Platform="iOS" Value="0,7,0,0"/>
+                                                                <On Platform="Android" Value="0,2,0,0"/>
+                                                            </OnPlatform.Platforms>
+                                                        </OnPlatform>
+                                                    </Label.Margin>
+                                                </Label>
+                                            </StackLayout>
+                                        </ViewCell.View>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </Frame>
+
+
+                    <Label Text="{Binding Textos.Psicologicos}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap"/>
+                    <Frame Style="{DynamicResource EstiloFrame}">
+                        <ListView HasUnevenRows="true" SeparatorVisibility="None" ItemsSource="{Binding Psicologicos}" SelectedItem="{Binding Psicologico, Mode=TwoWay}"  
+                                  Margin="5" x:Name="LstPsicologicos" RowHeight="30" ItemSelected="ListView_ItemSelected">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <ViewCell.View>
+                                            <StackLayout Orientation="Horizontal">
+                                                <CheckBox IsChecked="{Binding ST_MARCADO, Mode=TwoWay}" Style="{DynamicResource EstiloCheckBox}"/>
+                                                <Label Text="{Binding DS_PSICOLOGICO}" Style="{DynamicResource EstiloLabel}" LineBreakMode="WordWrap" Padding="0">
+                                                    <Label.Margin>
+                                                        <OnPlatform x:TypeArguments="Thickness">
+                                                            <OnPlatform.Platforms>
+                                                                <On Platform="iOS" Value="0,7,0,0"/>
+                                                                <On Platform="Android" Value="0,2,0,0"/>
+                                                            </OnPlatform.Platforms>
+                                                        </OnPlatform>
+                                                    </Label.Margin>
+                                                </Label>
+                                            </StackLayout>
+                                        </ViewCell.View>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </Frame>
+
+
+                    <Label Text="{Binding Textos.Sociais}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap"/>
+                    <Frame Style="{DynamicResource EstiloFrame}">
+                        <ListView HasUnevenRows="true" SeparatorVisibility="None" ItemsSource="{Binding Sociais}" SelectedItem="{Binding Social, Mode=TwoWay}"  
+                                  Margin="5" x:Name="LstSociais" RowHeight="36" ItemSelected="ListView_ItemSelected">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <ViewCell.View>
+                                            <StackLayout Orientation="Horizontal">
+                                                <CheckBox IsChecked="{Binding ST_MARCADO, Mode=TwoWay}" Style="{DynamicResource EstiloCheckBox}" CheckedChanged="CheckBox_CheckedChanged"/>
+                                                <Label Text="{Binding DS_SOCIAL}" Style="{DynamicResource EstiloLabel}" LineBreakMode="WordWrap" Padding="0">
+                                                    <Label.Margin>
+                                                        <OnPlatform x:TypeArguments="Thickness">
+                                                            <OnPlatform.Platforms>
+                                                                <On Platform="iOS" Value="0,10,0,0"/>
+                                                                <On Platform="Android" Value="0,2,0,0"/>
+                                                            </OnPlatform.Platforms>
+                                                        </OnPlatform>
+                                                    </Label.Margin>
+                                                </Label>
+                                            </StackLayout>
+                                        </ViewCell.View>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </Frame>
+
+                </StackLayout>
+
+
+                <StackLayout Orientation="Vertical" Spacing="10">
+                    <Label Text="{Binding Textos.ObsOrt1}" Padding="0" Style="{DynamicResource EstiloLabelCampo}"/>
+                    <Label Text="{Binding Textos.ObsOrt2}" Padding="0" Style="{DynamicResource EstiloLabel}"/>
+                    <Label Text="{Binding Textos.ObsOrt3}" Padding="0" Style="{DynamicResource EstiloLabel}"/>
+                    <Label Text="{Binding Textos.ObsOrt4}" Padding="0" Style="{DynamicResource EstiloLabelCampo}"/>
+                    <Label Text="{Binding Textos.ObsOrt5}" Padding="0" Style="{DynamicResource EstiloLabel}"/>
+                    <Label Text="{Binding Textos.ObsOrt6}" Padding="0" Style="{DynamicResource EstiloLabel}"/>
+                    <Label Text="{Binding Textos.ObsOrt7}" Padding="0" Style="{DynamicResource EstiloLabel}"/>
+                    <Label Text="{Binding Textos.ObsOrt8}" Padding="0" Style="{DynamicResource EstiloLabel}"/>
+                    <Label Text="{Binding Textos.ObsOrt9}" Padding="0" Style="{DynamicResource EstiloLabel}"/>
+                </StackLayout>
+
+
+                <StackLayout Orientation="Vertical" Spacing="10">
+                    <Label Text="{Binding Textos.ResponsavelPelaAbordagem}" Padding="0" Style="{DynamicResource EstiloLabelGrande}"/>
+
+
+                    <Label Text="{Binding Textos.NomeObservador}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap"/>
+                    <StackLayout Orientation="Horizontal">
+                        <Frame Style="{DynamicResource EstiloFrame}">
+                            <Entry IsReadOnly="True" Text="{Binding Observador.CodigoDescricao, Mode=TwoWay}" Style="{DynamicResource EstiloEntry}" />
+                        </Frame>
+                        <ImageButton x:Name="btnObservador" Source="pesquisar.png" Clicked="btnObservador_Clicked"
+                                     BackgroundColor="Transparent" Style="{StaticResource EstiloImgButton}" IsEnabled="{Binding EmEdicao}"/>
+                    </StackLayout>
+
+                    <Label Text="{Binding Textos.RegistradoPor}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap"/>
+                    <StackLayout Orientation="Horizontal">
+                        <Frame Style="{DynamicResource EstiloFrame}">
+                            <Entry IsReadOnly="True" Text="{Binding RegistradoPor.CodigoDescricao, Mode=TwoWay}" Style="{DynamicResource EstiloEntry}"/>
+                        </Frame>
+                        <ImageButton x:Name="btnRegistradoPor" Source="pesquisar.png" Clicked="btnRegistradoPor_Clicked"
+                                     BackgroundColor="Transparent" Style="{StaticResource EstiloImgButton}" IsEnabled="{Binding EmEdicao}"/>
+                    </StackLayout>
+                </StackLayout>
+
+
+                <StackLayout Orientation="Horizontal" Spacing="10" IsVisible="{Binding EmEdicao}">
+                    <Button Text="{Binding Textos.Salvar}" HorizontalOptions="FillAndExpand" BackgroundColor="#009245" 
+                            Command="{Binding BindingContext.SalvarCommand, Source={x:Reference pageORT}}" IsEnabled="{Binding EmEdicao}"
+                            Style="{DynamicResource EstiloBtn}"/>
+                    <Button Text="{Binding Textos.Cancelar}" HorizontalOptions="FillAndExpand" BackgroundColor="#F26869" 
+                            Command="{Binding BindingContext.CancelarCommand, Source={x:Reference pageORT}}" IsEnabled="{Binding EmEdicao}"
+                            Style="{DynamicResource EstiloBtn}"/>
+                </StackLayout>
+
+            </StackLayout>
+        </ScrollView>
+        
+        <ActivityIndicator HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           IsRunning="{Binding Ocupado}"
+                           IsVisible="{Binding Ocupado}"
+                           HeightRequest="50" 
+                           WidthRequest="50"
+                           AbsoluteLayout.LayoutFlags="PositionProportional" 
+                           AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1"/>
+    </AbsoluteLayout>
+</ContentPage>

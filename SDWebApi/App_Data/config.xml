@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DSConfig xmlns="http://tempuri.org/DSConfig.xsd">  
+  <Bases>
+    <Nome>SUZANO</Nome>
+    <Site>suzano</Site>
+    <Provedor>Oracle.DataAccess.Client</Provedor>
+    <Conexao>DATA SOURCE=suzano;PASSWORD=suzano;USER ID=suzano</Conexao>
+  </Bases>  
+  <Bases>
+    <Nome>CSN</Nome>
+    <Site>CSN</Site>
+    <Provedor>Oracle.DataAccess.Client</Provedor>
+    <Conexao>DATA SOURCE=TYGRA;PASSWORD=DES_SD_CSN;USER ID=DES_SD_CSN</Conexao>
+  </Bases>  
+</DSConfig>

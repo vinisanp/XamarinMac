@@ -1,0 +1,270 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:SDMobileXF.Classes"
+             xmlns:converter="clr-namespace:SDMobileXF.Classes"
+             mc:Ignorable="d"
+             x:Class="SDMobileXF.Views.SNAPage"
+             x:Name="pageSNA"
+             Title="{Binding Titulo}"
+             Style="{DynamicResource EstiloPage}">
+    <ContentPage.Resources>
+        <converter:InverseBoolConverter x:Key="InverseBoolConverter" />
+    </ContentPage.Resources>
+
+    <AbsoluteLayout>
+        <ScrollView x:Name="scroll" Scrolled="scroll_Scrolled"
+                         AbsoluteLayout.LayoutFlags="SizeProportional" 
+                         AbsoluteLayout.LayoutBounds="0,0,1,1">
+            <StackLayout Orientation="Vertical" Spacing="30" Margin="20,10,20,20">
+                <StackLayout Orientation="Vertical" Spacing="10">
+                    <Label Text="{Binding Textos.Identificacao}" Style="{DynamicResource EstiloLabelGrande}"/>
+
+
+                    <Label Text="{Binding Textos.Numero}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap" IsVisible="{Binding ExibirNumero}"/>
+                    <Frame Style="{DynamicResource EstiloFrame}" IsVisible="{Binding ExibirNumero}">
+                        <Entry Text="{Binding Numero}" IsReadOnly="True" Style="{DynamicResource EstiloEntry}"/>
+                    </Frame>
+
+                    <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                        <Label Text="{Binding Textos.Data}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap"/>
+                        <Frame Style="{DynamicResource EstiloFrame}">
+                            <DatePicker MinimumDate="{Binding DataMinima}" MaximumDate="{Binding DataMaxima}" Date="{Binding Data}" 
+                                        Style="{DynamicResource EstiloDatePicker}" x:Name="pickerData"/>
+                        </Frame>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                        <Label Text="{Binding Textos.HorarioInicial}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap"/>
+                        <Frame Style="{DynamicResource EstiloFrame}">
+                            <TimePicker Time="{Binding HorarioInicial}" Style="{DynamicResource EstiloTimePicker}" x:Name="pickerHorarioInicial"/>
+                        </Frame>
+                    </StackLayout>
+
+                    <!--<StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                        <Label Text="{Binding Textos.HorarioFinal}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap"/>
+                        <Frame Style="{DynamicResource EstiloFrame}">
+                            <TimePicker Time="{Binding HorarioFinal}" Style="{DynamicResource EstiloTimePicker}" x:Name="pickerHorarioFinal"/>
+                        </Frame>
+                    </StackLayout>-->
+
+                </StackLayout>
+
+
+                <StackLayout Orientation="Vertical" Spacing="10">
+                    <Label Text="{Binding Textos.Localizacao}" Style="{DynamicResource EstiloLabelGrande}"/>
+
+
+                    <Label Text="{Binding Textos.Unidade}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap"/>
+
+                    <StackLayout Orientation="Horizontal">
+                        <Frame Style="{DynamicResource EstiloFrame}">
+                            <Entry IsReadOnly="True" Text="{Binding Unidade.CodigoDescricao, Mode=TwoWay}" Style="{DynamicResource EstiloEntry}"/>
+                        </Frame>
+                        <ImageButton x:Name="btnUnidade" Source="pesquisar.png" Clicked="btnUnidade_Clicked"
+                                     BackgroundColor="Transparent" Style="{StaticResource EstiloImgButton}" IsEnabled="{Binding EmEdicao}"/>
+                    </StackLayout>
+
+
+                    <Label Text="{Binding Textos.Gerencia}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap"/>
+                    <StackLayout Orientation="Horizontal">
+                        <Frame Style="{DynamicResource EstiloFrame}">
+                            <Entry IsReadOnly="True" Text="{Binding Gerencia.CodigoDescricao, Mode=TwoWay}" Style="{DynamicResource EstiloEntry}"/>
+                        </Frame>
+                        <ImageButton x:Name="btnGerencia" Source="pesquisar.png" Clicked="btnGerencia_Clicked"
+                                     BackgroundColor="Transparent" Style="{StaticResource EstiloImgButton}" IsEnabled="{Binding EmEdicao}"/>
+                    </StackLayout>
+
+
+
+                    <Label Text="{Binding Textos.Area}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap"/>
+                    <StackLayout Orientation="Horizontal">
+                        <Frame Style="{DynamicResource EstiloFrame}">
+                            <Entry IsReadOnly="True" Text="{Binding Area.CodigoDescricao, Mode=TwoWay}" Style="{DynamicResource EstiloEntry}" />
+                        </Frame>
+                        <ImageButton x:Name="btnArea" Source="pesquisar.png" Clicked="btnArea_Clicked"
+                                     BackgroundColor="Transparent" Style="{StaticResource EstiloImgButton}" IsEnabled="{Binding EmEdicao}"/>
+                    </StackLayout>
+
+
+
+                    <Label Text="{Binding Textos.Local}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap"/>
+                    <StackLayout Orientation="Horizontal">
+                        <Frame Style="{DynamicResource EstiloFrame}">
+                            <Entry IsReadOnly="True" Text="{Binding Local.CodigoDescricao, Mode=TwoWay}" Style="{DynamicResource EstiloEntry}" />
+                        </Frame>
+                        <ImageButton x:Name="btnLocal" Source="pesquisar.png" Clicked="btnLocal_Clicked"
+                                     BackgroundColor="Transparent" Style="{StaticResource EstiloImgButton}" IsEnabled="{Binding EmEdicao}"/>
+                    </StackLayout>
+                </StackLayout>
+
+                
+                <StackLayout Orientation="Vertical" Spacing="10">
+                    <Label Text="{Binding Textos.Dados}" Style="{DynamicResource EstiloLabelGrande}"/>
+
+                    <Label Text="{Binding Textos.TemaAbordado}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap"/>
+                    <Frame Style="{DynamicResource EstiloFrame}">
+                        <Editor Text="{Binding TemaAbordado}" Style="{DynamicResource EstiloEditor}" Keyboard="Text" IsReadOnly="{Binding EmEdicao, Converter={StaticResource InverseBoolConverter}}"/>
+                    </Frame>
+                </StackLayout>
+
+                
+                <StackLayout Orientation="Vertical" Spacing="10">
+                    <Label Text="{Binding Textos.TextoSNA1}" Padding="0" Style="{DynamicResource EstiloLabelCampo}"/>
+                    <Label Text="{Binding Textos.TextoSNA2}" Padding="0" Style="{DynamicResource EstiloLabel}"/>
+                </StackLayout>
+               
+                
+                <StackLayout Orientation="Vertical" Spacing="10">
+                    <Label Text="{Binding Textos.ClimaEquipe}" Style="{DynamicResource EstiloLabelGrande}"/>
+                    <Label Text="{Binding Textos.TextoClimaEquipe}" Padding="0" Style="{DynamicResource EstiloLabel}"/>
+
+                    <Frame Style="{DynamicResource EstiloFrame}" BackgroundColor="#7F85CC">
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                            <RadioButton Text="{Binding Textos.Ruim}" IsChecked="{Binding CERuim}" 
+                                         Style="{DynamicResource EstiloRadioButton}" GroupName="ClimaEquipe" IsEnabled="{Binding EmEdicao}"/>
+                            <RadioButton Text="{Binding Textos.Regular}" IsChecked="{Binding CERegular}"
+                                         Style="{DynamicResource EstiloRadioButton}" GroupName="ClimaEquipe" IsEnabled="{Binding EmEdicao}" />
+                            <RadioButton Text="{Binding Textos.Bom}" IsChecked="{Binding CEBom}"
+                                         Style="{DynamicResource EstiloRadioButton}" GroupName="ClimaEquipe" IsEnabled="{Binding EmEdicao}" />
+                        </StackLayout>
+                    </Frame>
+
+                    <Label Text="{Binding Textos.AvaliacaoDescritiva}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap"/>
+                    <Frame Style="{DynamicResource EstiloFrame}">
+                        <Editor Text="{Binding CEAvaliacaoDescritiva}" Style="{DynamicResource EstiloEditor}" />
+                    </Frame>
+
+                    <Label Text="{Binding Textos.NumeroDNA}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap"/>
+                    <Frame Style="{DynamicResource EstiloFrame}">
+                        <Entry IsReadOnly="True" Text="{Binding CENumeroDNA}" Style="{DynamicResource EstiloEntry}"/>
+                    </Frame>
+                </StackLayout>
+
+
+                <StackLayout Orientation="Vertical" Spacing="10">
+                    <Label Text="{Binding Textos.ConteudoAbordado}" Style="{DynamicResource EstiloLabelGrande}"/>
+                    <Label Text="{Binding Textos.TextoConteudoAbordado}" Padding="0" Style="{DynamicResource EstiloLabel}"/>
+
+                    <Frame Style="{DynamicResource EstiloFrame}" BackgroundColor="#7F85CC">
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                            <RadioButton Text="{Binding Textos.Ruim}" IsChecked="{Binding CARuim}" 
+                                         Style="{DynamicResource EstiloRadioButton}" GroupName="ConteudoAbordado" IsEnabled="{Binding EmEdicao}"/>
+                            <RadioButton Text="{Binding Textos.Regular}" IsChecked="{Binding CARegular}"
+                                         Style="{DynamicResource EstiloRadioButton}" GroupName="ConteudoAbordado" IsEnabled="{Binding EmEdicao}" />
+                            <RadioButton Text="{Binding Textos.Bom}" IsChecked="{Binding CABom}"
+                                         Style="{DynamicResource EstiloRadioButton}" GroupName="ConteudoAbordado" IsEnabled="{Binding EmEdicao}" />
+                        </StackLayout>
+                    </Frame>
+
+                    <Label Text="{Binding Textos.AvaliacaoDescritiva}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap"/>
+                    <Frame Style="{DynamicResource EstiloFrame}">
+                        <Editor Text="{Binding CAAvaliacaoDescritiva}" Style="{DynamicResource EstiloEditor}" />
+                    </Frame>
+
+                    <Label Text="{Binding Textos.NumeroDNA}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap"/>
+                    <Frame Style="{DynamicResource EstiloFrame}">
+                        <Entry IsReadOnly="True" Text="{Binding CANumeroDNA}" Style="{DynamicResource EstiloEntry}" />
+                    </Frame>
+                </StackLayout>
+
+
+                <StackLayout Orientation="Vertical" Spacing="10">
+                    <Label Text="{Binding Textos.RotinaAplicacaoFerramentas}" Style="{DynamicResource EstiloLabelGrande}"/>
+                    <Label Text="{Binding Textos.TextoRAF}" Padding="0" Style="{DynamicResource EstiloLabel}"/>
+
+                    <Frame Style="{DynamicResource EstiloFrame}" BackgroundColor="#7F85CC">
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                            <RadioButton Text="{Binding Textos.Ruim}" IsChecked="{Binding RAFRuim}" 
+                                         Style="{DynamicResource EstiloRadioButton}" GroupName="RotinaAplicacaoFerramentas" IsEnabled="{Binding EmEdicao}"/>
+                            <RadioButton Text="{Binding Textos.Regular}" IsChecked="{Binding RAFRegular}"
+                                         Style="{DynamicResource EstiloRadioButton}" GroupName="RotinaAplicacaoFerramentas" IsEnabled="{Binding EmEdicao}" />
+                            <RadioButton Text="{Binding Textos.Bom}" IsChecked="{Binding RAFBom}"
+                                         Style="{DynamicResource EstiloRadioButton}" GroupName="RotinaAplicacaoFerramentas" IsEnabled="{Binding EmEdicao}" />
+                        </StackLayout>
+                    </Frame>
+
+                    <Label Text="{Binding Textos.AvaliacaoDescritiva}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap"/>
+                    <Frame Style="{DynamicResource EstiloFrame}">
+                        <Editor Text="{Binding RAFAvaliacaoDescritiva}" Style="{DynamicResource EstiloEditor}" />
+                    </Frame>
+
+                    <Label Text="{Binding Textos.NumeroDNA}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap"/>
+                    <Frame Style="{DynamicResource EstiloFrame}">
+                        <Entry IsReadOnly="True" Text="{Binding RAFNumeroDNA}" Style="{DynamicResource EstiloEntry}" />
+                    </Frame>
+                </StackLayout>
+
+
+                <StackLayout Orientation="Vertical" Spacing="10">
+                    <Label Text="{Binding Textos.QualidadeAmbienteTrabalho}" Style="{DynamicResource EstiloLabelGrande}"/>
+                    <Label Text="{Binding Textos.TextoQAT}" Padding="0" Style="{DynamicResource EstiloLabel}"/>
+
+                    <Frame Style="{DynamicResource EstiloFrame}" BackgroundColor="#7F85CC">
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                            <RadioButton Text="{Binding Textos.Ruim}" IsChecked="{Binding QATRuim}" 
+                                         Style="{DynamicResource EstiloRadioButton}" GroupName="QualidadeAmbienteTrabalho" IsEnabled="{Binding EmEdicao}"/>
+                            <RadioButton Text="{Binding Textos.Regular}" IsChecked="{Binding QATRegular}"
+                                         Style="{DynamicResource EstiloRadioButton}" GroupName="QualidadeAmbienteTrabalho" IsEnabled="{Binding EmEdicao}" />
+                            <RadioButton Text="{Binding Textos.Bom}" IsChecked="{Binding QATBom}"
+                                         Style="{DynamicResource EstiloRadioButton}" GroupName="QualidadeAmbienteTrabalho" IsEnabled="{Binding EmEdicao}" />
+                        </StackLayout>
+                    </Frame>
+
+                    <Label Text="{Binding Textos.AvaliacaoDescritiva}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap"/>
+                    <Frame Style="{DynamicResource EstiloFrame}">
+                        <Editor Text="{Binding QATAvaliacaoDescritiva}" Style="{DynamicResource EstiloEditor}" />
+                    </Frame>
+
+                    <Label Text="{Binding Textos.NumeroDNA}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap"/>
+                    <Frame Style="{DynamicResource EstiloFrame}">
+                        <Entry IsReadOnly="True" Text="{Binding QATNumeroDNA}" Style="{DynamicResource EstiloEntry}" />
+                    </Frame>
+                </StackLayout>
+
+
+                <StackLayout Orientation="Vertical" Spacing="10">
+                    <Label Text="{Binding Textos.ObservacoesGerais}" Padding="0" Style="{DynamicResource EstiloLabelGrande}"/>
+
+                    <Label Text="{Binding Textos.PontosPositivos}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap"/>
+                    <Frame Style="{DynamicResource EstiloFrame}">
+                        <Editor Text="{Binding PontosPositivos}" Style="{DynamicResource EstiloEditor}" />
+                    </Frame>
+                </StackLayout>
+
+                <StackLayout Orientation="Vertical" Spacing="10">
+                    <Label Text="{Binding Textos.Identificacao}" Padding="0" Style="{DynamicResource EstiloLabelGrande}"/>
+
+                    <Label Text="{Binding Textos.RegistradoPor}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap"/>
+                    <StackLayout Orientation="Horizontal">
+                        <Frame Style="{DynamicResource EstiloFrame}">
+                            <Entry IsReadOnly="True" Text="{Binding RegistradoPor.CodigoDescricao, Mode=TwoWay}" Style="{DynamicResource EstiloEntry}"/>
+                        </Frame>
+                        <ImageButton x:Name="btnRegistradoPor" Source="pesquisar.png" Clicked="btnRegistradoPor_Clicked"
+                                     BackgroundColor="Transparent" Style="{StaticResource EstiloImgButton}" IsEnabled="{Binding EmEdicao}"/>
+                    </StackLayout>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" Spacing="10" IsVisible="{Binding EmEdicao}">
+                    <Button Text="{Binding Textos.Salvar}" HorizontalOptions="FillAndExpand" BackgroundColor="#009245" 
+                            Command="{Binding BindingContext.SalvarCommand, Source={x:Reference pageSNA}}" IsEnabled="{Binding EmEdicao}"
+                            Style="{DynamicResource EstiloBtn}"/>
+                    <Button Text="{Binding Textos.Cancelar}" HorizontalOptions="FillAndExpand" BackgroundColor="#F26869" 
+                            Command="{Binding BindingContext.CancelarCommand, Source={x:Reference pageSNA}}" IsEnabled="{Binding EmEdicao}"
+                            Style="{DynamicResource EstiloBtn}"/>
+                </StackLayout>
+
+            </StackLayout>
+        </ScrollView>
+        
+        <ActivityIndicator HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           IsRunning="{Binding Ocupado}"
+                           IsVisible="{Binding Ocupado}"
+                           HeightRequest="50" 
+                           WidthRequest="50"
+                           AbsoluteLayout.LayoutFlags="PositionProportional" 
+                           AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1"/>
+    </AbsoluteLayout>
+</ContentPage>

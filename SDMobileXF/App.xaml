@@ -1,0 +1,263 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="SDMobileXF.App">
+    <Application.Resources>
+        <ResourceDictionary>
+
+            <Style x:Key="EstiloTituloStackLayoutEscuro" TargetType="StackLayout">
+                <Setter Property="BackgroundColor" Value="#212429" />
+            </Style>
+            <Style x:Key="EstiloLabelEscuro" TargetType="Label">
+                <Setter Property="TextColor" Value="#e2e4e6" />
+                <Setter Property="FontSize" Value="Medium" />
+            </Style>
+            <Style x:Key="EstiloLabelSubTituloEscuro" TargetType="Label">
+				<Setter Property="TextColor" Value="#e2e4e6" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="BackgroundColor" Value="#3a4d5f" />
+            </Style>
+            <Style x:Key="EstiloStackLayoutSubTituloEscuro" TargetType="StackLayout">
+                <Setter Property="BackgroundColor" Value="#3a4d5f" />
+            </Style>
+            <Style x:Key="EstiloLabelEscuroGrande" TargetType="Label">
+				<Setter Property="TextColor" Value="White" />
+                <Setter Property="FontSize" Value="Large" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+            <Style x:Key="EstiloLabelMenuEscuro" TargetType="Label">
+                <Setter Property="TextColor" Value="White" />
+            </Style>
+            <Style x:Key="EstiloLabelCampoEscuro" TargetType="Label">
+                <Setter Property="TextColor" Value="#e2e4e6" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+            <Style x:Key="EstiloPickerEscuro" TargetType="Picker">
+                <Setter Property="TitleColor" Value="#e2e4e6" />
+                <Setter Property="TextColor" Value="#e2e4e6" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="BackgroundColor" Value="#273440" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="Margin" Value="1" />
+            </Style>
+            <Style x:Key="EstiloPageEscuro" TargetType="ContentPage" ApplyToDerivedTypes="True">
+                <Setter Property="BackgroundColor" Value="#273440" />
+            </Style>
+            <Style x:Key="EstiloTabPageEscuro" TargetType="TabbedPage" ApplyToDerivedTypes="True">
+                <Setter Property="BackgroundColor" Value="#3D4853" />
+                <Setter Property="BarBackgroundColor" Value="#3D4853" />
+            </Style>
+            <Style x:Key="EstiloNavigationPageEscuro" TargetType="NavigationPage" ApplyToDerivedTypes="True">
+                <Setter Property="BarBackgroundColor" Value="#212429" />
+                <Setter Property="BarTextColor" Value="White" />
+            </Style>
+            <Style x:Key="EstiloFramePageEscuro" TargetType="Frame">
+                <Setter Property="BackgroundColor" Value="#212429" />
+                <Setter Property="CornerRadius" Value="15" />
+                <Setter Property="HasShadow" Value="True" />
+            </Style>
+            <Style x:Key="EstiloFrameEscuro" TargetType="Frame">
+                <Setter Property="HasShadow" Value="True" />
+                <Setter Property="CornerRadius" Value="7" />
+                <Setter Property="Padding" Value="1" />
+                <Setter Property="BorderColor" Value="#BEBEBE" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="BackgroundColor" Value="#273440" />
+            </Style>
+            <Style x:Key="EstiloEntryEscuro" TargetType="Entry">
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="BackgroundColor" Value="#273440" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="Margin" Value="1" />
+                <Setter Property="FontSize" Value="Medium" />
+            </Style>
+            <Style x:Key="EstiloEditorEscuro" TargetType="Editor">
+                <Setter Property="HeightRequest" Value="200" />
+                <Setter Property="BackgroundColor" Value="#273440" />
+                <Setter Property="TextColor" Value="#e2e4e6" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="Margin" Value="1" />
+            </Style>
+            <Style x:Key="EstiloRadioButtonEscuro" TargetType="RadioButton">
+                <Setter Property="TextColor" Value="#e2e4e6" />
+                <Setter Property="FontSize" Value="Medium" />
+            </Style>
+            <Style x:Key="EstiloCheckBoxEscuro" TargetType="CheckBox">
+                <Setter Property="Color" Value="#e2e4e6" />
+            </Style>
+            <Style x:Key="EstiloLinhaEscuro" TargetType="BoxView">
+                <Setter Property="BackgroundColor" Value="#e2e4e6" />
+            </Style>
+            <Style x:Key="EstiloTimePickerEscuro" TargetType="TimePicker">
+                <Setter Property="BackgroundColor" Value="Transparent" />
+                <Setter Property="TextColor" Value="#e2e4e6" />
+                <Setter Property="HorizontalOptions" Value="StartAndExpand" />
+                <Setter Property="FontSize" Value="Medium" />
+            </Style>
+            <Style x:Key="EstiloDatePickerEscuro" TargetType="DatePicker">
+                <Setter Property="BackgroundColor" Value="Transparent" />
+                <Setter Property="TextColor" Value="#e2e4e6" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="FontSize" Value="Medium" />
+            </Style>
+            <Style x:Key="EstiloSearchBarEscuro" TargetType="SearchBar">
+                <Setter Property="BackgroundColor" Value="#273440" />
+                <Setter Property="PlaceholderColor" Value="White" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="FontAttributes" Value="Italic" />
+                <Setter Property="FontSize" Value="Medium" />
+            </Style>
+            <Style x:Key="EstiloListViewEscuro" TargetType="ListView">
+                <Setter Property="BackgroundColor" Value="#273440" />
+            </Style>
+            <Style x:Key="EstiloLabelDataVisOcorrenciaEscuro" TargetType="Label">
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="TextColor" Value="Green" />
+            </Style>
+            
+            
+
+            <Style x:Key="EstiloTituloStackLayoutClaro" TargetType="StackLayout">
+                <Setter Property="BackgroundColor" Value="#03267F" />
+            </Style>
+            <Style x:Key="EstiloLabelClaro" TargetType="Label">
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="FontSize" Value="Medium" />
+            </Style>            
+            <Style x:Key="EstiloLabelSubTituloClaro" TargetType="Label">
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="BackgroundColor" Value="#E6E6E6" />
+            </Style>
+            <Style x:Key="EstiloStackLayoutSubTituloClaro" TargetType="StackLayout">
+                <Setter Property="BackgroundColor" Value="#E6E6E6" />
+            </Style>
+            <Style x:Key="EstiloLabelClaroGrande" TargetType="Label">
+                <Setter Property="TextColor" Value="#03267F" />
+                <Setter Property="FontSize" Value="Large" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+            <Style x:Key="EstiloLabelMenuClaro" TargetType="Label">
+                <Setter Property="TextColor" Value="#03267F" />
+            </Style>
+            <Style x:Key="EstiloLabelCampoClaro" TargetType="Label">
+				<Setter Property="TextColor" Value="Black" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+            <Style x:Key="EstiloPickerClaro" TargetType="Picker">
+                <Setter Property="TitleColor" Value="Black" />
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="BackgroundColor" Value="WhiteSmoke" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="Margin" Value="1" />
+            </Style>
+            <Style x:Key="EstiloPageClaro" TargetType="ContentPage" ApplyToDerivedTypes="True">
+                <Setter Property="BackgroundColor" Value="WhiteSmoke" />
+            </Style>
+            <Style x:Key="EstiloTabPageClaro" TargetType="TabbedPage" ApplyToDerivedTypes="True">
+                <Setter Property="BackgroundColor" Value="White" />
+                <Setter Property="BarBackgroundColor" Value="White" />
+            </Style>
+            <Style x:Key="EstiloNavigationPageClaro" TargetType="NavigationPage" ApplyToDerivedTypes="True">
+                <Setter Property="BarBackgroundColor" Value="#03267F" />
+                <Setter Property="BarTextColor" Value="White" />
+            </Style>
+            <Style x:Key="EstiloFramePageClaro" TargetType="Frame">
+                <Setter Property="BackgroundColor" Value="WhiteSmoke" />
+                <Setter Property="CornerRadius" Value="15" />
+                <Setter Property="HasShadow" Value="True" />
+            </Style>
+            <Style x:Key="EstiloFrameClaro" TargetType="Frame">
+                <Setter Property="HasShadow" Value="True" />
+                <Setter Property="CornerRadius" Value="7" />
+                <Setter Property="Padding" Value="1" />
+                <Setter Property="BorderColor" Value="#BEBEBE" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+            </Style>
+            <Style x:Key="EstiloEntryClaro" TargetType="Entry">
+                <Setter Property="BackgroundColor" Value="WhiteSmoke" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="Margin" Value="1" />
+            </Style>
+            <Style x:Key="EstiloEditorClaro" TargetType="Editor">
+                <Setter Property="HeightRequest" Value="200" />
+                <Setter Property="BackgroundColor" Value="WhiteSmoke" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="Margin" Value="1" />
+            </Style>
+            <Style x:Key="EstiloRadioButtonClaro" TargetType="RadioButton">
+                <Setter Property="TextColor" Value="#0B4761" />
+                <Setter Property="FontSize" Value="Medium" />
+            </Style>
+            <Style x:Key="EstiloCheckBoxClaro" TargetType="CheckBox">
+                <Setter Property="Color" Value="#0B4761" />
+            </Style>
+            <Style x:Key="EstiloLinhaClaro" TargetType="BoxView">
+                <Setter Property="BackgroundColor" Value="#E0E0E0" />
+            </Style>
+            <Style x:Key="EstiloTimePickerClaro" TargetType="TimePicker">
+                <Setter Property="BackgroundColor" Value="WhiteSmoke" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="Margin" Value="1" />
+            </Style>
+            <Style x:Key="EstiloDatePickerClaro" TargetType="DatePicker">
+                <Setter Property="BackgroundColor" Value="WhiteSmoke" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="Margin" Value="1" />
+            </Style>
+            <Style x:Key="EstiloSearchBarClaro" TargetType="SearchBar">
+                <Setter Property="BackgroundColor" Value="WhiteSmoke" />
+                <Setter Property="PlaceholderColor" Value="Black" />
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="FontAttributes" Value="Italic" />
+                <Setter Property="FontSize" Value="Medium" />
+            </Style>
+            <Style x:Key="EstiloListViewClaro" TargetType="ListView">
+                <Setter Property="BackgroundColor" Value="WhiteSmoke" />
+            </Style>
+            <Style x:Key="EstiloLabelDataVisOcorrenciaClaro" TargetType="Label">
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="TextColor" Value="Green" />
+            </Style>
+
+
+
+
+            <Style x:Key="EstiloBtn" TargetType="Button">
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="BackgroundColor" Value="#7F85CC" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="VerticalOptions" Value="Center" />
+            </Style>
+
+            <Style x:Key="EstiloImgButton" TargetType="ImageButton">
+                <Setter Property="Margin" Value="0" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="WidthRequest" Value="48" />
+                <Setter Property="HeightRequest" Value="48" />
+            </Style>
+
+            <Style x:Key="EstiloLabelTitulo" TargetType="Label">
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="FontSize" Value="Medium" />
+            </Style>
+
+            <Style x:Key="EstiloLabelBoasVindas" TargetType="Label">
+                <Setter Property="TextColor" Value="#3AAA35" />
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="FontSize" Value="Medium" />
+            </Style>
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

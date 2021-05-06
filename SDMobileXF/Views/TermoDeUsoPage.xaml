@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="SDMobileXF.Views.TermoDeUsoPage"
+             IsBusy="{Binding Ocupado}" 
+             Title="{Binding Titulo}"
+             Style="{DynamicResource EstiloPage}">
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical" BackgroundColor="Transparent" Margin="0">
+            <Image x:Name="imgLogo" Source="{Binding Logo512}" Margin="50, 14, 50, 10" Aspect="AspectFit"/>
+            <StackLayout Margin="10, 5, 10,10">
+                <Label Text="{Binding TituloTermo}" Style="{DynamicResource EstiloLabel}" HorizontalTextAlignment="Center" FontAttributes="Bold"/>
+                <ScrollView Margin="10">
+                    <StackLayout>
+                        <Label Text="{Binding TextoTermo}" />
+                        <Label Text="{Binding TituloAceite}"  Style="{DynamicResource EstiloLabel}"/>
+                        <Label Text="{Binding TextoAceite}" />
+
+                        <Label Text="{Binding TituloObjetivo}"  Style="{DynamicResource EstiloLabel}"/>
+                        <Label Text="{Binding TextoObjetivo}" />
+
+                        <Label Text="{Binding TituloAcesso}"  Style="{DynamicResource EstiloLabel}"/>
+                        <Label Text="{Binding TextoAcesso}" />
+
+                        <Label Text="{Binding TituloResponsabilidades}"  Style="{DynamicResource EstiloLabel}"/>
+                        <Label Text="{Binding TextoResponsabilidades}" />
+
+                        <Label Text="{Binding TituloAlteracoes}"  Style="{DynamicResource EstiloLabel}"/>
+                        <Label Text="{Binding TextoAlteracoes}" />
+
+                        <Label Text="{Binding TituloComoFalar}"  Style="{DynamicResource EstiloLabel}"/>
+                        <Label Text="{Binding TextoComoFalar}" />
+
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="{Binding TituloAceitoTermos}" Style="{DynamicResource EstiloLabelCampo}" Margin="1"/>
+                            <Switch IsToggled="{Binding ConcordouTermo}"/>
+                        </StackLayout>
+                        <Button Text="Abrir Aplicativo" HorizontalOptions="FillAndExpand" BackgroundColor="#009245" 
+                                IsEnabled="{Binding ConcordouTermo}" Style="{DynamicResource EstiloBtn}" Clicked="AbrirAplicativo"/>
+                    </StackLayout>                        
+                </ScrollView>                    
+            </StackLayout>                
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

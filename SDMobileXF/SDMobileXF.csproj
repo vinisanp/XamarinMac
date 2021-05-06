@@ -1,0 +1,139 @@
+﻿  <Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup Label="Globals">
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="sqlite-net-pcl" Version="1.7.335" />
+    <PackageReference Include="Xam.Plugin.Media" Version="5.0.1" />
+    <PackageReference Include="Xamarin.Forms" Version="4.7.0.1142" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SDMobileXFDados\SDMobileXFDados.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\Csn\OcorrenciasCsnPage.xaml.cs">
+      <DependentUpon>OcorrenciasCsnPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Csn\PrincipalCsnPage.xaml.cs">
+      <DependentUpon>PrincipalCsnPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Csn\MasterViewCsnPage.xaml.cs">
+      <DependentUpon>MasterViewCsnPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Suzano\OpasTabbedPage.xaml.cs">
+      <DependentUpon>OpasTabbedPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Suzano\OpaPage.xaml.cs">
+      <DependentUpon>OpaPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Suzano\InspecoesTabbedPage.xaml.cs">
+      <DependentUpon>InspecoesTabbedPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Suzano\InspecaoPage.xaml.cs">
+      <DependentUpon>InspecaoPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Suzano\AbordagensTabbedPage.xaml.cs">
+      <DependentUpon>AbordagensTabbedPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\PesquisarPage.xaml.cs">
+      <DependentUpon>PesquisarPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Suzano\AbordagemPage.xaml.cs">
+      <DependentUpon>AbordagemPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Suzano\OcorrenciasPage.xaml.cs">
+      <DependentUpon>OcorrenciasPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Csn\OcorrenciasCsnTabbedPage.xaml.cs">
+      <DependentUpon>OcorrenciasCsnTabbedPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Suzano\SNAPage.xaml.cs">
+      <DependentUpon>SNAPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Suzano\VisualizarOpasSQLitePage.xaml.cs">
+      <DependentUpon>VisualizarOpasSQLitePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Suzano\VisualizarOpasPage.xaml.cs">
+      <DependentUpon>VisualizarOpasPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Suzano\VisualizarInspecoesPage.xaml.cs">
+      <DependentUpon>VisualizarInspecoesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Suzano\VisualizarAbordagensPage.xaml.cs">
+      <DependentUpon>VisualizarAbordagensPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Suzano\VisualizarInspecoesSQLitePage.xaml.cs">
+      <DependentUpon>VisualizarInspecoesSQLitePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Suzano\VisualizarAbordagensSQLitePage.xaml.cs">
+      <DependentUpon>VisualizarAbordagensSQLitePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Csn\VisualizarOcorrenciasCsnPage.xaml.cs">
+      <DependentUpon>VisualizarOcorrenciasCsnPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Csn\VisualizarOcorrenciasCsnSQLitePage.xaml.cs">
+      <DependentUpon>VisualizarOcorrenciasCsnSQLitePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Suzano\VisualizarOcorrenciasSQLitePage.xaml.cs">
+      <DependentUpon>VisualizarOcorrenciasSQLitePage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Views\ConfigPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ImagesViewerPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Suzano\MasterViewPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Suzano\OcorrenciasTabbedPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\PesquisarPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Suzano\PrincipalPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Suzano\OcorrenciasPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Suzano\SNATabbedPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\SobrePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Suzano\VisualizarOcorrenciasPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Suzano\VisualizarSNAPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Suzano\VisualizarSNASQLitePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

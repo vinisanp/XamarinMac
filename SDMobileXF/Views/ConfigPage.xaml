@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="SDMobileXF.Views.ConfigPage"
+             IsBusy="{Binding Ocupado}"
+             Title="{Binding Titulo}"
+             Style="{DynamicResource EstiloPage}">
+    <ContentPage.Content>
+        <ScrollView HorizontalOptions="FillAndExpand">
+            <StackLayout Orientation="Vertical" Spacing="20" HorizontalOptions="FillAndExpand" Margin="20,10,20,20">
+
+                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                    <Label Text="{Binding TextoEstilo}"
+                           HorizontalOptions="FillAndExpand"
+                           VerticalOptions="Center" 
+                           Style="{DynamicResource EstiloLabelCampo}"
+                           IsVisible="{Binding LabelPickerVisivel}"/>
+                    <Frame Style="{DynamicResource EstiloFrame}" BackgroundColor="Transparent" >
+                        <Picker Title="{Binding TextoEstilo}"
+                                ItemsSource="{Binding Estilos}" 
+                                SelectedItem="{Binding EstiloSelecionado}"
+                                ItemDisplayBinding="{Binding Descricao}" 
+                                Style="{DynamicResource EstiloPicker}"
+                                IsEnabled="{Binding Habilitado}"/>
+                    </Frame>
+                </StackLayout>
+
+
+                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                    <Label Text="{Binding TextoTamanhoDaFonte}"
+                           HorizontalOptions="FillAndExpand"
+                           VerticalOptions="Center" 
+                           Style="{DynamicResource EstiloLabelCampo}"
+                           IsVisible="{Binding LabelPickerVisivel}"/>
+                    <Frame Style="{DynamicResource EstiloFrame}" BackgroundColor="Transparent">
+                        <Picker Title="{Binding TextoTamanhoDaFonte}"
+                                ItemsSource="{Binding TamanhosFonte}" 
+                                SelectedItem="{Binding TamanhoFonteSelecionado}"
+                                ItemDisplayBinding="{Binding Descricao}" 
+                                HorizontalOptions="FillAndExpand"
+                                Style="{DynamicResource EstiloPicker}"
+                                IsEnabled="{Binding Habilitado}"/>
+                    </Frame>
+                </StackLayout>
+
+
+                <!--<StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                    <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                        <Label Text="{Binding TextoIdioma}"
+                               HorizontalOptions="FillAndExpand"
+                               VerticalOptions="Center" 
+                               Style="{DynamicResource EstiloLabelCampo}"
+                               IsVisible="{Binding LabelPickerVisivel}"/>
+                        <Frame Style="{DynamicResource EstiloFrame}">
+                            <Picker Title="{Binding TextoIdioma}"
+                                    ItemsSource="{Binding Idiomas}" 
+                                    SelectedItem="{Binding IdiomaSelecionado}" 
+                                    ItemDisplayBinding="{Binding Descricao}" 
+                                    HorizontalOptions="FillAndExpand"
+                                    Style="{DynamicResource EstiloPicker}"
+                                    IsEnabled="{Binding Habilitado}"/>
+                        </Frame>
+                    </StackLayout>
+                    <Image x:Name="imgIdioma" 
+                           Source="{Binding Bandeira}"
+                           HorizontalOptions="End"
+                           VerticalOptions="Center" 
+                           Style="{DynamicResource EstiloImgButton}"/>
+                </StackLayout>-->
+
+                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                    <Label Text="{Binding TextoSincronizacao}"
+                           HorizontalOptions="FillAndExpand"
+                           VerticalOptions="Center" 
+                           Style="{DynamicResource EstiloLabelCampo}"
+                           IsVisible="{Binding LabelPickerVisivel}"/>
+                    <StackLayout Orientation="Horizontal" Spacing="20">
+                        <Button x:Name="btnLimparDados" WidthRequest="100"
+                                Text="{Binding TextoLimparDados}"
+                                Style="{DynamicResource EstiloBtn}"
+                                HorizontalOptions="Start"
+                                VerticalOptions="Start"
+                                Command="{Binding LimparDadosCommand}"/>
+                        <Button x:Name="btnSinc" WidthRequest="100"
+                                Text="{Binding TextoSincronizar}"
+                                Style="{DynamicResource EstiloBtn}"
+                                HorizontalOptions="Start"
+                                VerticalOptions="Start"
+                                Command="{Binding SyncCommand}"/>
+                    </StackLayout>
+                    <Label Text="{Binding InfoSincronizacao}"
+                           HorizontalOptions="Start"
+                           VerticalOptions="Center" 
+                           Style="{DynamicResource EstiloLabel}"/>
+                </StackLayout>
+
+                <Label Text="{Binding Log}"
+                           HorizontalOptions="Start"
+                           VerticalOptions="Center" 
+                           Style="{DynamicResource EstiloLabel}"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

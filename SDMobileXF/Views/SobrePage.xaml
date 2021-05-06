@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="SDMobileXF.Views.SobrePage"
+             IsBusy="{Binding Ocupado}"
+             Title="{Binding Titulo}"
+             Style="{DynamicResource EstiloPage}">
+    <ContentPage.Content>
+        <Frame HasShadow="True" CornerRadius="15" Margin="0" Padding="10" Style="{DynamicResource EstiloFramePage}">
+            <StackLayout Spacing="20" Margin="0">
+                <Frame CornerRadius="105" 
+                   HeightRequest="210"
+                   WidthRequest="210"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center"
+                   Padding="0"
+                   IsClippedToBounds="True"
+                   BackgroundColor="White">
+                    <Frame CornerRadius="100" 
+                       HeightRequest="200"
+                       WidthRequest="200"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center"
+                       Padding="0"
+                       IsClippedToBounds="True">
+                        <Image Source="logoGLaucoVet200.jpg"
+                           HeightRequest="200"
+                           WidthRequest="200"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"/>
+                    </Frame>
+                </Frame>
+                <Label Text="{Binding Texto}"
+                   FontSize="Default"
+                   VerticalTextAlignment="Center"
+                   VerticalOptions="FillAndExpand"
+                   HorizontalOptions="FillAndExpand"
+                   TextType="Html"
+                   Style="{DynamicResource EstiloLabel}"/>
+
+                <StackLayout Orientation="Vertical">
+                    <Label Text="Visite-nos em:" Style="{DynamicResource EstiloLabel}"/>
+                    <Label Text="http://www.portalglauco.com.br" 
+                       Style="{DynamicResource EstiloLabel}"/>
+                </StackLayout>
+            </StackLayout>
+        </Frame>
+    </ContentPage.Content>
+</ContentPage>
