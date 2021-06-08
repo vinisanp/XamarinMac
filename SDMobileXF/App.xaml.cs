@@ -128,6 +128,7 @@ namespace SDMobileXF
         public void AplicarEstilo()
         {            
             this.AjustarTamanho("EstiloLabelEscuro", NamedSize.Medium);
+            this.AjustarTamanho("EstiloLabelEscuroPeq", NamedSize.Small);
             this.AjustarTamanho("EstiloLabelMenuEscuro", NamedSize.Medium);
             this.AjustarTamanho("EstiloLabelSubTituloEscuro", NamedSize.Medium);
             this.AjustarTamanho("EstiloLabelEscuroGrande", NamedSize.Large);            
@@ -143,6 +144,7 @@ namespace SDMobileXF
             this.AjustarTamanho("EstiloStackLayoutSubTituloEscuro", NamedSize.Medium);
             
             this.AjustarTamanho("EstiloLabelClaro", NamedSize.Medium);
+            this.AjustarTamanho("EstiloLabelClaroPeq", NamedSize.Small);
             this.AjustarTamanho("EstiloLabelMenuClaro", NamedSize.Medium);
             this.AjustarTamanho("EstiloLabelSubTituloClaro", NamedSize.Medium);
             this.AjustarTamanho("EstiloLabelClaroGrande", NamedSize.Large);            
@@ -161,6 +163,7 @@ namespace SDMobileXF
             this.AjustarTamanho("EstiloBtn", NamedSize.Medium);
 
             this.Resources["EstiloLabel"] = null;
+            this.Resources["EstiloLabelPeq"] = null;
             this.Resources["EstiloLabelMenu"] = null;
             this.Resources["EstiloLabelSubTitulo"] = null;            
             this.Resources["EstiloLabelGrande"] = null;            
@@ -183,6 +186,7 @@ namespace SDMobileXF
             this.Resources["EstiloLabelDataVisOcorrencia"] = null;
             this.Resources["EstiloStackLayoutSubTitulo"] = null;
             this.Resources["EstiloTabPage"] = null;
+            this.Resources["EstiloGrid"] = null;
 
             //forcar update ao mudar de tamanho de fonte
             var estilo = this.Resources["EstiloBtn"];
@@ -193,10 +197,12 @@ namespace SDMobileXF
             this.Resources["EstiloLabelBoasVindas"] = null;
             this.Resources["EstiloLabelBoasVindas"] = estilo;
 
+            
             if (Config.Estilo == "Claro")
             {
                 this.Resources["EstiloLabelMenu"] = this.Resources["EstiloLabelMenuClaro"];
                 this.Resources["EstiloLabel"] = this.Resources["EstiloLabelClaro"];
+                this.Resources["EstiloLabelPeq"] = this.Resources["EstiloLabelClaroPeq"];
                 this.Resources["EstiloLabelGrande"] = this.Resources["EstiloLabelClaroGrande"];                
                 this.Resources["EstiloLabelCampo"] = this.Resources["EstiloLabelCampoClaro"];
                 this.Resources["EstiloPage"] = this.Resources["EstiloPageClaro"];
@@ -218,11 +224,14 @@ namespace SDMobileXF
                 this.Resources["EstiloLabelDataVisOcorrencia"] = this.Resources["EstiloLabelDataVisOcorrenciaClaro"];
                 this.Resources["EstiloStackLayoutSubTitulo"] = this.Resources["EstiloStackLayoutSubTituloClaro"];
                 this.Resources["EstiloTabPage"] = this.Resources["EstiloTabPageClaro"];
+                this.Resources["EstiloGrid"] = this.Resources["EstiloGridClaro"];
+                this.Resources["EstiloActivityIndicator"] = this.Resources["EstiloActivityIndicatorClaro"];                
             }
             else
             {
                 this.Resources["EstiloLabelMenu"] = this.Resources["EstiloLabelMenuEscuro"];
                 this.Resources["EstiloLabel"] = this.Resources["EstiloLabelEscuro"];
+                this.Resources["EstiloLabelPeq"] = this.Resources["EstiloLabelEscuroPeq"];
                 this.Resources["EstiloLabelGrande"] = this.Resources["EstiloLabelEscuroGrande"];                
                 this.Resources["EstiloLabelCampo"] = this.Resources["EstiloLabelCampoEscuro"];
                 this.Resources["EstiloPage"] = this.Resources["EstiloPageEscuro"];
@@ -244,6 +253,8 @@ namespace SDMobileXF
                 this.Resources["EstiloLabelDataVisOcorrencia"] = this.Resources["EstiloLabelDataVisOcorrenciaEscuro"];
                 this.Resources["EstiloStackLayoutSubTitulo"] = this.Resources["EstiloStackLayoutSubTituloEscuro"];
                 this.Resources["EstiloTabPage"] = this.Resources["EstiloTabPageEscuro"];
+                this.Resources["EstiloGrid"] = this.Resources["EstiloGridEscuro"];
+                this.Resources["EstiloActivityIndicator"] = this.Resources["EstiloActivityIndicatorEscuro"];
             }
         }
 

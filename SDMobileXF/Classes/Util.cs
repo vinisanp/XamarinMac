@@ -160,8 +160,10 @@ namespace SDMobileXF.Classes
         }
 
         public static double AlturaLabel(NamedSize tamBase)
-        {
+        {            
             double tam = Device.GetNamedSize(tamBase, typeof(Xamarin.Forms.Label));
+            if (Device.RuntimePlatform == Device.iOS)
+                tam += 5;
             if (Config.TamanhoFonte == "Pequeno")
                 tam -= 5;
             else if (Config.TamanhoFonte == "Grande")

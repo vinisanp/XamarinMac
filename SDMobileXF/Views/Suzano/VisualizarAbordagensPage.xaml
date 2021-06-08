@@ -61,7 +61,7 @@
                         <ImageButton.Margin>
                             <OnPlatform x:TypeArguments="Thickness">
                                 <OnPlatform.Platforms>
-                                    <On Platform="iOS" Value="0,20,0,0"/>
+                                    <On Platform="iOS" Value="0,24,0,0"/>
                                     <On Platform="Android" Value="0,3,0,0"/>
                                 </OnPlatform.Platforms>
                             </OnPlatform>
@@ -74,7 +74,7 @@
                              Style="{DynamicResource EstiloStackLayoutSubTitulo}" 
                              Padding="10">
                     <Label Text="{Binding Textos.AbordagensCadastradas}" 
-                           FontSize="Small" 
+                           FontSize="Subtitle" 
                            Style="{DynamicResource EstiloLabelSubTitulo}" 
                            HorizontalOptions="FillAndExpand"/>
                     <Label Text="{Binding QtdRegistros}" 
@@ -88,7 +88,7 @@
                           HasUnevenRows="True" 
                           SelectedItem="{Binding ItemSelecionado}" 
                           ItemSelected="ListView_ItemSelected"
-                          SeparatorVisibility="Default">
+                          SeparatorVisibility="Default" Style="{DynamicResource EstiloListView}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
@@ -129,10 +129,12 @@
                          AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1">
                 <ActivityIndicator IsRunning="{Binding Ocupado}" 
                                    HeightRequest="50" 
-                                   WidthRequest="50"/>
+                                   WidthRequest="50"
+                                   Style="{DynamicResource EstiloActivityIndicator}"/>
                 <Label Text="{Binding Textos.Carregando}" 
                        HorizontalOptions="Center" 
-                       VerticalOptions="Center" />
+                       VerticalOptions="Center" 
+                       Style="{DynamicResource EstiloLabel}"/>
             </StackLayout>
         </AbsoluteLayout>
     </ContentPage.Content>

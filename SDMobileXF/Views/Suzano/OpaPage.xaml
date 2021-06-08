@@ -32,13 +32,13 @@
                             <Label Text="{Binding Textos.Data}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap"/>
                             <Frame Style="{DynamicResource EstiloFrame}">
                                 <DatePicker MinimumDate="{Binding DataMinima}" MaximumDate="{Binding DataMaxima}" Date="{Binding Data}" 
-                                            Style="{DynamicResource EstiloDatePicker}" x:Name="pickerData" IsEnabled="{Binding EmEdicao}"/>
+                                            Style="{DynamicResource EstiloDatePicker}" x:Name="pickerData" />
                             </Frame>
                         </StackLayout>
                         <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
                             <Label Text="{Binding Textos.Hora}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap"/>
                             <Frame Style="{DynamicResource EstiloFrame}">
-                                <TimePicker Time="{Binding Hora}" Style="{DynamicResource EstiloTimePicker}" x:Name="pickerHora" IsEnabled="{Binding EmEdicao}"/>
+                                <TimePicker Time="{Binding Hora}" Style="{DynamicResource EstiloTimePicker}" x:Name="pickerHora"/>
                             </Frame>
                         </StackLayout>
                     </StackLayout>
@@ -148,7 +148,7 @@
 								</Label>
 
 								<StackLayout BindableLayout.ItemsSource="{Binding Campos}" Orientation="Vertical" Spacing="10"
-                                             IsEnabled="{Binding EmEdicao}">
+                                             IsEnabled="{Binding EmEdicao}" IsVisible="{Binding ExibirGrupo}">
 									<BindableLayout.ItemTemplate>
 										<DataTemplate>
 											<StackLayout Orientation="Vertical" Spacing="10" Margin="0, 10, 0, 0">
@@ -196,11 +196,11 @@
 											<RowDefinition Height="*" />
 											<RowDefinition Height="*" />
 										</Grid.RowDefinitions>
-										
-										<Label Grid.Row="0" Grid.Column="0" HorizontalOptions="CenterAndExpand" Text="{Binding Textos.Conforme}"  Style="{DynamicResource EstiloLabelCampo}"/>
-										<Label Grid.Row="0" Grid.Column="1" HorizontalOptions="CenterAndExpand" Text="{Binding Textos.NaoConforme}"  Style="{DynamicResource EstiloLabelCampo}"/>
-										<Label Grid.Row="0" Grid.Column="2" HorizontalOptions="CenterAndExpand" Text="{Binding Textos.NaoSeAplica}"  Style="{DynamicResource EstiloLabelCampo}"/>
-										<Label Grid.Row="0" Grid.Column="3" HorizontalOptions="CenterAndExpand" Text="{Binding Textos.Pontuacao}"  Style="{DynamicResource EstiloLabelCampo}"/>
+
+                                        <Label Grid.Row="0" Grid.Column="0" HorizontalOptions="CenterAndExpand" Text="{Binding Textos.Conforme}" HorizontalTextAlignment="Center" FontAttributes="Bold"  Style="{DynamicResource EstiloLabelPeq}"/>
+                                        <Label Grid.Row="0" Grid.Column="1" HorizontalOptions="CenterAndExpand" Text="{Binding Textos.NaoConforme}" HorizontalTextAlignment="Center" FontAttributes="Bold" Style="{DynamicResource EstiloLabelPeq}"/>
+                                        <Label Grid.Row="0" Grid.Column="2" HorizontalOptions="CenterAndExpand" Text="{Binding Textos.NaoSeAplica}" HorizontalTextAlignment="Center" FontAttributes="Bold" Style="{DynamicResource EstiloLabelPeq}"/>
+                                        <Label Grid.Row="0" Grid.Column="3" HorizontalOptions="CenterAndExpand" Text="{Binding Textos.Pontuacao}" HorizontalTextAlignment="Center" FontAttributes="Bold" Style="{DynamicResource EstiloLabelPeq}"/>
 
 										<Label Grid.Row="1" Grid.Column="0" HorizontalOptions="CenterAndExpand" Text="{Binding CountC}"  Style="{DynamicResource EstiloLabel}"/>
 										<Label Grid.Row="1" Grid.Column="1" HorizontalOptions="CenterAndExpand" Text="{Binding CountNC}"  Style="{DynamicResource EstiloLabel}"/>
@@ -250,6 +250,7 @@
                            HeightRequest="50" 
                            WidthRequest="50"
                            AbsoluteLayout.LayoutFlags="PositionProportional" 
-                           AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1"/>
+                           AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1"
+                           Style="{DynamicResource EstiloActivityIndicator}"/>
     </AbsoluteLayout>
 </ContentPage>

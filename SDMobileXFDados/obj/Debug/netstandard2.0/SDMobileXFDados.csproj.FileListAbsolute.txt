@@ -6,4 +6,3 @@ C:\Projetos\Xamarin\SDMobileXF\SDMobileXFDados\obj\Debug\netstandard2.0\SDMobile
 C:\Projetos\Xamarin\SDMobileXF\SDMobileXFDados\obj\Debug\netstandard2.0\SDMobileXFDados.csproj.CoreCompileInputs.cache
 C:\Projetos\Xamarin\SDMobileXF\SDMobileXFDados\obj\Debug\netstandard2.0\SDMobileXFDados.dll
 C:\Projetos\Xamarin\SDMobileXF\SDMobileXFDados\obj\Debug\netstandard2.0\SDMobileXFDados.pdb
-C:\Projetos\Xamarin\SDMobileXF\SDMobileXFDados\obj\Debug\netstandard2.0\SDMobileXFDados.csprojAssemblyReference.cache

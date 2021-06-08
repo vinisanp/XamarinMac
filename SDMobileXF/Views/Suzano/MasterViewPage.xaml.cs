@@ -33,5 +33,11 @@ namespace SDMobileXF.Views
                 }
             }
         }
+
+        protected override void OnAppearing()
+        {
+             
+            base.OnAppearing();
+        }
     }
 }

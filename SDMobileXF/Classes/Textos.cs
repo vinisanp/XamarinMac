@@ -51,7 +51,7 @@ namespace SDMobileXF.Classes
         public string Ocorrencias => Globalizacao.Traduz("S.T. - Ocorrências");
 
         public string AbordagensCadastradas => Globalizacao.Traduz("Abordagens Comp. Cadastradas");
-        public string AbordagensSeremEnviadas => Globalizacao.Traduz("Abordagens Comp. a serem enviadas");
+        public string AbordagensSeremEnviadas => Globalizacao.Traduz("Abordagens a serem enviadas");
         public string Abordagem => Globalizacao.Traduz("S.T. - Abordagem Comp.");
         public string Abordagens => Globalizacao.Traduz("S.T. - Abordagens Comp.");
 
@@ -227,7 +227,10 @@ namespace SDMobileXF.Classes
         public string Participantes => Globalizacao.Traduz("Participantes");
         public string RealizadoPor => Globalizacao.Traduz("Realizado Por");
 
-        public string Opas => Globalizacao.Traduz("S.T. - Observações Positivas da Atividade");
+        public string Opas => Globalizacao.Traduz("S.T. - Observação Positiva Florestal");
+
+        public string OpasSeremEnviadas => Globalizacao.Traduz("Observações Positivas a serem enviadas");
+        
         public string Avaliador => Globalizacao.Traduz("Avaliador");
         public string TipoAvaliador => Globalizacao.Traduz("Tipo de Avaliador");
         public string Tarefa => Globalizacao.Traduz("Tarefa");

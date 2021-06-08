@@ -173,7 +173,7 @@ namespace SDMobileXF.ViewModels
 
         #region Construtores
 
-        public ViewModelOPA(Action<bool, string> retornoSalvar, Action retornoCancelar)
+        public ViewModelOPA(Action<bool, string, string> retornoSalvar, Action retornoCancelar)
         {
             this.SalvarCommand = new Command(async () => { await this.Salvar(retornoSalvar); });
             this.CancelarCommand = new Command(() => { retornoCancelar?.Invoke(); });
@@ -248,7 +248,7 @@ namespace SDMobileXF.ViewModels
 
         #region Metodos de Gravação
 
-        private async Task Salvar(Action<bool, string> retornoSalvar)
+        private async Task Salvar(Action<bool, string, string> retornoSalvar)
         {
             this.Ocupado = true;
             this.EmEdicao = false;
@@ -260,20 +260,20 @@ namespace SDMobileXF.ViewModels
             {
                 string erro = await this.VerificarCamposObrigatorios();
                 if (!string.IsNullOrEmpty(erro))
-                    retornoSalvar?.Invoke(false, erro);
+                    retornoSalvar?.Invoke(false, erro, this.Textos.Aviso);
                 else
                 {
                     ret = await this.SalvarDados();
 
                     if (ret.Ok)
-                        retornoSalvar?.Invoke(true, this.Numero);
+                        retornoSalvar?.Invoke(true, this.Numero, this.Textos.Aviso);
                     else
-                        retornoSalvar?.Invoke(false, ret.Erro);
+                        retornoSalvar?.Invoke(false, ret.Erro, this.Textos.ErroAoSalvar);
                 }
             }
             catch (Exception ex)
             {
-                retornoSalvar?.Invoke(false, ex.Message);
+                retornoSalvar?.Invoke(false, ex.Message, this.Textos.ErroAoSalvar);
             }
 
             this.Ocupado = false;
@@ -462,7 +462,7 @@ namespace SDMobileXF.ViewModels
             this.Ocupado = false;
         }
 
-        private void Trigger(List<CampoOpa> campos)
+        public void Trigger(List<CampoOpa> campos)
         {
             string tipo = @"
 ";
@@ -505,6 +505,7 @@ BEGIN
                 selectInspComDNA += string.Format("\r\n OR {0} IS NOT NULL ", c.Colunas["CaixaNumerica"]);
 
                 string bloco = @"
+      --{5}
       IF :NEW.{0} = '8196e394-50de-453d-8f40-a386ee068dd9' AND :OLD.{0} || '*' != '8196e394-50de-453d-8f40-a386ee068dd9*' THEN
          cIdDNA := fc_guid;
          UP_GERA_SEQUENCIA_TABELA ( cIdDNA, '00000000-0000-0000-0000-000000000000',
@@ -526,49 +527,49 @@ BEGIN
       END IF;
 
 ";
-                if (c.Titulo.StartsWith("1.1")) trigger += string.Format(bloco, c.Colunas["CaixaOpcao"], c.Colunas["CaixaNumerica"], "DCO", "0090", c.Colunas["CaixaTexto"]);
-                if (c.Titulo.StartsWith("1.2")) trigger += string.Format(bloco, c.Colunas["CaixaOpcao"], c.Colunas["CaixaNumerica"], "DCO", "0090", c.Colunas["CaixaTexto"]);
-                if (c.Titulo.StartsWith("1.3")) trigger += string.Format(bloco, c.Colunas["CaixaOpcao"], c.Colunas["CaixaNumerica"], "DCO", "0090", c.Colunas["CaixaTexto"]);
-                if (c.Titulo.StartsWith("1.4")) trigger += string.Format(bloco, c.Colunas["CaixaOpcao"], c.Colunas["CaixaNumerica"], "DCO", "0090", c.Colunas["CaixaTexto"]);
-                if (c.Titulo.StartsWith("1.5")) trigger += string.Format(bloco, c.Colunas["CaixaOpcao"], c.Colunas["CaixaNumerica"], "DCO", "0090", c.Colunas["CaixaTexto"]);
-                if (c.Titulo.StartsWith("1.6")) trigger += string.Format(bloco, c.Colunas["CaixaOpcao"], c.Colunas["CaixaNumerica"], "DCO", "0090", c.Colunas["CaixaTexto"]);
-                if (c.Titulo.StartsWith("1.7")) trigger += string.Format(bloco, c.Colunas["CaixaOpcao"], c.Colunas["CaixaNumerica"], "DCO", "0090", c.Colunas["CaixaTexto"]);
-                if (c.Titulo.StartsWith("1.8")) trigger += string.Format(bloco, c.Colunas["CaixaOpcao"], c.Colunas["CaixaNumerica"], "DCO", "0091", c.Colunas["CaixaTexto"]);
+                if (c.Titulo.StartsWith("1.1")) trigger += string.Format(bloco, c.Colunas["CaixaOpcao"], c.Colunas["CaixaNumerica"], "DCO", "0090", c.Colunas["CaixaTexto"], c.Titulo);
+                if (c.Titulo.StartsWith("1.2")) trigger += string.Format(bloco, c.Colunas["CaixaOpcao"], c.Colunas["CaixaNumerica"], "DCO", "0090", c.Colunas["CaixaTexto"], c.Titulo);
+                if (c.Titulo.StartsWith("1.3")) trigger += string.Format(bloco, c.Colunas["CaixaOpcao"], c.Colunas["CaixaNumerica"], "DCO", "0090", c.Colunas["CaixaTexto"], c.Titulo);
+                if (c.Titulo.StartsWith("1.4")) trigger += string.Format(bloco, c.Colunas["CaixaOpcao"], c.Colunas["CaixaNumerica"], "DCO", "0090", c.Colunas["CaixaTexto"], c.Titulo);
+                if (c.Titulo.StartsWith("1.5")) trigger += string.Format(bloco, c.Colunas["CaixaOpcao"], c.Colunas["CaixaNumerica"], "DCO", "0090", c.Colunas["CaixaTexto"], c.Titulo);
+                if (c.Titulo.StartsWith("1.6")) trigger += string.Format(bloco, c.Colunas["CaixaOpcao"], c.Colunas["CaixaNumerica"], "DCO", "0090", c.Colunas["CaixaTexto"], c.Titulo);
+                if (c.Titulo.StartsWith("1.7")) trigger += string.Format(bloco, c.Colunas["CaixaOpcao"], c.Colunas["CaixaNumerica"], "DCO", "0090", c.Colunas["CaixaTexto"], c.Titulo);
+                if (c.Titulo.StartsWith("1.8")) trigger += string.Format(bloco, c.Colunas["CaixaOpcao"], c.Colunas["CaixaNumerica"], "DCO", "0091", c.Colunas["CaixaTexto"], c.Titulo);
 
-                if (c.Titulo.StartsWith("2.1")) trigger += string.Format(bloco, c.Colunas["CaixaOpcao"], c.Colunas["CaixaNumerica"], "ALO", "0092", c.Colunas["CaixaTexto"]);
-                if (c.Titulo.StartsWith("2.2")) trigger += string.Format(bloco, c.Colunas["CaixaOpcao"], c.Colunas["CaixaNumerica"], "ALO", "0092", c.Colunas["CaixaTexto"]);
-                if (c.Titulo.StartsWith("2.3")) trigger += string.Format(bloco, c.Colunas["CaixaOpcao"], c.Colunas["CaixaNumerica"], "ALO", "0093", c.Colunas["CaixaTexto"]);
-                if (c.Titulo.StartsWith("2.4")) trigger += string.Format(bloco, c.Colunas["CaixaOpcao"], c.Colunas["CaixaNumerica"], "ALO", "0094", c.Colunas["CaixaTexto"]);
-                if (c.Titulo.StartsWith("2.5")) trigger += string.Format(bloco, c.Colunas["CaixaOpcao"], c.Colunas["CaixaNumerica"], "ALO", "0095", c.Colunas["CaixaTexto"]);
-                if (c.Titulo.StartsWith("2.6")) trigger += string.Format(bloco, c.Colunas["CaixaOpcao"], c.Colunas["CaixaNumerica"], "ALO", "0092", c.Colunas["CaixaTexto"]);
-                if (c.Titulo.StartsWith("2.7")) trigger += string.Format(bloco, c.Colunas["CaixaOpcao"], c.Colunas["CaixaNumerica"], "ALO", "0096", c.Colunas["CaixaTexto"]);
+                if (c.Titulo.StartsWith("2.1")) trigger += string.Format(bloco, c.Colunas["CaixaOpcao"], c.Colunas["CaixaNumerica"], "ALO", "0092", c.Colunas["CaixaTexto"], c.Titulo);
+                if (c.Titulo.StartsWith("2.2")) trigger += string.Format(bloco, c.Colunas["CaixaOpcao"], c.Colunas["CaixaNumerica"], "ALO", "0092", c.Colunas["CaixaTexto"], c.Titulo);
+                if (c.Titulo.StartsWith("2.3")) trigger += string.Format(bloco, c.Colunas["CaixaOpcao"], c.Colunas["CaixaNumerica"], "ALO", "0093", c.Colunas["CaixaTexto"], c.Titulo);
+                if (c.Titulo.StartsWith("2.4")) trigger += string.Format(bloco, c.Colunas["CaixaOpcao"], c.Colunas["CaixaNumerica"], "ALO", "0094", c.Colunas["CaixaTexto"], c.Titulo);
+                if (c.Titulo.StartsWith("2.5")) trigger += string.Format(bloco, c.Colunas["CaixaOpcao"], c.Colunas["CaixaNumerica"], "ALO", "0095", c.Colunas["CaixaTexto"], c.Titulo);
+                if (c.Titulo.StartsWith("2.6")) trigger += string.Format(bloco, c.Colunas["CaixaOpcao"], c.Colunas["CaixaNumerica"], "ALO", "0092", c.Colunas["CaixaTexto"], c.Titulo);
+                if (c.Titulo.StartsWith("2.7")) trigger += string.Format(bloco, c.Colunas["CaixaOpcao"], c.Colunas["CaixaNumerica"], "ALO", "0096", c.Colunas["CaixaTexto"], c.Titulo);
 
-                if (c.Titulo.StartsWith("3.1")) trigger += string.Format(bloco, c.Colunas["CaixaOpcao"], c.Colunas["CaixaNumerica"], "PO", "0097", c.Colunas["CaixaTexto"]);
-                if (c.Titulo.StartsWith("3.2")) trigger += string.Format(bloco, c.Colunas["CaixaOpcao"], c.Colunas["CaixaNumerica"], "DCO", "0098", c.Colunas["CaixaTexto"]);
-                if (c.Titulo.StartsWith("3.4")) trigger += string.Format(bloco, c.Colunas["CaixaOpcao"], c.Colunas["CaixaNumerica"], "DCO", "0099", c.Colunas["CaixaTexto"]);
-                if (c.Titulo.StartsWith("3.5")) trigger += string.Format(bloco, c.Colunas["CaixaOpcao"], c.Colunas["CaixaNumerica"], "DCO", "0100", c.Colunas["CaixaTexto"]);
-                if (c.Titulo.StartsWith("3.6")) trigger += string.Format(bloco, c.Colunas["CaixaOpcao"], c.Colunas["CaixaNumerica"], "DCO", "0101", c.Colunas["CaixaTexto"]);
-                if (c.Titulo.StartsWith("3.7")) trigger += string.Format(bloco, c.Colunas["CaixaOpcao"], c.Colunas["CaixaNumerica"], "DCO", "0102", c.Colunas["CaixaTexto"]);
+                if (c.Titulo.StartsWith("3.1")) trigger += string.Format(bloco, c.Colunas["CaixaOpcao"], c.Colunas["CaixaNumerica"], "PO", "0097", c.Colunas["CaixaTexto"] , c.Titulo);
+                if (c.Titulo.StartsWith("3.2")) trigger += string.Format(bloco, c.Colunas["CaixaOpcao"], c.Colunas["CaixaNumerica"], "DCO", "0098", c.Colunas["CaixaTexto"], c.Titulo);
+                if (c.Titulo.StartsWith("3.4")) trigger += string.Format(bloco, c.Colunas["CaixaOpcao"], c.Colunas["CaixaNumerica"], "DCO", "0099", c.Colunas["CaixaTexto"], c.Titulo);
+                if (c.Titulo.StartsWith("3.5")) trigger += string.Format(bloco, c.Colunas["CaixaOpcao"], c.Colunas["CaixaNumerica"], "DCO", "0100", c.Colunas["CaixaTexto"], c.Titulo);
+                if (c.Titulo.StartsWith("3.6")) trigger += string.Format(bloco, c.Colunas["CaixaOpcao"], c.Colunas["CaixaNumerica"], "DCO", "0099", c.Colunas["CaixaTexto"], c.Titulo);
+                if (c.Titulo.StartsWith("3.7")) trigger += string.Format(bloco, c.Colunas["CaixaOpcao"], c.Colunas["CaixaNumerica"], "DCO", "0102", c.Colunas["CaixaTexto"], c.Titulo);
 
-                if (c.Titulo.StartsWith("4.1")) trigger += string.Format(bloco, c.Colunas["CaixaOpcao"], c.Colunas["CaixaNumerica"], "DCO", "0103", c.Colunas["CaixaTexto"]);
-                if (c.Titulo.StartsWith("4.2")) trigger += string.Format(bloco, c.Colunas["CaixaOpcao"], c.Colunas["CaixaNumerica"], "FUO", "0104", c.Colunas["CaixaTexto"]);
-                if (c.Titulo.StartsWith("4.3")) trigger += string.Format(bloco, c.Colunas["CaixaOpcao"], c.Colunas["CaixaNumerica"], "UTO", "0105", c.Colunas["CaixaTexto"]);
-                if (c.Titulo.StartsWith("4.5")) trigger += string.Format(bloco, c.Colunas["CaixaOpcao"], c.Colunas["CaixaNumerica"], "UTO", "0105", c.Colunas["CaixaTexto"]);
+                if (c.Titulo.StartsWith("4.1")) trigger += string.Format(bloco, c.Colunas["CaixaOpcao"], c.Colunas["CaixaNumerica"], "DCO", "0103", c.Colunas["CaixaTexto"], c.Titulo);
+                if (c.Titulo.StartsWith("4.2")) trigger += string.Format(bloco, c.Colunas["CaixaOpcao"], c.Colunas["CaixaNumerica"], "FUO", "0104", c.Colunas["CaixaTexto"], c.Titulo);
+                if (c.Titulo.StartsWith("4.3")) trigger += string.Format(bloco, c.Colunas["CaixaOpcao"], c.Colunas["CaixaNumerica"], "UTO", "0105", c.Colunas["CaixaTexto"], c.Titulo);
+                if (c.Titulo.StartsWith("4.5")) trigger += string.Format(bloco, c.Colunas["CaixaOpcao"], c.Colunas["CaixaNumerica"], "UTO", "0105", c.Colunas["CaixaTexto"], c.Titulo);
 
-                if (c.Titulo.StartsWith("5.1")) trigger += string.Format(bloco, c.Colunas["CaixaOpcao"], c.Colunas["CaixaNumerica"], "DCO", "0106", c.Colunas["CaixaTexto"]);
-                if (c.Titulo.StartsWith("5.2")) trigger += string.Format(bloco, c.Colunas["CaixaOpcao"], c.Colunas["CaixaNumerica"], "DCO", "0106", c.Colunas["CaixaTexto"]);
-                if (c.Titulo.StartsWith("5.3")) trigger += string.Format(bloco, c.Colunas["CaixaOpcao"], c.Colunas["CaixaNumerica"], "DCO", "0106", c.Colunas["CaixaTexto"]);
-                if (c.Titulo.StartsWith("5.5")) trigger += string.Format(bloco, c.Colunas["CaixaOpcao"], c.Colunas["CaixaNumerica"], "DCO", "0110", c.Colunas["CaixaTexto"]);
-                if (c.Titulo.StartsWith("5.6")) trigger += string.Format(bloco, c.Colunas["CaixaOpcao"], c.Colunas["CaixaNumerica"], "DCO", "0106", c.Colunas["CaixaTexto"]);
-                if (c.Titulo.StartsWith("5.7")) trigger += string.Format(bloco, c.Colunas["CaixaOpcao"], c.Colunas["CaixaNumerica"], "ALO", "0107", c.Colunas["CaixaTexto"]);
+                if (c.Titulo.StartsWith("5.1")) trigger += string.Format(bloco, c.Colunas["CaixaOpcao"], c.Colunas["CaixaNumerica"], "DCO", "0106", c.Colunas["CaixaTexto"], c.Titulo);
+                if (c.Titulo.StartsWith("5.2")) trigger += string.Format(bloco, c.Colunas["CaixaOpcao"], c.Colunas["CaixaNumerica"], "DCO", "0106", c.Colunas["CaixaTexto"], c.Titulo);
+                if (c.Titulo.StartsWith("5.3")) trigger += string.Format(bloco, c.Colunas["CaixaOpcao"], c.Colunas["CaixaNumerica"], "DCO", "0106", c.Colunas["CaixaTexto"], c.Titulo);
+                if (c.Titulo.StartsWith("5.5")) trigger += string.Format(bloco, c.Colunas["CaixaOpcao"], c.Colunas["CaixaNumerica"], "DCO", "0110", c.Colunas["CaixaTexto"], c.Titulo);
+                if (c.Titulo.StartsWith("5.6")) trigger += string.Format(bloco, c.Colunas["CaixaOpcao"], c.Colunas["CaixaNumerica"], "DCO", "0106", c.Colunas["CaixaTexto"], c.Titulo);
+                if (c.Titulo.StartsWith("5.7")) trigger += string.Format(bloco, c.Colunas["CaixaOpcao"], c.Colunas["CaixaNumerica"], "ALO", "0107", c.Colunas["CaixaTexto"], c.Titulo);
 
-                if (c.Titulo.StartsWith("6.1")) trigger += string.Format(bloco, c.Colunas["CaixaOpcao"], c.Colunas["CaixaNumerica"], "ALO", "0108", c.Colunas["CaixaTexto"]);
-                if (c.Titulo.StartsWith("6.2")) trigger += string.Format(bloco, c.Colunas["CaixaOpcao"], c.Colunas["CaixaNumerica"], "ALO", "0108", c.Colunas["CaixaTexto"]);
-                if (c.Titulo.StartsWith("6.3")) trigger += string.Format(bloco, c.Colunas["CaixaOpcao"], c.Colunas["CaixaNumerica"], "ALO", "0108", c.Colunas["CaixaTexto"]);
-                if (c.Titulo.StartsWith("6.4")) trigger += string.Format(bloco, c.Colunas["CaixaOpcao"], c.Colunas["CaixaNumerica"], "ALO", "0109", c.Colunas["CaixaTexto"]);
-                if (c.Titulo.StartsWith("6.5")) trigger += string.Format(bloco, c.Colunas["CaixaOpcao"], c.Colunas["CaixaNumerica"], "ALO", "0108", c.Colunas["CaixaTexto"]);
-                if (c.Titulo.StartsWith("6.6")) trigger += string.Format(bloco, c.Colunas["CaixaOpcao"], c.Colunas["CaixaNumerica"], "ALO", "0109", c.Colunas["CaixaTexto"]);
-                if (c.Titulo.StartsWith("6.7")) trigger += string.Format(bloco, c.Colunas["CaixaOpcao"], c.Colunas["CaixaNumerica"], "ALO", "0109", c.Colunas["CaixaTexto"]);
+                if (c.Titulo.StartsWith("6.1")) trigger += string.Format(bloco, c.Colunas["CaixaOpcao"], c.Colunas["CaixaNumerica"], "ALO", "0108", c.Colunas["CaixaTexto"], c.Titulo);
+                if (c.Titulo.StartsWith("6.2")) trigger += string.Format(bloco, c.Colunas["CaixaOpcao"], c.Colunas["CaixaNumerica"], "ALO", "0108", c.Colunas["CaixaTexto"], c.Titulo);
+                if (c.Titulo.StartsWith("6.3")) trigger += string.Format(bloco, c.Colunas["CaixaOpcao"], c.Colunas["CaixaNumerica"], "ALO", "0108", c.Colunas["CaixaTexto"], c.Titulo);
+                if (c.Titulo.StartsWith("6.4")) trigger += string.Format(bloco, c.Colunas["CaixaOpcao"], c.Colunas["CaixaNumerica"], "ALO", "0109", c.Colunas["CaixaTexto"], c.Titulo);
+                if (c.Titulo.StartsWith("6.5")) trigger += string.Format(bloco, c.Colunas["CaixaOpcao"], c.Colunas["CaixaNumerica"], "ALO", "0108", c.Colunas["CaixaTexto"], c.Titulo);
+                if (c.Titulo.StartsWith("6.6")) trigger += string.Format(bloco, c.Colunas["CaixaOpcao"], c.Colunas["CaixaNumerica"], "ALO", "0109", c.Colunas["CaixaTexto"], c.Titulo);
+                if (c.Titulo.StartsWith("6.7")) trigger += string.Format(bloco, c.Colunas["CaixaOpcao"], c.Colunas["CaixaNumerica"], "ALO", "0109", c.Colunas["CaixaTexto"], c.Titulo);
 
 
             }
@@ -753,7 +754,7 @@ END TGB_OPA;
             }
             catch (Exception ex)
             {
-                throw new Exception("Erro ao carregar a Observação positiva da atividade.");
+                throw new Exception("Erro ao carregar a Observação Positiva Florestal.");
             }
             finally
             {
@@ -828,7 +829,7 @@ END TGB_OPA;
             }
             catch (Exception ex)
             {
-                throw new Exception("Erro ao carregar as observações positivas da atividade.");
+                throw new Exception("Erro ao carregar observação positiva florestal.");
             }
             finally
             {
@@ -894,9 +895,18 @@ END TGB_OPA;
                     erro = string.Concat(Environment.NewLine, this.Textos.CamposObrigatorios, ": ", Environment.NewLine, erro);
                 else
                 {
+                    int count = 0;
                     foreach (GrupoOpaVm grupo in this.Grupos)
                         if (!grupo.Preenchido)
-                            erro += $"Apuração incorreta bloco '{grupo.Titulo}'" + Environment.NewLine;
+                        {
+                            count++;
+                            erro += grupo.Titulo + Environment.NewLine;
+                        }
+
+                    if (count == 1)
+                        erro = string.Concat("Necessário preenchimento do bloco: ", Environment.NewLine, erro);
+                    else if(count > 1)
+                        erro = string.Concat("Necessário preenchimento dos blocos: ", Environment.NewLine, erro);
                 }
 
                 return erro;

@@ -26,7 +26,7 @@
 
 	/* 2: Mono.Android.dll */
 	/* uncompressed_file_size */
-	.word	2004480
+	.word	2059776
 	/* loaded */
 	.byte	0
 	/* data */
@@ -62,7 +62,7 @@
 
 	/* 6: SDMobileXF.Android.dll */
 	/* uncompressed_file_size */
-	.word	222208
+	.word	223232
 	/* loaded */
 	.byte	0
 	/* data */
@@ -71,7 +71,7 @@
 
 	/* 7: SDMobileXF.dll */
 	/* uncompressed_file_size */
-	.word	943104
+	.word	1359360
 	/* loaded */
 	.byte	0
 	/* data */
@@ -80,7 +80,7 @@
 
 	/* 8: SDMobileXFDados.dll */
 	/* uncompressed_file_size */
-	.word	25088
+	.word	32256
 	/* loaded */
 	.byte	0
 	/* data */
@@ -134,7 +134,7 @@
 
 	/* 14: System.Buffers.dll */
 	/* uncompressed_file_size */
-	.word	13688
+	.word	13712
 	/* loaded */
 	.byte	0
 	/* data */
@@ -242,7 +242,7 @@
 
 	/* 26: System.dll */
 	/* uncompressed_file_size */
-	.word	877568
+	.word	876544
 	/* loaded */
 	.byte	0
 	/* data */
@@ -350,7 +350,7 @@
 
 	/* 38: Xamarin.Android.Support.Compat.dll */
 	/* uncompressed_file_size */
-	.word	521728
+	.word	525312
 	/* loaded */
 	.byte	0
 	/* data */
@@ -359,7 +359,7 @@
 
 	/* 39: Xamarin.Android.Support.CoordinaterLayout.dll */
 	/* uncompressed_file_size */
-	.word	65024
+	.word	65536
 	/* loaded */
 	.byte	0
 	/* data */
@@ -368,7 +368,7 @@
 
 	/* 40: Xamarin.Android.Support.Core.UI.dll */
 	/* uncompressed_file_size */
-	.word	15872
+	.word	16384
 	/* loaded */
 	.byte	0
 	/* data */
@@ -413,7 +413,7 @@
 
 	/* 45: Xamarin.Android.Support.Design.dll */
 	/* uncompressed_file_size */
-	.word	140288
+	.word	140800
 	/* loaded */
 	.byte	0
 	/* data */
@@ -440,7 +440,7 @@
 
 	/* 48: Xamarin.Android.Support.Fragment.dll */
 	/* uncompressed_file_size */
-	.word	142848
+	.word	143872
 	/* loaded */
 	.byte	0
 	/* data */
@@ -548,7 +548,7 @@
 
 	/* 60: Xamarin.Android.Support.v7.AppCompat.dll */
 	/* uncompressed_file_size */
-	.word	439296
+	.word	440832
 	/* loaded */
 	.byte	0
 	/* data */
@@ -566,7 +566,7 @@
 
 	/* 62: Xamarin.Android.Support.v7.RecyclerView.dll */
 	/* uncompressed_file_size */
-	.word	380416
+	.word	381440
 	/* loaded */
 	.byte	0
 	/* data */
@@ -620,7 +620,7 @@
 
 	/* 68: mscorlib.dll */
 	/* uncompressed_file_size */
-	.word	2115072
+	.word	2143232
 	/* loaded */
 	.byte	0
 	/* data */

@@ -14,7 +14,7 @@ namespace SDMobileXF.Views
         public OpasTabbedPage()
         {
             InitializeComponent();
-            this.Title = Textos.Instancia.Inspecoes;
+            this.Title = Textos.Instancia.Opas;
             this.Children[0].Title = Textos.Instancia.Cadastradas;
             this.Children[1].Title = Textos.Instancia.Pendentes;
         }

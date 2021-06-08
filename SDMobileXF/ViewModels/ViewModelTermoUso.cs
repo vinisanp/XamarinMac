@@ -27,7 +27,7 @@ namespace SDMobileXF.ViewModels
 
         public string TextoTermo
         {
-            get { return "Estes Termos e Condições de Uso do Aplicativo SD2000ST " + App.__nivelDeProjeto + " (“Termos”) foram desenvolvidos para que o colaborador empregado da " + App.__nivelDeProjeto + " ou prestador de serviços que preste serviço em uma instalação ou planta da " + App.__nivelDeProjeto + " (“Você” ou “Usuário”) conheça as condições gerais que devem ser observadas durante a utilização do aplicativo, sendo, portanto, obrigatória a sua leitura, compreensão e ciência."; }
+            get { return "Estes Termos e Condições de Uso do Aplicativo SD2000 ST " + App.__nivelDeProjeto + " (“Termos”) foram desenvolvidos para que o colaborador empregado da " + App.__nivelDeProjeto + " ou prestador de serviços que preste serviço em uma instalação ou planta da " + App.__nivelDeProjeto + " (“Você” ou “Usuário”) conheça as condições gerais que devem ser observadas durante a utilização do aplicativo, sendo, portanto, obrigatória a sua leitura, compreensão e ciência."; }
         }
 
         public string TituloAceite

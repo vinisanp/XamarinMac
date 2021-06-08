@@ -1,6 +1,3 @@
-C:\Projetos\Xamarin\SDMobileXF\SDMobileXF.Android\obj\Debug\90\MonoAndroid,Version=v9.0.AssemblyAttributes.cs
-C:\Projetos\Xamarin\SDMobileXF\SDMobileXF.Android\obj\Debug\90\build.props
-C:\Projetos\Xamarin\SDMobileXF\SDMobileXF.Android\obj\Debug\90\adb.props
 C:\Projetos\Xamarin\SDMobileXF\SDMobileXF.Android\bin\Debug\SDMobileXF.Android.dll
 C:\Projetos\Xamarin\SDMobileXF\SDMobileXF.Android\bin\Debug\SDMobileXF.Android.pdb
 C:\Projetos\Xamarin\SDMobileXF\SDMobileXF.Android\bin\Debug\com.SD2000STSuzano.apk
@@ -12,6 +9,9 @@ C:\Projetos\Xamarin\SDMobileXF\SDMobileXF.Android\bin\Debug\SDMobileXF.dll
 C:\Projetos\Xamarin\SDMobileXF\SDMobileXF.Android\bin\Debug\SDMobileXFDados.dll
 C:\Projetos\Xamarin\SDMobileXF\SDMobileXF.Android\bin\Debug\SDMobileXF.pdb
 C:\Projetos\Xamarin\SDMobileXF\SDMobileXF.Android\bin\Debug\SDMobileXFDados.pdb
+C:\Projetos\Xamarin\SDMobileXF\SDMobileXF.Android\obj\Debug\90\MonoAndroid,Version=v9.0.AssemblyAttributes.cs
+C:\Projetos\Xamarin\SDMobileXF\SDMobileXF.Android\obj\Debug\90\build.props
+C:\Projetos\Xamarin\SDMobileXF\SDMobileXF.Android\obj\Debug\90\adb.props
 C:\Projetos\Xamarin\SDMobileXF\SDMobileXF.Android\obj\Debug\90\SDMobileXF.Android.csprojAssemblyReference.cache
 C:\Projetos\Xamarin\SDMobileXF\SDMobileXF.Android\obj\Debug\90\_VerifyXamarinAndroidSupportVersions.stamp
 C:\Projetos\Xamarin\SDMobileXF\SDMobileXF.Android\obj\Debug\90\stamp\_BuildLibraryImportsCache.stamp
@@ -111,6 +111,10 @@ C:\Projetos\Xamarin\SDMobileXF\SDMobileXF.Android\obj\Debug\90\res\drawable\imag
 C:\Projetos\Xamarin\SDMobileXF\SDMobileXF.Android\obj\Debug\90\res\drawable\logocsn512.png
 C:\Projetos\Xamarin\SDMobileXF\SDMobileXF.Android\obj\Debug\90\res\drawable\add32.png
 C:\Projetos\Xamarin\SDMobileXF\SDMobileXF.Android\obj\Debug\90\res\drawable\list32.png
+C:\Projetos\Xamarin\SDMobileXF\SDMobileXF.Android\obj\Debug\90\res\drawable\inspecaomenuacomp.png
+C:\Projetos\Xamarin\SDMobileXF\SDMobileXF.Android\obj\Debug\90\res\drawable\inspecaomenu.png
+C:\Projetos\Xamarin\SDMobileXF\SDMobileXF.Android\obj\Debug\90\res\drawable\opamenu.png
+C:\Projetos\Xamarin\SDMobileXF\SDMobileXF.Android\obj\Debug\90\res\drawable\opamenuacomp.png
 C:\Projetos\Xamarin\SDMobileXF\SDMobileXF.Android\obj\Debug\90\uploadflags.txt
 C:\Projetos\Xamarin\SDMobileXF\SDMobileXF.Android\obj\Debug\90\resolvedassemblies.hash
 C:\Projetos\Xamarin\SDMobileXF\SDMobileXF.Android\obj\Debug\90\android\assets\FormsViewGroup.dll
@@ -548,7 +552,3 @@ C:\Projetos\Xamarin\SDMobileXF\SDMobileXF.Android\obj\Debug\90\stamp\_ConvertRes
 C:\Projetos\Xamarin\SDMobileXF\SDMobileXF.Android\obj\Debug\90\stamp\_GenerateJavaStubs.stamp
 C:\Projetos\Xamarin\SDMobileXF\SDMobileXF.Android\obj\Debug\90\stamp\_GeneratePackageManagerJava.stamp
 C:\Projetos\Xamarin\SDMobileXF\SDMobileXF.Android\obj\Debug\90\stamp\_ResolveLibraryProjectImports.stamp
-C:\Projetos\Xamarin\SDMobileXF\SDMobileXF.Android\obj\Debug\90\res\drawable\inspecaomenuacomp.png
-C:\Projetos\Xamarin\SDMobileXF\SDMobileXF.Android\obj\Debug\90\res\drawable\inspecaomenu.png
-C:\Projetos\Xamarin\SDMobileXF\SDMobileXF.Android\obj\Debug\90\res\drawable\opamenu.png
-C:\Projetos\Xamarin\SDMobileXF\SDMobileXF.Android\obj\Debug\90\res\drawable\opamenuacomp.png

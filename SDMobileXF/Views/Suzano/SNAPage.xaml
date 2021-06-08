@@ -120,13 +120,13 @@
                     <Label Text="{Binding Textos.ClimaEquipe}" Style="{DynamicResource EstiloLabelGrande}"/>
                     <Label Text="{Binding Textos.TextoClimaEquipe}" Padding="0" Style="{DynamicResource EstiloLabel}"/>
 
-                    <Frame Style="{DynamicResource EstiloFrame}" BackgroundColor="#7F85CC">
-                        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-                            <RadioButton Text="{Binding Textos.Ruim}" IsChecked="{Binding CERuim}" 
+                    <Frame Style="{DynamicResource EstiloFrame}" BackgroundColor="#3f4bdf">
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" >
+                            <RadioButton Text="{Binding Textos.Ruim}" IsChecked="{Binding CERuim}" TextColor="Gray"
                                          Style="{DynamicResource EstiloRadioButton}" GroupName="ClimaEquipe" IsEnabled="{Binding EmEdicao}"/>
-                            <RadioButton Text="{Binding Textos.Regular}" IsChecked="{Binding CERegular}"
+                            <RadioButton Text="{Binding Textos.Regular}" IsChecked="{Binding CERegular}" TextColor="Gray"
                                          Style="{DynamicResource EstiloRadioButton}" GroupName="ClimaEquipe" IsEnabled="{Binding EmEdicao}" />
-                            <RadioButton Text="{Binding Textos.Bom}" IsChecked="{Binding CEBom}"
+                            <RadioButton Text="{Binding Textos.Bom}" IsChecked="{Binding CEBom}" TextColor="Gray"
                                          Style="{DynamicResource EstiloRadioButton}" GroupName="ClimaEquipe" IsEnabled="{Binding EmEdicao}" />
                         </StackLayout>
                     </Frame>
@@ -147,13 +147,13 @@
                     <Label Text="{Binding Textos.ConteudoAbordado}" Style="{DynamicResource EstiloLabelGrande}"/>
                     <Label Text="{Binding Textos.TextoConteudoAbordado}" Padding="0" Style="{DynamicResource EstiloLabel}"/>
 
-                    <Frame Style="{DynamicResource EstiloFrame}" BackgroundColor="#7F85CC">
+                    <Frame Style="{DynamicResource EstiloFrame}" BackgroundColor="#3f4bdf">
                         <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-                            <RadioButton Text="{Binding Textos.Ruim}" IsChecked="{Binding CARuim}" 
+                            <RadioButton Text="{Binding Textos.Ruim}" IsChecked="{Binding CARuim}" TextColor="Gray"
                                          Style="{DynamicResource EstiloRadioButton}" GroupName="ConteudoAbordado" IsEnabled="{Binding EmEdicao}"/>
-                            <RadioButton Text="{Binding Textos.Regular}" IsChecked="{Binding CARegular}"
+                            <RadioButton Text="{Binding Textos.Regular}" IsChecked="{Binding CARegular}" TextColor="Gray"
                                          Style="{DynamicResource EstiloRadioButton}" GroupName="ConteudoAbordado" IsEnabled="{Binding EmEdicao}" />
-                            <RadioButton Text="{Binding Textos.Bom}" IsChecked="{Binding CABom}"
+                            <RadioButton Text="{Binding Textos.Bom}" IsChecked="{Binding CABom}" TextColor="Gray"
                                          Style="{DynamicResource EstiloRadioButton}" GroupName="ConteudoAbordado" IsEnabled="{Binding EmEdicao}" />
                         </StackLayout>
                     </Frame>
@@ -174,13 +174,13 @@
                     <Label Text="{Binding Textos.RotinaAplicacaoFerramentas}" Style="{DynamicResource EstiloLabelGrande}"/>
                     <Label Text="{Binding Textos.TextoRAF}" Padding="0" Style="{DynamicResource EstiloLabel}"/>
 
-                    <Frame Style="{DynamicResource EstiloFrame}" BackgroundColor="#7F85CC">
+                    <Frame Style="{DynamicResource EstiloFrame}" BackgroundColor="#3f4bdf">
                         <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-                            <RadioButton Text="{Binding Textos.Ruim}" IsChecked="{Binding RAFRuim}" 
+                            <RadioButton Text="{Binding Textos.Ruim}" IsChecked="{Binding RAFRuim}" TextColor="Gray"
                                          Style="{DynamicResource EstiloRadioButton}" GroupName="RotinaAplicacaoFerramentas" IsEnabled="{Binding EmEdicao}"/>
-                            <RadioButton Text="{Binding Textos.Regular}" IsChecked="{Binding RAFRegular}"
+                            <RadioButton Text="{Binding Textos.Regular}" IsChecked="{Binding RAFRegular}" TextColor="Gray"
                                          Style="{DynamicResource EstiloRadioButton}" GroupName="RotinaAplicacaoFerramentas" IsEnabled="{Binding EmEdicao}" />
-                            <RadioButton Text="{Binding Textos.Bom}" IsChecked="{Binding RAFBom}"
+                            <RadioButton Text="{Binding Textos.Bom}" IsChecked="{Binding RAFBom}" TextColor="Gray"
                                          Style="{DynamicResource EstiloRadioButton}" GroupName="RotinaAplicacaoFerramentas" IsEnabled="{Binding EmEdicao}" />
                         </StackLayout>
                     </Frame>
@@ -201,13 +201,13 @@
                     <Label Text="{Binding Textos.QualidadeAmbienteTrabalho}" Style="{DynamicResource EstiloLabelGrande}"/>
                     <Label Text="{Binding Textos.TextoQAT}" Padding="0" Style="{DynamicResource EstiloLabel}"/>
 
-                    <Frame Style="{DynamicResource EstiloFrame}" BackgroundColor="#7F85CC">
+                    <Frame Style="{DynamicResource EstiloFrame}" BackgroundColor="#3f4bdf">
                         <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-                            <RadioButton Text="{Binding Textos.Ruim}" IsChecked="{Binding QATRuim}" 
+                            <RadioButton Text="{Binding Textos.Ruim}" IsChecked="{Binding QATRuim}" TextColor="Gray"
                                          Style="{DynamicResource EstiloRadioButton}" GroupName="QualidadeAmbienteTrabalho" IsEnabled="{Binding EmEdicao}"/>
-                            <RadioButton Text="{Binding Textos.Regular}" IsChecked="{Binding QATRegular}"
+                            <RadioButton Text="{Binding Textos.Regular}" IsChecked="{Binding QATRegular}" TextColor="Gray"
                                          Style="{DynamicResource EstiloRadioButton}" GroupName="QualidadeAmbienteTrabalho" IsEnabled="{Binding EmEdicao}" />
-                            <RadioButton Text="{Binding Textos.Bom}" IsChecked="{Binding QATBom}"
+                            <RadioButton Text="{Binding Textos.Bom}" IsChecked="{Binding QATBom}" TextColor="Gray"
                                          Style="{DynamicResource EstiloRadioButton}" GroupName="QualidadeAmbienteTrabalho" IsEnabled="{Binding EmEdicao}" />
                         </StackLayout>
                     </Frame>
@@ -265,6 +265,7 @@
                            HeightRequest="50" 
                            WidthRequest="50"
                            AbsoluteLayout.LayoutFlags="PositionProportional" 
-                           AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1"/>
+                           AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1"
+                           Style="{DynamicResource EstiloActivityIndicator}"/>
     </AbsoluteLayout>
 </ContentPage>

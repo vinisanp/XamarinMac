@@ -41,7 +41,7 @@
                           ItemsSource="{Binding Lista}" 
                           HasUnevenRows="True" 
                           ItemSelected="ListView_ItemSelected"
-                          SeparatorVisibility="Default">
+                          SeparatorVisibility="Default" Style="{DynamicResource EstiloListView}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
@@ -82,10 +82,12 @@
                          AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1">
                 <ActivityIndicator IsRunning="{Binding Ocupado}" 
                                    HeightRequest="50" 
-                                   WidthRequest="50"/>
+                                   WidthRequest="50"
+                                   Style="{DynamicResource EstiloActivityIndicator}"/>
                 <Label Text="{Binding Textos.Carregando}" 
                        HorizontalOptions="Center" 
-                       VerticalOptions="Center" />
+                       VerticalOptions="Center" 
+                       Style="{DynamicResource EstiloLabel}"/>
             </StackLayout>
         </AbsoluteLayout>
     </ContentPage.Content>

@@ -60,7 +60,7 @@
                            Placeholder="Digite para filtrar" 
                            Style="{DynamicResource EstiloSearchBar}"/>
 
-            <ActivityIndicator IsRunning="{Binding Ocupado}" IsVisible="{Binding Ocupado}" />
+            <ActivityIndicator IsRunning="{Binding Ocupado}" IsVisible="{Binding Ocupado}" Style="{DynamicResource EstiloActivityIndicator}"/>
                 
             <ListView x:Name="listaPesquisa"
                       ItemsSource="{Binding Lista}"

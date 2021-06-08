@@ -680,7 +680,7 @@
                     <Label Text="{Binding Textos.Cognitivos}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap"/>
                     <Frame Style="{DynamicResource EstiloFrame}" VerticalOptions="Fill">
                         <ListView SeparatorVisibility="None" ItemsSource="{Binding Cognitivos}" SelectedItem="{Binding Cognitivo, Mode=TwoWay}"
-                                  Margin="5" x:Name="LstCognitivos" RowHeight="30" HasUnevenRows="true" ItemSelected="ListView_ItemSelected">
+                                  Margin="5" x:Name="LstCognitivos" RowHeight="30" HasUnevenRows="true" ItemSelected="ListView_ItemSelected" Style="{DynamicResource EstiloListView}">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
@@ -709,7 +709,7 @@
                     <Label Text="{Binding Textos.Fisiologicos}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap"/>
                     <Frame Style="{DynamicResource EstiloFrame}">
                         <ListView HasUnevenRows="true" SeparatorVisibility="None" ItemsSource="{Binding Fisiologicos}" SelectedItem="{Binding Fisiologico, Mode=TwoWay}" 
-                                  Margin="5" x:Name="LstFisiologicos" RowHeight="28" ItemSelected="ListView_ItemSelected">
+                                  Margin="5" x:Name="LstFisiologicos" RowHeight="28" ItemSelected="ListView_ItemSelected" Style="{DynamicResource EstiloListView}">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
@@ -738,7 +738,7 @@
                     <Label Text="{Binding Textos.Psicologicos}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap"/>
                     <Frame Style="{DynamicResource EstiloFrame}">
                         <ListView HasUnevenRows="true" SeparatorVisibility="None" ItemsSource="{Binding Psicologicos}" SelectedItem="{Binding Psicologico, Mode=TwoWay}"  
-                                  Margin="5" x:Name="LstPsicologicos" RowHeight="30" ItemSelected="ListView_ItemSelected">
+                                  Margin="5" x:Name="LstPsicologicos" RowHeight="30" ItemSelected="ListView_ItemSelected" Style="{DynamicResource EstiloListView}">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
@@ -767,7 +767,7 @@
                     <Label Text="{Binding Textos.Sociais}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap"/>
                     <Frame Style="{DynamicResource EstiloFrame}">
                         <ListView HasUnevenRows="true" SeparatorVisibility="None" ItemsSource="{Binding Sociais}" SelectedItem="{Binding Social, Mode=TwoWay}"  
-                                  Margin="5" x:Name="LstSociais" RowHeight="36" ItemSelected="ListView_ItemSelected">
+                                  Margin="5" x:Name="LstSociais" RowHeight="36" ItemSelected="ListView_ItemSelected" Style="{DynamicResource EstiloListView}">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
@@ -851,6 +851,7 @@
                            HeightRequest="50" 
                            WidthRequest="50"
                            AbsoluteLayout.LayoutFlags="PositionProportional" 
-                           AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1"/>
+                           AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1"
+                           Style="{DynamicResource EstiloActivityIndicator}"/>
     </AbsoluteLayout>
 </ContentPage>

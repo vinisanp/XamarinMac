@@ -88,20 +88,20 @@ namespace SDMobileXF.Views
                 this.ViewModel.GetOpa(id, origem);
         }
 
-        private async void RetornoSalvar(bool ok, string msg)
+        private async void RetornoSalvar(bool ok, string msg, string titulo)
         {
             if (ok)
             {
                 await this.scroll.ScrollToAsync(0, 0, true);
                 if (string.IsNullOrEmpty(this.ViewModel.Numero))
-                    msg = string.Format(Globalizacao.Traduz("Observação positiva da atividade salva com sucesso!"), this.ViewModel.Numero);
+                    msg = string.Format(Globalizacao.Traduz("Observação Positiva Florestal salva com sucesso!"), this.ViewModel.Numero);
                 else
-                    msg = string.Format(Globalizacao.Traduz("Observação positiva da atividade '{0}' salva com sucesso!"), this.ViewModel.Numero);
-                await this.DisplayAlert(this.ViewModel.Textos.Aviso, msg, this.ViewModel.Textos.Ok);
+                    msg = string.Format(Globalizacao.Traduz("Observação Positiva Florestal '{0}' salva com sucesso!"), this.ViewModel.Numero);
+                await this.DisplayAlert(titulo, msg, this.ViewModel.Textos.Ok);
                 await this.ViewModel.LimparCampos();
             }
             else
-                await this.DisplayAlert(this.ViewModel.Textos.ErroAoSalvar, msg, this.ViewModel.Textos.Ok);
+                await this.DisplayAlert(titulo, msg, this.ViewModel.Textos.Ok);
         }
 
         private async void RetornoCancelar()

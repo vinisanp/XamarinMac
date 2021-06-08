@@ -3,6 +3,7 @@ public class MonoPackageManager_Resources {
 	public static String[] Assemblies = new String[]{
 		/* We need to ensure that "SDMobileXF.Android.dll" comes first in this list. */
 		"SDMobileXF.Android.dll",
+		"SDMobileXFDados.dll",
 		"FormsViewGroup.dll",
 		"Newtonsoft.Json.dll",
 		"Plugin.Media.dll",
@@ -53,9 +54,7 @@ public class MonoPackageManager_Resources {
 		"Xamarin.Forms.Platform.Android.dll",
 		"Xamarin.Forms.Platform.dll",
 		"Xamarin.Forms.Xaml.dll",
-		"SDMobileXFDados.dll",
 	};
 	public static String[] Dependencies = new String[]{
 	};
-	public static String ApiPackageName = null;
 }

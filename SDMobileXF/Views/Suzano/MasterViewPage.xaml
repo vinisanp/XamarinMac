@@ -5,14 +5,32 @@
              xmlns:classes="clr-namespace:SDMobileXF.Classes"
              x:Class="SDMobileXF.Views.MasterViewPage">
     <MasterDetailPage.Master>
-        <ContentPage Title="Menu" Padding="0">
+        <ContentPage Title="Menu" Padding="0" Style="{DynamicResource EstiloPage}">
             <StackLayout VerticalOptions="Start">
                 <StackLayout Orientation="Horizontal"  BackgroundColor="#03267F" HeightRequest="100">
-                    <Image Source="usuario.png" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" Margin="10,0,0,0"/>
+                    <Image Source="usuario.png" HorizontalOptions="Start" VerticalOptions="CenterAndExpand">
+                        <Image.Margin>
+                            <OnPlatform x:TypeArguments="Thickness">
+                                <OnPlatform.Platforms>
+                                    <On Platform="iOS" Value="10,22,0,0"/>
+                                    <On Platform="Android" Value="10,0,0,0"/>
+                                </OnPlatform.Platforms>
+                            </OnPlatform>
+                        </Image.Margin>
+                    </Image>
 
                     <StackLayout Orientation="Vertical" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Margin="10,0,0,0">
                         <Label Text="{Binding Textos.ST_NivelProjeto}" TextColor="White" FontAttributes="Bold"/>
-                        <Label x:Name="lblBemVindo" Text="Administrador" Style="{DynamicResource EstiloLabelBoasVindas}"/>
+                        <Label x:Name="lblBemVindo" Text="Administrador" VerticalOptions="Start" Style="{DynamicResource EstiloLabelBoasVindas}">
+                            <Label.Margin>
+                                <OnPlatform x:TypeArguments="Thickness">
+                                    <OnPlatform.Platforms>
+                                        <On Platform="iOS" Value="0,13,0,0"/>
+                                        <On Platform="Android" Value="0,-20,0,0"/>
+                                    </OnPlatform.Platforms>
+                                </OnPlatform>
+                            </Label.Margin>
+                        </Label>
                     </StackLayout>
                 </StackLayout>
                 <ListView x:Name="lvMenu" HasUnevenRows="True" HeightRequest="210" SeparatorVisibility="None" ItemSelected="lvMenu_ItemSelected">
@@ -27,7 +45,7 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <Grid Padding="5,10">
+                                <Grid Padding="5,12" Style="{DynamicResource EstiloGrid}">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="30"/>
                                         <ColumnDefinition Width="*" />
@@ -36,7 +54,16 @@
                                         <RowDefinition Height="30" />
                                     </Grid.RowDefinitions>
                                     <Image Grid.Row="0" Grid.Column="0" Source="{Binding Imagem}" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
-                                    <Label Grid.Row="0" Grid.Column="1" Text="{Binding Nome}" Margin="10,3,0,0"  Style="{DynamicResource EstiloLabel}"/>
+                                    <Label Grid.Row="0" Grid.Column="1" Text="{Binding Nome}"   Style="{DynamicResource EstiloLabel}">
+                                        <Label.Margin>
+                                            <OnPlatform x:TypeArguments="Thickness">
+                                                <OnPlatform.Platforms>
+                                                    <On Platform="iOS" Value="10,8,0,0"/>
+                                                    <On Platform="Android" Value="10,3,0,0"/>
+                                                </OnPlatform.Platforms>
+                                            </OnPlatform>
+                                        </Label.Margin>
+                                    </Label>
                                 </Grid>
                             </ViewCell>
                         </DataTemplate>

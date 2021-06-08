@@ -56,8 +56,6 @@ Global
 		{C8DDCF21-9782-4202-8D14-93297A6390D6}.Release|ARM.Build.0 = Release|ARM
 		{C8DDCF21-9782-4202-8D14-93297A6390D6}.Release|ARM.Deploy.0 = Release|ARM
 		{C8DDCF21-9782-4202-8D14-93297A6390D6}.Release|iPhone.ActiveCfg = Release|x86
-		{C8DDCF21-9782-4202-8D14-93297A6390D6}.Release|iPhone.Build.0 = Release|x86
-		{C8DDCF21-9782-4202-8D14-93297A6390D6}.Release|iPhone.Deploy.0 = Release|x86
 		{C8DDCF21-9782-4202-8D14-93297A6390D6}.Release|iPhoneSimulator.ActiveCfg = Release|x86
 		{C8DDCF21-9782-4202-8D14-93297A6390D6}.Release|iPhoneSimulator.Build.0 = Release|x86
 		{C8DDCF21-9782-4202-8D14-93297A6390D6}.Release|iPhoneSimulator.Deploy.0 = Release|x86
@@ -92,8 +90,6 @@ Global
 		{9A7A834E-0C0E-4A98-8058-A978712FBC64}.Release|ARM.Build.0 = Release|Any CPU
 		{9A7A834E-0C0E-4A98-8058-A978712FBC64}.Release|ARM.Deploy.0 = Release|Any CPU
 		{9A7A834E-0C0E-4A98-8058-A978712FBC64}.Release|iPhone.ActiveCfg = Release|Any CPU
-		{9A7A834E-0C0E-4A98-8058-A978712FBC64}.Release|iPhone.Build.0 = Release|Any CPU
-		{9A7A834E-0C0E-4A98-8058-A978712FBC64}.Release|iPhone.Deploy.0 = Release|Any CPU
 		{9A7A834E-0C0E-4A98-8058-A978712FBC64}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{9A7A834E-0C0E-4A98-8058-A978712FBC64}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 		{9A7A834E-0C0E-4A98-8058-A978712FBC64}.Release|iPhoneSimulator.Deploy.0 = Release|Any CPU
@@ -229,29 +225,5 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2B247314-8CF1-49BF-AFC7-299D08CB38A7}
-	EndGlobalSection
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 7
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://glaucus.visualstudio.com/
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = SDMobileXF.Android\\SDMobileXF.Android.csproj
-		SccProjectName1 = SDMobileXF.Android
-		SccLocalPath1 = SDMobileXF.Android
-		SccProjectUniqueName2 = SDMobileXF.iOS\\SDMobileXF.iOS.csproj
-		SccProjectName2 = SDMobileXF.iOS
-		SccLocalPath2 = SDMobileXF.iOS
-		SccProjectUniqueName3 = SDMobileXF\\SDMobileXF.csproj
-		SccProjectName3 = SDMobileXF
-		SccLocalPath3 = SDMobileXF
-		SccProjectUniqueName4 = SDMobileXF.UWP\\SDMobileXF.UWP.csproj
-		SccProjectName4 = SDMobileXF.UWP
-		SccLocalPath4 = SDMobileXF.UWP
-		SccProjectUniqueName5 = SDMobileXFDados\\SDMobileXFDados.csproj
-		SccProjectName5 = SDMobileXFDados
-		SccLocalPath5 = SDMobileXFDados
-		SccProjectUniqueName6 = SDWebApi\\SDWebApi.csproj
-		SccProjectName6 = SDWebApi
-		SccLocalPath6 = SDWebApi
 	EndGlobalSection
 EndGlobal

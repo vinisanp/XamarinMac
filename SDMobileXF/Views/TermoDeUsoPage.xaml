@@ -15,27 +15,27 @@
                 <Label Text="{Binding TituloTermo}" Style="{DynamicResource EstiloLabel}" HorizontalTextAlignment="Center" FontAttributes="Bold"/>
                 <ScrollView Margin="10">
                     <StackLayout>
-                        <Label Text="{Binding TextoTermo}" />
-                        <Label Text="{Binding TituloAceite}"  Style="{DynamicResource EstiloLabel}"/>
-                        <Label Text="{Binding TextoAceite}" />
+                        <Label Text="{Binding TextoTermo}" Style="{DynamicResource EstiloLabel}"/>
+                        <Label Text="{Binding TituloAceite}"  Style="{DynamicResource EstiloLabel}" FontAttributes="Bold"/>
+                        <Label Text="{Binding TextoAceite}" Style="{DynamicResource EstiloLabel}"/>
 
-                        <Label Text="{Binding TituloObjetivo}"  Style="{DynamicResource EstiloLabel}"/>
-                        <Label Text="{Binding TextoObjetivo}" />
+                        <Label Text="{Binding TituloObjetivo}"  Style="{DynamicResource EstiloLabel}" FontAttributes="Bold"/>
+                        <Label Text="{Binding TextoObjetivo}" Style="{DynamicResource EstiloLabel}"/>
 
-                        <Label Text="{Binding TituloAcesso}"  Style="{DynamicResource EstiloLabel}"/>
-                        <Label Text="{Binding TextoAcesso}" />
+                        <Label Text="{Binding TituloAcesso}"  Style="{DynamicResource EstiloLabel}" FontAttributes="Bold"/>
+                        <Label Text="{Binding TextoAcesso}" Style="{DynamicResource EstiloLabel}"/>
 
-                        <Label Text="{Binding TituloResponsabilidades}"  Style="{DynamicResource EstiloLabel}"/>
-                        <Label Text="{Binding TextoResponsabilidades}" />
+                        <Label Text="{Binding TituloResponsabilidades}"  Style="{DynamicResource EstiloLabel}" FontAttributes="Bold"/>
+                        <Label Text="{Binding TextoResponsabilidades}" Style="{DynamicResource EstiloLabel}"/>
 
-                        <Label Text="{Binding TituloAlteracoes}"  Style="{DynamicResource EstiloLabel}"/>
-                        <Label Text="{Binding TextoAlteracoes}" />
+                        <Label Text="{Binding TituloAlteracoes}"  Style="{DynamicResource EstiloLabel}" FontAttributes="Bold"/>
+                        <Label Text="{Binding TextoAlteracoes}" Style="{DynamicResource EstiloLabel}"/>
 
-                        <Label Text="{Binding TituloComoFalar}"  Style="{DynamicResource EstiloLabel}"/>
-                        <Label Text="{Binding TextoComoFalar}" />
+                        <Label Text="{Binding TituloComoFalar}"  Style="{DynamicResource EstiloLabel}" FontAttributes="Bold"/>
+                        <Label Text="{Binding TextoComoFalar}" Style="{DynamicResource EstiloLabel}"/>
 
                         <StackLayout Orientation="Horizontal">
-                            <Label Text="{Binding TituloAceitoTermos}" Style="{DynamicResource EstiloLabelCampo}" Margin="1"/>
+                            <Label Text="{Binding TituloAceitoTermos}" Style="{DynamicResource EstiloLabelCampo}" Margin="1" FontAttributes="Bold"/>
                             <Switch IsToggled="{Binding ConcordouTermo}"/>
                         </StackLayout>
                         <Button Text="Abrir Aplicativo" HorizontalOptions="FillAndExpand" BackgroundColor="#009245" 

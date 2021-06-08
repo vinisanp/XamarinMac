@@ -1211,14 +1211,14 @@ namespace SDMobileXF.Classes
                 {
                     string msg = string.Empty;
                     if (countSucesso == 1)
-                        msg = "1 Observação Positiva da Atividade cadastrada enquanto o dispositivo estava sem conexão foi sincronizada com sucesso!";
+                        msg = "1 Observação Positiva Florestal cadastrada enquanto o dispositivo estava sem conexão foi sincronizada com sucesso!";
                     else if (countSucesso > 1)
-                        msg = $"{countSucesso} Obeservações Positivas das Atividades cadastradas enquanto o dispositivo estava sem conexão foram sincronizadas com sucesso!";
+                        msg = $"{countSucesso} Obeservações Positivas Florestais cadastradas enquanto o dispositivo estava sem conexão foram sincronizadas com sucesso!";
 
                     if (countErro == 1)
-                        msg = string.Concat("Erro ao tentar sincronizar 1 Observação Positiva da Atividade que foi cadastrada enquanto o dispositivo estava sem conexão!", Environment.NewLine, msg);
+                        msg = string.Concat("Erro ao tentar sincronizar 1 Observação Positiva Florestal que foi cadastrada enquanto o dispositivo estava sem conexão!", Environment.NewLine, msg);
                     else if (countErro > 1)
-                        msg = string.Concat($"Erro ao tentar sincronizar {countErro} Obeservações Positivas das Atividades que foram cadastradas enquanto o dispositivo estava sem conexão!", Environment.NewLine, msg);
+                        msg = string.Concat($"Erro ao tentar sincronizar {countErro} Obeservações Positivas Florestais que foram cadastradas enquanto o dispositivo estava sem conexão!", Environment.NewLine, msg);
 
                     App.Notificar("SDMobile - OPA", msg);
                 }

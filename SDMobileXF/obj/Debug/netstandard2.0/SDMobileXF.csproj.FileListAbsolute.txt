@@ -4,7 +4,7 @@ C:\Projetos\Xamarin\SDMobileXF\SDMobileXF\bin\Debug\netstandard2.0\ref\SDMobileX
 C:\Projetos\Xamarin\SDMobileXF\SDMobileXF\bin\Debug\netstandard2.0\SDMobileXF.pdb
 C:\Projetos\Xamarin\SDMobileXF\SDMobileXF\bin\Debug\netstandard2.0\SDMobileXFDados.dll
 C:\Projetos\Xamarin\SDMobileXF\SDMobileXF\bin\Debug\netstandard2.0\SDMobileXFDados.pdb
-C:\Projetos\Xamarin\SDMobileXF\SDMobileXF\obj\Debug\netstandard2.0\SDMobileXF.csprojAssemblyReference.cache
+C:\Projetos\Xamarin\SDMobileXF\SDMobileXF\obj\Debug\netstandard2.0\SDMobileXF.csproj.AssemblyReference.cache
 C:\Projetos\Xamarin\SDMobileXF\SDMobileXF\obj\Debug\netstandard2.0\App.xaml.g.cs
 C:\Projetos\Xamarin\SDMobileXF\SDMobileXF\obj\Debug\netstandard2.0\Views\ConfigPage.xaml.g.cs
 C:\Projetos\Xamarin\SDMobileXF\SDMobileXF\obj\Debug\netstandard2.0\Views\Csn\MasterViewCsnPage.xaml.g.cs

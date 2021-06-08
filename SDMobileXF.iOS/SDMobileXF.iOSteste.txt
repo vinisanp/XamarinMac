@@ -1,0 +1,462 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1F0B7639-DC39-45A4-BD1B-60CD0329EA82}</ProjectGuid>
+    <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TemplateGuid>{6143fdea-f3c2-4a09-aafa-6e230626515e}</TemplateGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>SDMobileXF.iOS</RootNamespace>
+    <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
+    <AssemblyName>SDMobileXF.iOS</AssemblyName>
+    <MtouchEnableSGenConc>true</MtouchEnableSGenConc>
+    <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
+    <ProvisioningType>manual</ProvisioningType>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Debug</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <MtouchArch>x86_64</MtouchArch>
+    <MtouchLink>None</MtouchLink>
+    <MtouchDebug>true</MtouchDebug>
+    <CodesignKey>Apple Development: jose vinicius sanches pacheco (FTH6SS39CW)</CodesignKey>
+    <OptimizePNGs>false</OptimizePNGs>
+    <CodesignProvision>
+    </CodesignProvision>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <MtouchLink>None</MtouchLink>
+    <MtouchArch>x86_64</MtouchArch>
+    <CodesignKey>iPhone Distribution: Sstclin - Software de Saude Seguranca do Trabalho e Clinicas Ltda (X6Q4Z3NS98)</CodesignKey>
+    <CodesignProvision>Provisioning Profile SD2000 ST Suzano Prod</CodesignProvision>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhone\Debug</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <MtouchArch>ARM64</MtouchArch>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <MtouchDebug>true</MtouchDebug>
+    <MtouchLink>None</MtouchLink>
+    <MtouchInterpreter>-all</MtouchInterpreter>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhone\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <MtouchArch>ARM64</MtouchArch>
+    <CodesignKey>iPhone Distribution: Sstclin - Software de Saude Seguranca do Trabalho e Clinicas Ltda (X6Q4Z3NS98)</CodesignKey>
+    <CodesignProvision>Provisioning Profile SD2000 ST Suzano Distribution</CodesignProvision>
+    <MtouchInterpreter>-all</MtouchInterpreter>
+    <OptimizePNGs>false</OptimizePNGs>
+    <BuildIpa>true</BuildIpa>
+    <IpaPackageName>com.SD2000STSuzanoProd</IpaPackageName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'Default' ">
+    <AppExtensionDebugBundleId />
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="iOSNotificationManager.cs" />
+    <Compile Include="iOSNotificationReceiver.cs" />
+    <Compile Include="Main.cs" />
+    <Compile Include="AppDelegate.cs" />
+    <None Include="Entitlements.plist" />
+    <None Include="Info.plist" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <ITunesArtwork Include="iTunesArtwork" />
+    <ITunesArtwork Include="iTunesArtwork%402x" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\IconeDNA_1024x1024.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\IconeDNA_1024x10241.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\IconeDNA_120x120.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\IconeDNA_120x1201.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\IconeDNA_152x152.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\IconeDNA_167x167.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\IconeDNA_180x180.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\IconeDNA_20x20.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\IconeDNA_29x29.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\IconeDNA_40x40.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\IconeDNA_40x401.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\IconeDNA_40x402.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\IconeDNA_58x58.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\IconeDNA_58x582.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\IconeDNA_58x583.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\IconeDNA_60x60.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\IconeDNA_76x76.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\IconeDNA_80x80.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\IconeDNA_80x801.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\IconeDNA_87x87.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\IconeDNA_1024x1024.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\IconeDNA_120x120.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\IconeDNA_120x1201.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\IconeDNA_152x152.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\IconeDNA_167x167.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\IconeDNA_180x180.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\IconeDNA_20x20.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\IconeDNA_29x29.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\IconeDNA_40x40.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\IconeDNA_40x401.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\IconeDNA_40x402.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\IconeDNA_58x58.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\IconeDNA_58x581.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\IconeDNA_60x60.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\IconeDNA_76x76.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\IconeDNA_80x80.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\IconeDNA_80x801.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\IconeDNA_87x87.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon167.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon152.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon76.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="Xamarin.iOS" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="sqlite-net-pcl">
+      <Version>1.7.335</Version>
+    </PackageReference>
+    <PackageReference Include="Xam.Plugin.Media">
+      <Version>5.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Forms" Version="4.6.0.800" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\SDMobileXF\SDMobileXF.csproj">
+      <Project>{8F04A0F3-4739-401C-B477-2EB756841658}</Project>
+      <Name>SDMobileXF</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\LogoGlauco.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Frances.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Espanhol.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Ingles.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sair.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\capacete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\info.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\logoGLaucoVet200.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\gear.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\pesquisar.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </BundleResource>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\salvar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\aceitar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\cancelar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\CancelarAcao.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\dna.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Ocorrencias.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\configuracoes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\pesquisarponto.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\IconeDNA.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\LogoSuzanoSplashSeg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\LogoSeguranca.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\delete48x48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Seta_Item.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ort.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\sna.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\usuario.png">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\casa.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\configMenu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\infoMenu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sairMenu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\DNAMenuAcomp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\DNAMenu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ORTMenuAcomp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ORTMenu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\SNAMenuAcomp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\SNAMenu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\SairMenuAzul.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\LogoCsnSplashSeg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\olhofechado.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\olhoaberto.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\aceitarAzul.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\aceitarBranco.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\cancelarAzul.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\informacoes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\camera.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\imagem.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\LogoCsn512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Portugues.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\LogoSuzano512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\InspecaoMenuAcomp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\InspecaoMenu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\OpaMenu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\OpaMenuAcomp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\IconeDNA_PlayStore.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\IconeDNA_40x40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\IconeDNA_180x180.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\IconeDNA_120x120.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\IconeDNA_20x20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\IconeDNA_60x60.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\IconeDNA_87x87.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\IconeDNA_80x80.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\IconeDNA_58x58.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\IconeDNA_29x29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\IconeDNA_152x152.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\IconeDNA_167x167.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\IconeDNA_76x76.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\IconeDNA_1024x1024.png" />
+  </ItemGroup>
+</Project>

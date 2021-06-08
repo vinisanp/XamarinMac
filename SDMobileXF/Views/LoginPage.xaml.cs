@@ -49,7 +49,7 @@ namespace SDMobileXF.Views
                 {
                     if (App.__nivelDeProjeto == "CSN")
                         await this.Navigation.PushAsync(new MasterViewCsnPage());
-                    else if(App.__nivelDeProjeto == "Suzano")
+                    else if (App.__nivelDeProjeto == "Suzano")
                         await this.Navigation.PushAsync(new MasterViewPage());
                 }
                 else

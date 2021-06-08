@@ -29,8 +29,8 @@ namespace SDMobileXF.Views
             
             if (!Util.TemAcessoInternet)
             {
-                string msg = Globalizacao.Traduz("Não foi possível acessar a lista de observações positivas da atividade.");
-                msg = string.Concat(Environment.NewLine, msg, Globalizacao.Traduz("Verifique se o dispossitivo possui conexão com a internet."));
+                string msg = Globalizacao.Traduz("Não foi possível acessar a lista de observações positivas florestais.");
+                msg = string.Concat(Environment.NewLine, msg, Globalizacao.Traduz("Verifique se o dispositivo possui conexão com a internet."));
                 await DisplayAlert(this.ViewModel.Textos.Aviso, msg, this.ViewModel.Textos.Ok);
             }
         }

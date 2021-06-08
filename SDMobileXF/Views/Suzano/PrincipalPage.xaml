@@ -131,7 +131,7 @@
 
 					<Frame Style="{DynamicResource EstiloFrame}" Margin="0, 2, 0, 5" IsVisible="{Binding TemAcessoOPA}">
 						<StackLayout Orientation="Vertical">
-							<Label Text="Observação Positiva da Atividade" HorizontalTextAlignment="Center" Style="{DynamicResource EstiloLabelCampo}"
+                            <Label Text="Observação Positiva Florestal" HorizontalTextAlignment="Center" Style="{DynamicResource EstiloLabelCampo}"
                                    BackgroundColor="LightGray" TextColor="DarkBlue"/>
 							<Grid>
 								<Grid.ColumnDefinitions>
@@ -168,7 +168,7 @@
                 </StackLayout>
             </ScrollView>
 
-            <ActivityIndicator HorizontalOptions="Center" VerticalOptions="Center"
+            <ActivityIndicator HorizontalOptions="Center" VerticalOptions="Center" Style="{DynamicResource EstiloActivityIndicator}"
                                IsRunning="{Binding Ocupado}" IsVisible="{Binding Ocupado}"
                                HeightRequest="50"  WidthRequest="50" AbsoluteLayout.LayoutFlags="PositionProportional" 
                                AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1"/>

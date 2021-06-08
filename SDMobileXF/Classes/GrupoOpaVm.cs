@@ -23,13 +23,11 @@ namespace SDMobileXF.Classes
         private List<ModeloObj> _lstConformeNaoConforme;
         private bool _emEdicao = false;
 		private ViewModelOPA _pai;
+        private bool _exibirGrupo = true;
 
 		public event PropertyChangedEventHandler PropertyChanged;
         public Command CarregarCamposCommand { get; }
-
         public Textos Textos => Textos.Instancia;
-
-
 		public string Titulo { get; set; }
         public string CorTituloPicker { get; set; }
 
@@ -43,6 +41,12 @@ namespace SDMobileXF.Classes
                         campo.EmEdicao = this.EmEdicao;
                 this.DefinirPropriedade(ref this._emEdicao, value);
             }
+        }
+
+        public bool ExibirGrupo
+        {
+            get { return this._exibirGrupo; }
+            set { this.DefinirPropriedade(ref this._exibirGrupo, value); }
         }
 
         public ObservableCollection<CampoOpaVm> Campos
@@ -120,8 +124,11 @@ namespace SDMobileXF.Classes
 
         public void CarregarCampos()
         {
-            foreach (CampoOpa c in this._camposModelo)
-                this.Campos.Add(new CampoOpaVm(c, this._lstConformeNaoConforme, this) { CorTituloPicker = this.CorTituloPicker, EmEdicao = this.EmEdicao });
+            if (this.Campos.Count == 0)
+                foreach (CampoOpa c in this._camposModelo)
+                    this.Campos.Add(new CampoOpaVm(c, this._lstConformeNaoConforme, this) { CorTituloPicker = this.CorTituloPicker, EmEdicao = this.EmEdicao });
+            else
+                this.ExibirGrupo = !this.ExibirGrupo;
         }
 
         protected virtual void OnPropertyChanged([CallerMemberName] string nomePropriedade = null)
