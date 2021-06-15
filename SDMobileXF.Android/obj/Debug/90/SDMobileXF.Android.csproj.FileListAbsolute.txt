@@ -12,7 +12,6 @@ C:\Projetos\Xamarin\SDMobileXF\SDMobileXF.Android\bin\Debug\SDMobileXFDados.pdb
 C:\Projetos\Xamarin\SDMobileXF\SDMobileXF.Android\obj\Debug\90\MonoAndroid,Version=v9.0.AssemblyAttributes.cs
 C:\Projetos\Xamarin\SDMobileXF\SDMobileXF.Android\obj\Debug\90\build.props
 C:\Projetos\Xamarin\SDMobileXF\SDMobileXF.Android\obj\Debug\90\adb.props
-C:\Projetos\Xamarin\SDMobileXF\SDMobileXF.Android\obj\Debug\90\SDMobileXF.Android.csprojAssemblyReference.cache
 C:\Projetos\Xamarin\SDMobileXF\SDMobileXF.Android\obj\Debug\90\_VerifyXamarinAndroidSupportVersions.stamp
 C:\Projetos\Xamarin\SDMobileXF\SDMobileXF.Android\obj\Debug\90\stamp\_BuildLibraryImportsCache.stamp
 C:\Projetos\Xamarin\SDMobileXF\SDMobileXF.Android\obj\Debug\90\res.flag
@@ -552,3 +551,4 @@ C:\Projetos\Xamarin\SDMobileXF\SDMobileXF.Android\obj\Debug\90\stamp\_ConvertRes
 C:\Projetos\Xamarin\SDMobileXF\SDMobileXF.Android\obj\Debug\90\stamp\_GenerateJavaStubs.stamp
 C:\Projetos\Xamarin\SDMobileXF\SDMobileXF.Android\obj\Debug\90\stamp\_GeneratePackageManagerJava.stamp
 C:\Projetos\Xamarin\SDMobileXF\SDMobileXF.Android\obj\Debug\90\stamp\_ResolveLibraryProjectImports.stamp
+C:\Projetos\Xamarin\SDMobileXF\SDMobileXF.Android\obj\Debug\90\SDMobileXF.Android.csproj.AssemblyReference.cache

@@ -14,6 +14,8 @@ using Plugin.Media;
 using Plugin.Media.Abstractions;
 using System.IO;
 using Microsoft.Win32.SafeHandles;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace SDMobileXF.Views
 {
@@ -23,6 +25,7 @@ namespace SDMobileXF.Views
         private double _lastScrollY;
 
         protected ViewModelSNA ViewModel => this.BindingContext as ViewModelSNA;
+        private bool _checkAlterando;
 
         public SNAPage()
         {
@@ -213,6 +216,22 @@ namespace SDMobileXF.Views
                 await this.scroll.ScrollToAsync(0, this._lastScrollY, false);
             }
             this._lastScrollY = this.scroll.ScrollY;
+        }
+
+        
+        private void CheckBox_CheckedChanged(object sender, CheckedChangedEventArgs e)
+        {            
+            IEnumerable<View> lista = ((sender as CheckBox).Parent as StackLayout).Children.Where(i => i is CheckBox);
+            foreach (View elem in lista)
+            {
+                CheckBox chk = elem as CheckBox;
+                if (chk != sender as CheckBox)
+                {
+                    chk.CheckedChanged -= CheckBox_CheckedChanged;
+                    chk.IsChecked = false;
+                    chk.CheckedChanged += CheckBox_CheckedChanged;
+                }
+            }
         }
     }
 }

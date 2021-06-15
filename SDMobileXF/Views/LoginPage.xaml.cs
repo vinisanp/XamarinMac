@@ -23,6 +23,8 @@ namespace SDMobileXF.Views
 
             if (Util.UWP)
                 this.Title = this.ViewModel.Titulo + " - " + App.__nivelDeProjeto + " - " + App.__EnderecoWebApi;
+            this.txtUsuario.Text = "08029810890";
+            this.txtSenha.Text = "10071970";
         }
 
         protected override async void OnAppearing()

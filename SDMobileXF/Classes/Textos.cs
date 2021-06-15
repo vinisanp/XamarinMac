@@ -96,7 +96,7 @@ namespace SDMobileXF.Classes
         public string CategoriaDaOcorrencia => Globalizacao.Traduz("Categoria da Ocorrência");
         public string Fornecedor => Globalizacao.Traduz("Fornecedor");
         public string AcoesImediatas => Globalizacao.Traduz("Ações Imediatas");
-        public string ForamTomadasAcoesImediatas => Globalizacao.Traduz("Foram Tomadas Ações Imediatas?");
+        public string ForamTomadasAcoesImediatas => Globalizacao.Traduz("Houve Ação Imediata?");
         public string DescricaoDasAcoesImediatas => Globalizacao.Traduz("Descrever a ação imediata");
         public string RemocaoSintomas => Globalizacao.Traduz("Ações Imediatas/Remoção dos Sintomas");
         public string NaoQueroMeIdentificar => Globalizacao.Traduz("Não quero me identificar");
