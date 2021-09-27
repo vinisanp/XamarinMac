@@ -20,9 +20,9 @@ namespace SDMobileXF
         //public static string __EnderecoWebApi = "http://localhost/sdwebapi/api";
 
         //QA Suzano
-        public static string __EnderecoWebApi = "https://sdweb-qa.suzanonet.com.br/api/api";
+        //public static string __EnderecoWebApi = "https://sdweb-qa.suzanonet.com.br/api/api";
         //Produção Suzano
-        //public static string __EnderecoWebApi = "https://sdweb.suzanonet.com.br/api/api";
+        public static string __EnderecoWebApi = "https://sdweb.suzanonet.com.br/api/api";
 
         private static SqliteSD _banco;
         private static INotificationManager _notificationManager;

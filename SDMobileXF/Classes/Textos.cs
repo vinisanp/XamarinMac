@@ -42,6 +42,7 @@ namespace SDMobileXF.Classes
         public string DataFinal => Globalizacao.Traduz("Data Final");
         public string Cadastradas => Globalizacao.Traduz("Cadastradas");        
         public string Pendentes => Globalizacao.Traduz("Pendentes");
+
         public string Configuracoes => Globalizacao.Traduz("S.T. - Configurações");
         public string Informacoes => Globalizacao.Traduz("S.T. - Informações");
 
@@ -233,6 +234,9 @@ namespace SDMobileXF.Classes
         
         public string Avaliador => Globalizacao.Traduz("Avaliador");
         public string TipoAvaliador => Globalizacao.Traduz("Tipo de Avaliador");
+        public string EmailAvaliador => Globalizacao.Traduz("Email Avaliador");
+        public string EmpresaFornecedor => Globalizacao.Traduz("Empresa/Fornecedor");
+        public string Avaliado => Globalizacao.Traduz("Avaliado");
         public string Tarefa => Globalizacao.Traduz("Tarefa");
         public string Conforme => Globalizacao.Traduz("Conforme");
         public string NaoConforme => Globalizacao.Traduz("Não Conforme");

@@ -43,7 +43,10 @@ namespace SDMobileXF.Views
             this.Appearing += async (sender, e) =>
             {
                 if (!this.ViewModel.TelaCarregada)
+                {
                     await this.ViewModel.LoadAsync();
+                    this.ViewModel.EmEdicao = true;
+                }
 
                 App.Log("Final OnAppering tela de OPA!");
             };
@@ -124,6 +127,7 @@ namespace SDMobileXF.Views
                     this.ViewModel.Gerencia = null;
                     this.ViewModel.Area = null;
                     this.ViewModel.Local = null;
+                    this.ViewModel.Atividade = null;
                 }
                 this.ViewModel.Unidade = obj;
                 this.ViewModel.SelecionarItemFilho(obj, Enumerados.Tabela.Gerencia, this.RetornoItemSelecionado);
@@ -148,17 +152,22 @@ namespace SDMobileXF.Views
             else if (tabela == Enumerados.Tabela.Local)
                 this.ViewModel.Local = obj;
             else if (tabela == Enumerados.Tabela.AtividadeInspecao)
+            {
                 this.ViewModel.Atividade = obj;
+                this.ViewModel.TarefaObservada = null;
+            }
             else if (tabela == Enumerados.Tabela.TarefaObservada)
                 this.ViewModel.TarefaObservada = obj;
             else if (tabela == Enumerados.Tabela.Vinculo)
                 this.ViewModel.Avaliador = obj;
             else if (tabela == Enumerados.Tabela.TipoAvaliador)
                 this.ViewModel.TipoAvaliador = obj;
+            else if (tabela == Enumerados.Tabela.Fornecedor)
+                this.ViewModel.EmpresaFornecedor= obj;
         }
 
         private async void btnUnidade_Clicked(object sender, EventArgs e)
-        {
+        {            
             PesquisarPage page = new PesquisarPage(this.RetornoItemSelecionado,
                                                    Enumerados.Tabela.UnidadeRegional,
                                                    this.ViewModel.Textos.Unidade,
@@ -213,23 +222,33 @@ namespace SDMobileXF.Views
         }
 
         private async void btnAtividade_Clicked(object sender, EventArgs e)
-        {
-            PesquisarPage page = new PesquisarPage(this.RetornoItemSelecionado,
+        {            
+            if (this.ViewModel.Unidade == null)
+                await DisplayAlert(this.ViewModel.Textos.Aviso, Globalizacao.Traduz("Selecione a unidade de inspeção!"), this.ViewModel.Textos.Ok);
+            else
+            {
+                PesquisarPage page = new PesquisarPage(this.RetornoItemSelecionado,
                                                    Enumerados.Tabela.AtividadeInspecao,
                                                    this.ViewModel.Textos.Atividade,
-                                                   null);
+                                                   Convert.ToString(this.ViewModel.Unidade.Id));
 
-            await this.Navigation.PushModalAsync(page);
+                await this.Navigation.PushModalAsync(page);
+            }
         }
 
         private async void btnTarefaObservada_Clicked(object sender, EventArgs e)
         {
-            PesquisarPage page = new PesquisarPage(this.RetornoItemSelecionado,
-                                                   Enumerados.Tabela.TarefaObservada,
-                                                   this.ViewModel.Textos.Tarefa,
-                                                   null);
+            if (this.ViewModel.Atividade == null)
+                await DisplayAlert(this.ViewModel.Textos.Aviso, Globalizacao.Traduz("Selecione a atividade!"), this.ViewModel.Textos.Ok);
+            else
+            {
+                PesquisarPage page = new PesquisarPage(this.RetornoItemSelecionado,
+                                                       Enumerados.Tabela.TarefaObservada,
+                                                       this.ViewModel.Textos.Tarefa,
+                                                       Convert.ToString(this.ViewModel.Atividade.Id));
 
-            await this.Navigation.PushModalAsync(page);
+                await this.Navigation.PushModalAsync(page);
+            }
         }
 
         private async void btnAvaliador_Clicked(object sender, EventArgs e)
@@ -252,6 +271,15 @@ namespace SDMobileXF.Views
             await this.Navigation.PushModalAsync(page);
         }
 
+        private async void btnEmpresaFornecedor_Clicked(object sender, EventArgs e)
+        {
+            PesquisarPage page = new PesquisarPage(this.RetornoItemSelecionado,
+                                                   Enumerados.Tabela.Fornecedor,
+                                                   this.ViewModel.Textos.EmpresaFornecedor,
+                                                   null);
+
+            await this.Navigation.PushModalAsync(page);
+        }
         private async void scroll_Scrolled(object sender, ScrolledEventArgs e)
         {
             if (this.scroll.ScrollY < this._lastScrollY &&
@@ -268,5 +296,83 @@ namespace SDMobileXF.Views
         {
             (sender as Xamarin.Forms.ListView).SelectedItem = null;
         }
-	}
+
+        private async void btnGaleria_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!CrossMedia.Current.IsPickPhotoSupported)
+                {
+                    await DisplayAlert("Galeria", "Acesso à galeria não disponível.", "OK");
+                    return;
+                }
+
+                MediaFile foto = await CrossMedia.Current.PickPhotoAsync(new Plugin.Media.Abstractions.PickMediaOptions
+                {
+                    PhotoSize = Plugin.Media.Abstractions.PhotoSize.Small,
+                    CompressionQuality = 40
+                });
+
+                if (foto != null)
+                {
+                    if (((ImageButton)sender).CommandParameter is CampoOpaVm campo)
+                    {
+                        campo.Image = foto.GetStreamWithImageRotatedForExternalStorage().ToByteArray();
+                        campo.CaminhoImagem = foto.Path;
+                    }
+                    foto.Dispose();
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private async void btnTirarFoto_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
+                {
+                    await DisplayAlert("Nenhuma Câmera", "Nenhuma Câmera disponível.", "OK");
+                    return;
+                }
+
+                StoreCameraMediaOptions armazenamento = new StoreCameraMediaOptions()
+                {
+                    SaveToAlbum = true,
+                    Name = $"SDST_Mobile_{DateTime.Now.ToAAAAMMDD_HHMINSS()}.jpg",
+                    DefaultCamera = CameraDevice.Rear,
+                    CompressionQuality = 40,
+                    PhotoSize = PhotoSize.Small
+                };
+                MediaFile foto = await Plugin.Media.CrossMedia.Current.TakePhotoAsync(armazenamento);
+
+                if (foto != null)
+                {
+                    if (((ImageButton)sender).CommandParameter is CampoOpaVm campo)
+                    {
+                        campo.Image = foto.GetStreamWithImageRotatedForExternalStorage().ToByteArray();
+                        campo.CaminhoImagem = foto.Path;
+                    }
+                    foto.Dispose();
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void btnDelete_Clicked(object sender, EventArgs e)
+        {
+            if (((ImageButton)sender).CommandParameter is CampoOpaVm campo)
+                campo.Image = null;
+        }
+        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+            //ImagesViewerPage page = new ImagesViewerPage(this.ViewModel.Grupos.Campos[0].ImageSource);
+        }
+    }
 }

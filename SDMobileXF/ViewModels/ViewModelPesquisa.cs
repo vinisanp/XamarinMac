@@ -250,7 +250,7 @@ namespace SDMobileXF.ViewModels
             }
             else if (this.Tabela == Enumerados.Tabela.AtividadeInspecao)
             {
-                List<ATIVIDADE_INSPECAO> aux = await App.Banco.BuscarAtividadeInspecoesAsync(textoBusca);
+                List<ATIVIDADE_INSPECAO> aux = await App.Banco.BuscarAtividadeInspecoesAsync(new Guid(this._filtroIdPai), textoBusca);
                 lst = aux.Select(i => i.ToModeloObj()).ToList();
             }
             else if (this.Tabela == Enumerados.Tabela.Unidade)
@@ -320,7 +320,7 @@ namespace SDMobileXF.ViewModels
             }
             else if (this.Tabela == Enumerados.Tabela.TarefaObservada)
             {
-                List<TAREFA_OBSERVADA> aux = await App.Banco.BuscarTarefasObservadasAsync(textoBusca);
+                List<TAREFA_OBSERVADA> aux = await App.Banco.BuscarTarefasObservadasAsync(new Guid(this._filtroIdPai), textoBusca);
                 lst = aux.Select(i => i.ToModeloObj()).ToList();
             }
 

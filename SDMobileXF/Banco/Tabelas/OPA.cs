@@ -20,6 +20,9 @@ namespace SDMobileXF.Banco.Tabelas
         public Guid? ID_TAREFA    { get; set; }
         public Guid? ID_AVALIADOR { get; set; }
         public Guid? ID_TIPO_AVALIADOR { get; set; }
+        public string DS_EMAIL_AVALIADOR { get; set; }
+        public Guid? ID_EMPRESA_FORNECEDOR { get; set; }
+        public string DS_AVALIADO { get; set; }
 
         public string DS_SYNC { get; set; }
 

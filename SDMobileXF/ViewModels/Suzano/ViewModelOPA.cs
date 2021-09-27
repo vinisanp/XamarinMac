@@ -39,11 +39,15 @@ namespace SDMobileXF.ViewModels
         private ModeloObj _tarefaObservada;
         private ModeloObj _avaliador;
         private ModeloObj _tipoAvaliador;
+        private string _emailAvaliador;
+        private ModeloObj _empresaFornecedor;
+        private string _avaliado;
 
         private ObservableCollection<GrupoOpaVm> _grupos;
 
         private Guid _idSQLite = Guid.Empty;
-        private List<CampoOpa> _campos;
+		private ModeloOpa _modeloOpa;
+		private List<CampoOpa> _campos;
         private string _classificacao;
         private string _nota;
 
@@ -57,9 +61,9 @@ namespace SDMobileXF.ViewModels
             get { return this._emEdicao; }
             set
             {
-                if (this.Grupos != null)
-                    foreach (GrupoOpaVm grupo in this.Grupos)
-                        grupo.EmEdicao = this.EmEdicao;
+                //if (this.Grupos != null)
+                //    foreach (GrupoOpaVm grupo in this.Grupos)
+                //        grupo.EmEdicao = this.EmEdicao;
                 this.DefinirPropriedade(ref this._emEdicao, value);
             }
         }
@@ -132,7 +136,14 @@ namespace SDMobileXF.ViewModels
         public ModeloObj Avaliador
         {
             get { return this._avaliador; }
-            set { this.DefinirPropriedade(ref this._avaliador, value); }
+            set 
+            {                
+                this.DefinirPropriedade(ref this._avaliador, value);
+                if (this._avaliador != null)
+                    this.CarregarEmailAvaliador(this._avaliador.Id);
+                else
+                    this.EmailAvaliador = string.Empty;
+            }
         }
 
         public ModeloObj TipoAvaliador
@@ -140,7 +151,21 @@ namespace SDMobileXF.ViewModels
             get { return this._tipoAvaliador; }
             set { this.DefinirPropriedade(ref this._tipoAvaliador, value); }
         }
-
+        public string EmailAvaliador
+        {
+            get { return this._emailAvaliador; }
+            set { this.DefinirPropriedade(ref this._emailAvaliador, value); }
+        }
+        public ModeloObj EmpresaFornecedor
+        {
+            get { return this._empresaFornecedor; }
+            set { this.DefinirPropriedade(ref this._empresaFornecedor, value); }
+        }
+        public string Avaliado
+        {
+            get { return this._avaliado; }
+            set { this.DefinirPropriedade(ref this._avaliado, value); }
+        }
         public ObservableCollection<GrupoOpaVm> Grupos
         {
             get { return this._grupos; }
@@ -179,6 +204,7 @@ namespace SDMobileXF.ViewModels
             this.CancelarCommand = new Command(() => { retornoCancelar?.Invoke(); });
 
             this.Ocupado = true;
+            this._emEdicao = true;
 
             this.CorTituloPicker = "Transparent";
             if (Device.RuntimePlatform == Device.UWP)
@@ -295,7 +321,7 @@ namespace SDMobileXF.ViewModels
             if (this._idSQLite != Guid.Empty)
                 o.ID_OPA = this._idSQLite;
             else
-                o.ID_OPA = Guid.NewGuid();
+                this._idSQLite = o.ID_OPA = Guid.NewGuid();
 
             o.DT_OPA = this.Data.Date.AddSeconds(this.Hora.TotalSeconds);
 
@@ -308,6 +334,9 @@ namespace SDMobileXF.ViewModels
             o.ID_TAREFA = this.TarefaObservada?.Id;
             o.ID_AVALIADOR = this.Avaliador?.Id;
             o.ID_TIPO_AVALIADOR = this.TipoAvaliador?.Id;
+            o.DS_EMAIL_AVALIADOR = this.EmailAvaliador;
+            o.ID_EMPRESA_FORNECEDOR = this.EmpresaFornecedor?.Id;
+            o.DS_AVALIADO = this.Avaliado;
 
             RetornoRequest ret = new RetornoRequest();
 
@@ -331,6 +360,9 @@ namespace SDMobileXF.ViewModels
                             string cols = Newtonsoft.Json.JsonConvert.SerializeObject(c.Colunas);
                             cBanco.COLUNAS = cols;
                         }
+                        cBanco.BYTES_IMAGEM = c.Image;
+                        cBanco.CAMINHO = c.CaminhoImagem;
+
                         await App.Banco.InserirOuAlterarAsync(cBanco);
                     }
                 }
@@ -375,16 +407,34 @@ namespace SDMobileXF.ViewModels
 
             if (this.TipoAvaliador != null)
                 parametros.Add("ID_TIPO_AVALIADOR", this.TipoAvaliador.IdStrNullSafe());
+            
+            parametros.Add("DS_EMAIL_AVALIADOR", this.EmailAvaliador);
+            if (this.EmpresaFornecedor != null)
+                parametros.Add("ID_EMPRESA_FORNECEDOR", this.EmpresaFornecedor.Id.ToString());
+            parametros.Add("DS_AVALIADO", this.Avaliado);
 
             if (!string.IsNullOrEmpty(this.Numero))
                 parametros.Add("NU_OPA", this.Numero);
 
-            List<CampoOpa> campos = new List<CampoOpa>();
-            foreach (GrupoOpaVm g in this.Grupos)
-                foreach (CampoOpaVm c in g.Campos)
-                    campos.Add(c.ToCampoOpa());
+            this._modeloOpa.Classificacao = this.Classificacao;
+            this._modeloOpa.Nota = this.NotaFinal;
 
-            parametros.Add("CAMPOS", Newtonsoft.Json.JsonConvert.SerializeObject(campos));
+            List<CampoOpaVm> camposVM = new List<CampoOpaVm>();
+            foreach (GrupoOpaVm grupoVm in this.Grupos)
+            {
+                GrupoOpa gAux         = this._modeloOpa.Grupos.FirstOrDefault(g => g.Nome == grupoVm.Titulo);
+                gAux.TotalConforme    = grupoVm.CountC;
+                gAux.TotalNaoConforme = grupoVm.CountNC;
+                gAux.TotalNA          = grupoVm.CountNA;
+                gAux.Pontuacao        = grupoVm.Media;
+                foreach (CampoOpaVm campoVm in grupoVm.Campos)
+                {
+                    CampoOpa campoAux = gAux.Campos.FirstOrDefault(c => c.IdCampo == campoVm.IdCampo);
+                    campoVm.ToCampoOpa(campoAux);
+                    camposVM.Add(campoVm);
+                }
+            }
+            parametros.Add("MODELO", Newtonsoft.Json.JsonConvert.SerializeObject(this._modeloOpa));
 
             RetornoRequest ret = new RetornoRequest();
 
@@ -427,12 +477,67 @@ namespace SDMobileXF.ViewModels
                     else
                         this.Numero = conteudo;
                     ret.Mensagem = conteudo;
+
+                    Task.Run(() => { this.EnviarImagens(id, camposVM); });
                 }
                 else
                     ret.Erro = conteudo;
             }
 
             return ret;
+        }
+
+        public async void EnviarImagens(string id, List<CampoOpaVm> campos)
+        {
+            RetornoRequest ret = new RetornoRequest();
+            ret.Ok = true;
+
+            for (int i = 0; i < campos.Count; i++)
+            {
+                CampoOpaVm item = campos[i];
+                if (item.Image != null)
+                {
+                    try
+                    {
+                        string url = string.Concat(App.__EnderecoWebApi, "/Opa/UploadImagem");
+                        using (HttpClient client = new HttpClient())
+                        {
+                            using (MultipartFormDataContent formData = new MultipartFormDataContent())
+                            {
+                                CancellationToken cancellationToken = CancellationToken.None;
+
+                                FileInfo fi = new FileInfo(item.CaminhoImagem);
+                                string nmArquivo = string.Concat("SDST_Mobile_img_", i, "_", this.Data.ToAAAAMMDD_HHMINSS(), fi.Extension);
+
+                                HttpContent imageContent = new StreamContent(new MemoryStream(item.Image));
+                                ContentDispositionHeaderValue conteudo = new ContentDispositionHeaderValue("form-data") { Name = "file", FileName = nmArquivo };
+                                imageContent.Headers.ContentDisposition = conteudo;
+                                imageContent.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
+                                formData.Add(imageContent);
+                                client.DefaultRequestHeaders.Add("idChaveSessao", UsuarioLogado.Instancia.ID_CHAVE_SESSAO);
+                                client.DefaultRequestHeaders.Add("ID_OPA", id);
+                                client.DefaultRequestHeaders.Add("NM_COLUNA", item.Colunas["Multimidia"]);
+                                HttpResponseMessage resposta = await client.PostAsync(url, formData);
+                                string conteudoResposta = await resposta.Content.ReadAsStringAsync();
+
+                                ret.Codigo = (int)resposta.StatusCode;
+                                if (resposta.StatusCode != System.Net.HttpStatusCode.Created)
+                                {
+                                    ret.Ok = false;
+                                    ret.Erro = string.Concat(ret.Erro, conteudoResposta, Environment.NewLine);
+                                }
+                                else
+                                    ret.Mensagem = string.Concat(ret.Mensagem, conteudoResposta, Environment.NewLine);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        ret.Ok = false;
+                        ret.Erro = ex.Message;
+                    }
+                }
+            }
         }
 
         #endregion Metodos de Gravação
@@ -446,8 +551,7 @@ namespace SDMobileXF.ViewModels
             {
                 if (!this.TelaCarregada)
                 {
-                    this.Ocupado = true;
-                    this.EmEdicao = true;
+                    this.Ocupado = true;                    
 
                     await this.CarregarCampos();
                     await this.LimparCampos();
@@ -462,6 +566,14 @@ namespace SDMobileXF.ViewModels
             this.Ocupado = false;
         }
 
+        private async void CarregarEmailAvaliador(Guid idAvaliador)
+        {
+            if (Util.TemAcessoInternet)
+                this.EmailAvaliador = Convert.ToString(await Utils.RetornarValorAsync(UsuarioLogado.Instancia.ID_CHAVE_SESSAO,
+                $"SELECT CL000000000000ABCD004500000000 from TB831F15D403654FCE84691FE856D2 WHERE CL000000000000ABCD000000000000 = '{idAvaliador}'"));
+            else
+                this.EmailAvaliador = this.Avaliador.ValorString;
+        }
         public void Trigger(List<CampoOpa> campos)
         {
             string tipo = @"
@@ -500,6 +612,7 @@ BEGIN
 
             string ajustesNumero = string.Empty;
             string selectInspComDNA = "SELECT * FROM TBEC4866F9F91846A0933C5A8DA73A WHERE ";
+            string imagens = string.Empty;
             foreach (CampoOpa c in campos)
             {
                 selectInspComDNA += string.Format("\r\n OR {0} IS NOT NULL ", c.Colunas["CaixaNumerica"]);
@@ -571,14 +684,37 @@ BEGIN
                 if (c.Titulo.StartsWith("6.6")) trigger += string.Format(bloco, c.Colunas["CaixaOpcao"], c.Colunas["CaixaNumerica"], "ALO", "0109", c.Colunas["CaixaTexto"], c.Titulo);
                 if (c.Titulo.StartsWith("6.7")) trigger += string.Format(bloco, c.Colunas["CaixaOpcao"], c.Colunas["CaixaNumerica"], "ALO", "0109", c.Colunas["CaixaTexto"], c.Titulo);
 
+                imagens += string.Format(@"
 
+         --Foto {2}   
+         IF :NEW.{0} IS NOT NULL AND :NEW.{1} IS NOT NULL THEN
+            SELECT CL000000000000ABCD000000000000 INTO cIdDNA FROM TB5824888C9ED4419F90EBBEA77F71 WHERE CLC388C0FFC35B4680AA4FF9DA4F39 = :NEW.{0};
+            DELETE DOC_ANEXO 
+             WHERE NM_TABELA = 'TB5824888C9ED4419F90EBBEA77F71' 
+               AND NM_COLUNA = 'CL7477547A7A82406C8C10CA08C1DA' 
+               AND ID_REGISTRO = cIdDNA 
+               AND CL000000000000ABCD000000000000 = :NEW.{1};
+   
+            SELECT BI_DOCUMENTO INTO cImagem FROM MULTIMIDIA
+             WHERE NM_TABELA = 'TB32488541CD1C485BB1E42B4F9D91'
+               AND NM_COLUNA = '{1}'
+               AND CL000000000000ABCD000000000000 = :NEW.{1};
+   
+            INSERT INTO DOC_ANEXO (CL000000000000ABCD000000000000, ID_REGISTRO, NM_TABELA, NM_COLUNA, NM_ANEXO, DS_ANEXO, DS_TIPO_ANEXO, BI_ANEXO)
+            VALUES (:NEW.{1}, cIdDNA, 'TB5824888C9ED4419F90EBBEA77F71', 'CL7477547A7A82406C8C10CA08C1DA', 'imagemSNA.jpg', 'imagemSNA.jpg', '.jpg', cImagem);
+   
+         END IF;", c.Colunas["CaixaNumerica"], c.Colunas["Multimidia"], c.Titulo);
             }
 
-            trigger += @"
+            trigger += string.Format(@"
+      IF UPDATING THEN
+         {0}
+      END IF;
    END IF;
 END TGB_OPA;
 /
-";
+", imagens);
+                        
         }
 
         public async Task LimparCampos()
@@ -604,6 +740,7 @@ END TGB_OPA;
                         c.Comentario = null;
                         c.Resposta = null;
                         c.NumeroDNA = null;
+                        c.Image = null;
                     }
                 }
             }
@@ -617,6 +754,7 @@ END TGB_OPA;
         public async Task CarregarCampos()
         {
             this._campos = new List<CampoOpa>();
+            this._modeloOpa = new ModeloOpa();
 
             if (Util.TemAcessoInternet)
             {
@@ -636,7 +774,8 @@ END TGB_OPA;
                         {
                             string conteudo = await resposta.Content.ReadAsStringAsync();
                             Config.SalvarConfiguracao("CamposOpa", conteudo);
-                            this._campos = Newtonsoft.Json.JsonConvert.DeserializeObject<List<CampoOpa>>(conteudo);
+
+                            this._modeloOpa  = Newtonsoft.Json.JsonConvert.DeserializeObject<ModeloOpa>(conteudo);
                         }
                     }
                 }
@@ -647,17 +786,24 @@ END TGB_OPA;
             }
             else
             {
-                string conteudo = Config.CarregarConfiguracao("CamposOpa").ToStringNullSafe();
+                string conteudo = Config.CarregarConfiguracao("ModeloOpa").ToStringNullSafe();
                 if (!string.IsNullOrEmpty(conteudo))
-                    this._campos = Newtonsoft.Json.JsonConvert.DeserializeObject<List<CampoOpa>>(conteudo);
+                    this._modeloOpa = Newtonsoft.Json.JsonConvert.DeserializeObject<ModeloOpa>(conteudo);
             }
 
-            IEnumerable<IGrouping<string, CampoOpa>> grupos = this._campos.GroupBy(c => c.Grupo);
             this.Grupos = new ObservableCollection<GrupoOpaVm>();
-            foreach (IGrouping<string, CampoOpa> grupo in grupos)
-                this.Grupos.Add(new GrupoOpaVm(grupo.Key, grupo.ToList(), this.LstConformeNaoConforme, this) { CorTituloPicker = this.CorTituloPicker, EmEdicao = this.EmEdicao });
+            foreach (GrupoOpa g in this._modeloOpa.Grupos)
+            {
+                GrupoOpaVm gVm = new GrupoOpaVm(g.Nome, g, this.LstConformeNaoConforme, this);
+                gVm.CorTituloPicker = this.CorTituloPicker;
+                gVm.EmEdicao = this.EmEdicao;
+                this.Grupos.Add(gVm);
+                foreach (CampoOpa c in g.Campos)
+                    this._campos.Add(c);
+            }
 
-            this.Trigger(this._campos);
+
+            //this.Trigger(this._campos);
         }
 
 		public void GetOpa(string id, OrigemDados origem)
@@ -727,6 +873,17 @@ END TGB_OPA;
                     if (tipo != null)
                         this.TipoAvaliador = tipo.ToModeloObj();
                 }
+                
+                this.EmailAvaliador = o.DS_EMAIL_AVALIADOR;
+
+                if (o.ID_EMPRESA_FORNECEDOR.HasValue)
+                {
+                    FORNECEDOR empresa_fornecedor = await App.Banco.BuscarFornecedorAsync(o.ID_EMPRESA_FORNECEDOR.Value);
+                    if (empresa_fornecedor != null)
+                        this.EmpresaFornecedor = empresa_fornecedor.ToModeloObj();
+                }
+
+                this.Avaliado = o.DS_AVALIADO;
 
                 List<CAMPO_OPA> camposBanco = await App.Banco.BuscarCamposOpaAsync(o.ID_OPA);
                 if (camposBanco != null && this.Grupos != null)
@@ -739,11 +896,14 @@ END TGB_OPA;
                         foreach (CampoOpaVm c in g.Campos)
                         {
                             CAMPO_OPA campoOpa = camposBanco.FirstOrDefault(a => a.ID_CAMPO == c.IdCampo);
+                            if (campoOpa == null)
+                                break;
                             c.Comentario = campoOpa.DS_COMENTARIO;
                             if(campoOpa.ID_CONFORME.HasValue)
                                 c.DefinirRespostaSemAtualizarGrupo(campoOpa.ID_CONFORME.Value.ToString());
                             c.NumeroDNA = campoOpa.NU_DNA;
                             c.ComentarioVisivel = !string.IsNullOrEmpty(c.Comentario);
+                            c.Image = campoOpa.BYTES_IMAGEM;
                         }
                     }
                 }
@@ -798,21 +958,25 @@ END TGB_OPA;
                             this.Atividade = opa.ATIVIDADE;
                             this.Avaliador = opa.AVALIADOR;
                             this.TipoAvaliador = opa.TIPO_AVALIADOR;
+                            this.EmpresaFornecedor = opa.EMPRESA_FORNECEDOR;
+                            this.EmailAvaliador = opa.DS_EMAIL_AVALIADOR;
+                            this.Avaliado = opa.DS_AVALIADO;
 
-							if (opa.CAMPOS != null && this.Grupos != null)
+							if (opa.ModeloOpa != null && this.Grupos != null)
 							{
-								foreach (GrupoOpaVm g in this.Grupos)
+								foreach (GrupoOpaVm grupoVm in this.Grupos)
 								{
-                                    if (g.Campos.Count == 0)
-                                        g.CarregarCampos();
+                                    if (grupoVm.Campos.Count == 0)
+                                        grupoVm.CarregarCampos();
 
-									foreach (CampoOpaVm c in g.Campos)
+									foreach (CampoOpaVm c in grupoVm.Campos)
 									{
-										CampoOpa campoOpa = opa.CAMPOS.FirstOrDefault(a => a.IdCampo == c.IdCampo);
+										CampoOpa campoOpa = opa.ModeloOpa.Grupos.FirstOrDefault(g => g.Nome == grupoVm.Titulo).Campos.FirstOrDefault(a => a.IdCampo == c.IdCampo);
 										c.Comentario = campoOpa.Comentario;
                                         c.DefinirRespostaSemAtualizarGrupo(campoOpa.IdConforme);
 										c.NumeroDNA = campoOpa.NumeroDNA;
                                         c.ComentarioVisivel = !string.IsNullOrEmpty(c.Comentario);
+                                        c.Image = campoOpa.Image;
 									}
 								}
 							}
@@ -905,7 +1069,7 @@ END TGB_OPA;
 
                     if (count == 1)
                         erro = string.Concat("Necessário preenchimento do bloco: ", Environment.NewLine, erro);
-                    else if(count > 1)
+                    else if (count > 1)
                         erro = string.Concat("Necessário preenchimento dos blocos: ", Environment.NewLine, erro);
                 }
 

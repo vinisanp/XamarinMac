@@ -14,7 +14,10 @@ namespace SDMobileXF.Banco.Tabelas
         public string NU_DNA { get; set; }
         public string COLUNAS { get; set; }
         public string CAMINHO { get; set; }
+
         public byte[] BYTES_IMAGEM { get; set; }
+
+
 
         public CAMPO_OPA() { }
 

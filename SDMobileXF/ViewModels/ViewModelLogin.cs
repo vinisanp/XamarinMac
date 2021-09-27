@@ -117,7 +117,7 @@ namespace SDMobileXF.ViewModels
 
                     if (usuario != null && ((!loginCpf && usuario.HS_SENHA != null) || loginCpf)) //temporario ate resolver o serviço. usuario vem do cadastro de profissionais mas sem senha
                     {
-                        if (usuario.DT_DESATIVACAO == null)
+                        if (usuario.DT_DESATIVACAO == null || usuario.DT_DESATIVACAO > DateTime.Today)
                         {
                             usuario.ID_CHAVE_SESSAO = idChaveSessao;
                             Config.SalvarConfiguracao("UltimoLogin", this.Login);

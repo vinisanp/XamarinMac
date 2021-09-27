@@ -134,7 +134,26 @@
 					</StackLayout>
 				</StackLayout>
 
-				<StackLayout BindableLayout.ItemsSource="{Binding Grupos}" Orientation="Vertical" Spacing="10"
+                <Label Text="{Binding Textos.EmailAvaliador}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap"/>
+                <Frame Style="{DynamicResource EstiloFrame}">
+                    <Entry Text="{Binding EmailAvaliador}" Style="{DynamicResource EstiloEntry}" IsReadOnly="{Binding EmEdicao, Converter={StaticResource InverseBoolConverter}}"/>
+                </Frame>
+
+                <Label Text="{Binding Textos.EmpresaFornecedor}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap"/>
+                <StackLayout Orientation="Horizontal">
+                    <Frame Style="{DynamicResource EstiloFrame}">
+                        <Entry IsReadOnly="True" Text="{Binding EmpresaFornecedor.CodigoDescricao, Mode=TwoWay}" Style="{DynamicResource EstiloEntry}"/>
+                    </Frame>
+                    <ImageButton x:Name="btnEmpresaFornecedor" Source="pesquisar.png" Clicked="btnEmpresaFornecedor_Clicked"
+                                     BackgroundColor="Transparent" Style="{StaticResource EstiloImgButton}" IsEnabled="{Binding EmEdicao}"/>
+                </StackLayout>
+
+                <Label Text="{Binding Textos.Avaliado}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap"/>
+                <Frame Style="{DynamicResource EstiloFrame}">
+                    <Entry Text="{Binding Avaliado}" Style="{DynamicResource EstiloEntry}" IsReadOnly="{Binding EmEdicao, Converter={StaticResource InverseBoolConverter}}"/>
+                </Frame>
+
+                <StackLayout BindableLayout.ItemsSource="{Binding Grupos}" Orientation="Vertical" Spacing="10"
                              IsEnabled="{Binding EmEdicao}">
 					<BindableLayout.ItemTemplate>
 						<DataTemplate>
@@ -172,7 +191,28 @@
 													</Frame>
 												</StackLayout>
 
-												<StackLayout Orientation="Vertical" Spacing="10" Margin="0" IsVisible="{Binding DnaVisivel}">
+                                                <Label Text="{Binding TituloFoto}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap"/>
+                                                <StackLayout Orientation="Vertical" Spacing="10">
+                                                    <Image Source="{Binding ImageSource}"
+                                               Aspect="AspectFill" HeightRequest="210" VerticalOptions="Center">
+                                                        <Image.GestureRecognizers>
+                                                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                                                        </Image.GestureRecognizers>
+                                                    </Image>
+                                                    <StackLayout Orientation="Horizontal" IsEnabled="{Binding EmEdicao}">
+                                                        <ImageButton x:Name="btnTirarFoto" Source="camera.png" Clicked="btnTirarFoto_Clicked"
+                                                         BackgroundColor="Transparent" Style="{StaticResource EstiloImgButton}"
+                                                         CommandParameter="{Binding .}"/>
+                                                        <ImageButton x:Name="btnGaleria" Source="imagem.png" Clicked="btnGaleria_Clicked"
+                                                         BackgroundColor="Transparent" Style="{StaticResource EstiloImgButton}"
+                                                         CommandParameter="{Binding .}"/>
+                                                        <ImageButton x:Name="btnDelete" Source="delete.png" Clicked="btnDelete_Clicked"
+                                                         BackgroundColor="Transparent" Style="{StaticResource EstiloImgButton}" 
+                                                         CommandParameter="{Binding .}"/>
+                                                    </StackLayout>
+                                                </StackLayout>
+
+                                                <StackLayout Orientation="Vertical" Spacing="10" Margin="0" IsVisible="{Binding DnaVisivel}">
 														<Label Text="{Binding TituloNumeroDNA}" Style="{DynamicResource EstiloLabelCampo}" LineBreakMode="NoWrap"/>
 													<Frame Style="{DynamicResource EstiloFrame}">
 														<Entry IsReadOnly="True" Text="{Binding NumeroDNA}" Style="{DynamicResource EstiloEntry}" />

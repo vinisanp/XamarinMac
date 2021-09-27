@@ -21,7 +21,7 @@ namespace SDMobileXF.Classes
         private double _media = 0;
         private List<CampoOpa> _camposModelo;
         private List<ModeloObj> _lstConformeNaoConforme;
-        private bool _emEdicao = false;
+        private bool _emEdicao = true;
 		private ViewModelOPA _pai;
         private bool _exibirGrupo = true;
 
@@ -29,7 +29,18 @@ namespace SDMobileXF.Classes
         public Command CarregarCamposCommand { get; }
         public Textos Textos => Textos.Instancia;
 		public string Titulo { get; set; }
-        public string CorTituloPicker { get; set; }
+
+		private GrupoOpa _grupo;
+
+        public GrupoOpa Modelo
+		{
+			get
+			{
+                return this._grupo;
+			}
+		}
+
+		public string CorTituloPicker { get; set; }
 
         public bool EmEdicao
         {
@@ -107,26 +118,33 @@ namespace SDMobileXF.Classes
             this.CarregarCamposCommand = new Command(() => { this.CarregarCampos(); });
         }
 
-        public GrupoOpaVm(string titulo, List<CampoOpa> campos, List<ModeloObj> lstConformeNaoConforme, ViewModelOPA vm)
+        public GrupoOpaVm(string titulo, GrupoOpa grupo, List<ModeloObj> lstConformeNaoConforme, ViewModelOPA vm)
         {
             this._pai = vm;
 
             this.Titulo = titulo;
+            this._grupo = grupo;
             this._campos = new ObservableCollection<CampoOpaVm>();
-            this._camposModelo = campos;
+            this._camposModelo = grupo.Campos;
             this._lstConformeNaoConforme = lstConformeNaoConforme;
             this.CarregarCamposCommand = new Command(() => { this.CarregarCampos(); });
         }
-        public void DefinirCampos(List<CampoOpa> campos)
+        public void DefinirCampos(GrupoOpa grupo)
         {
-            this._camposModelo = campos;
+            this._grupo = grupo;
+            this._camposModelo = grupo.Campos;
         }
 
         public void CarregarCampos()
         {
             if (this.Campos.Count == 0)
                 foreach (CampoOpa c in this._camposModelo)
-                    this.Campos.Add(new CampoOpaVm(c, this._lstConformeNaoConforme, this) { CorTituloPicker = this.CorTituloPicker, EmEdicao = this.EmEdicao });
+                {
+                    CampoOpaVm cVm = new CampoOpaVm(c, this._lstConformeNaoConforme, this);
+                    cVm.CorTituloPicker = this.CorTituloPicker;
+                    cVm.EmEdicao = this.EmEdicao;
+                    this.Campos.Add(cVm);
+                }
             else
                 this.ExibirGrupo = !this.ExibirGrupo;
         }

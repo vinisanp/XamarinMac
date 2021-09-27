@@ -730,7 +730,7 @@ END TGB_INSPECAO;
             foreach (CampoInspecao c in campos)
                 this.Campos.Add(new CampoInspecaoVm(c, this.LstConformeNaoConforme));
 
-            this.Trigger(campos);
+            //this.Trigger(campos);
         }
 
         public void GetInspecao(string id, OrigemDados origem)

@@ -123,37 +123,61 @@
                     <Frame Style="{DynamicResource EstiloFrame}" BackgroundColor="#3f4bdf">
                         <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
                             <CheckBox IsChecked="{Binding CERuim}" Style="{DynamicResource EstiloCheckBox}" Color="#0495cf" IsEnabled="{Binding EmEdicao}"  CheckedChanged="CheckBox_CheckedChanged" />
-                            <Label Text="{Binding Textos.Ruim}" Style="{DynamicResource EstiloLabelCampoClaro}" TextColor="Gray" FontSize="Medium">
+                            <Label Text="{Binding Textos.Ruim}" Style="{DynamicResource EstiloLabelCampoClaro}" TextColor="Gray">
                                 <Label.Margin>
                                     <OnPlatform x:TypeArguments="Thickness">
                                         <OnPlatform.Platforms>
-                                            <On Platform="iOS" Value="0,0,0,0"/>
-                                            <On Platform="Android" Value="-5,0,0,0"/>
+                                            <On Platform="iOS" Value="-15,8,0,0"/>
+                                            <On Platform="Android" Value="-5,1,0,0"/>
                                         </OnPlatform.Platforms>
                                     </OnPlatform>
                                 </Label.Margin>
+                                <Label.FontSize>
+                                    <OnPlatform x:TypeArguments="x:Double">
+                                        <OnPlatform.Platforms>
+                                            <On Platform="iOS" Value="22"/>
+                                            <On Platform="Android" Value="18"/>
+                                        </OnPlatform.Platforms>
+                                    </OnPlatform>
+                                </Label.FontSize>
                             </Label>
                             <CheckBox IsChecked="{Binding CERegular}" Style="{DynamicResource EstiloCheckBox}" Color="#0495cf" IsEnabled="{Binding EmEdicao}" CheckedChanged="CheckBox_CheckedChanged" />
-                            <Label Text="{Binding Textos.Regular}" Style="{DynamicResource EstiloLabelCampoClaro}" Margin="1" FontAttributes="Bold" TextColor="Gray" FontSize="Medium">
+                            <Label Text="{Binding Textos.Regular}" Style="{DynamicResource EstiloLabelCampoClaro}" Margin="1" FontAttributes="Bold" TextColor="Gray">
                                 <Label.Margin>
                                     <OnPlatform x:TypeArguments="Thickness">
                                         <OnPlatform.Platforms>
-                                            <On Platform="iOS" Value="0,0,0,0"/>
-                                            <On Platform="Android" Value="-5,0,0,0"/>
+                                            <On Platform="iOS" Value="-15,8,0,0"/>
+                                            <On Platform="Android" Value="-5,1,0,0"/>
                                         </OnPlatform.Platforms>
                                     </OnPlatform>
                                 </Label.Margin>
+                                <Label.FontSize>
+                                    <OnPlatform x:TypeArguments="x:Double">
+                                        <OnPlatform.Platforms>
+                                            <On Platform="iOS" Value="22"/>
+                                            <On Platform="Android" Value="18"/>
+                                        </OnPlatform.Platforms>
+                                    </OnPlatform>
+                                </Label.FontSize>
                             </Label>
                             <CheckBox IsChecked="{Binding CEBom}" Style="{DynamicResource EstiloCheckBox}" Color="#0495cf" IsEnabled="{Binding EmEdicao}" CheckedChanged="CheckBox_CheckedChanged" />
-                            <Label Text="{Binding Textos.Bom}" Style="{DynamicResource EstiloLabelCampoClaro}" Margin="1" FontAttributes="Bold" TextColor="Gray" FontSize="Medium">
+                            <Label Text="{Binding Textos.Bom}" Style="{DynamicResource EstiloLabelCampoClaro}" Margin="1" FontAttributes="Bold" TextColor="Gray">
                                 <Label.Margin>
                                     <OnPlatform x:TypeArguments="Thickness">
                                         <OnPlatform.Platforms>
-                                            <On Platform="iOS" Value="0,0,0,0"/>
-                                            <On Platform="Android" Value="-5,0,0,0"/>
+                                            <On Platform="iOS" Value="-15,8,0,0"/>
+                                            <On Platform="Android" Value="-5,1,0,0"/>
                                         </OnPlatform.Platforms>
                                     </OnPlatform>
                                 </Label.Margin>
+                                <Label.FontSize>
+                                    <OnPlatform x:TypeArguments="x:Double">
+                                        <OnPlatform.Platforms>
+                                            <On Platform="iOS" Value="22"/>
+                                            <On Platform="Android" Value="18"/>
+                                        </OnPlatform.Platforms>
+                                    </OnPlatform>
+                                </Label.FontSize>
                             </Label>
                         </StackLayout>
                     </Frame>
@@ -181,33 +205,57 @@
                                 <Label.Margin>
                                     <OnPlatform x:TypeArguments="Thickness">
                                         <OnPlatform.Platforms>
-                                            <On Platform="iOS" Value="0,0,0,0"/>
-                                            <On Platform="Android" Value="-5,0,0,0"/>
+                                            <On Platform="iOS" Value="-15,8,0,0"/>
+                                            <On Platform="Android" Value="-5,1,0,0"/>
                                         </OnPlatform.Platforms>
                                     </OnPlatform>
                                 </Label.Margin>
+                                <Label.FontSize>
+                                    <OnPlatform x:TypeArguments="x:Double">
+                                        <OnPlatform.Platforms>
+                                            <On Platform="iOS" Value="22"/>
+                                            <On Platform="Android" Value="18"/>
+                                        </OnPlatform.Platforms>
+                                    </OnPlatform>
+                                </Label.FontSize>
                             </Label>
                             <CheckBox IsChecked="{Binding CARegular}" Style="{DynamicResource EstiloCheckBox}" Color="#0495cf" IsEnabled="{Binding EmEdicao}" CheckedChanged="CheckBox_CheckedChanged" />
-                            <Label Text="{Binding Textos.Regular}" Style="{DynamicResource EstiloLabelCampoClaro}" Margin="1" FontAttributes="Bold" TextColor="Gray" FontSize="Medium">
+                            <Label Text="{Binding Textos.Regular}" Style="{DynamicResource EstiloLabelCampoClaro}" Margin="1" FontAttributes="Bold" TextColor="Gray">
                                 <Label.Margin>
                                     <OnPlatform x:TypeArguments="Thickness">
                                         <OnPlatform.Platforms>
-                                            <On Platform="iOS" Value="0,0,0,0"/>
-                                            <On Platform="Android" Value="-5,0,0,0"/>
+                                            <On Platform="iOS" Value="-15,8,0,0"/>
+                                            <On Platform="Android" Value="-5,1,0,0"/>
                                         </OnPlatform.Platforms>
                                     </OnPlatform>
                                 </Label.Margin>
+                                <Label.FontSize>
+                                    <OnPlatform x:TypeArguments="x:Double">
+                                        <OnPlatform.Platforms>
+                                            <On Platform="iOS" Value="22"/>
+                                            <On Platform="Android" Value="18"/>
+                                        </OnPlatform.Platforms>
+                                    </OnPlatform>
+                                </Label.FontSize>
                             </Label>
                             <CheckBox IsChecked="{Binding CABom}" Style="{DynamicResource EstiloCheckBox}" Color="#0495cf" IsEnabled="{Binding EmEdicao}" CheckedChanged="CheckBox_CheckedChanged" />
-                            <Label Text="{Binding Textos.Bom}" Style="{DynamicResource EstiloLabelCampoClaro}" Margin="1" FontAttributes="Bold" TextColor="Gray" FontSize="Medium">
+                            <Label Text="{Binding Textos.Bom}" Style="{DynamicResource EstiloLabelCampoClaro}" Margin="1" FontAttributes="Bold" TextColor="Gray">
                                 <Label.Margin>
                                     <OnPlatform x:TypeArguments="Thickness">
                                         <OnPlatform.Platforms>
-                                            <On Platform="iOS" Value="0,0,0,0"/>
-                                            <On Platform="Android" Value="-5,0,0,0"/>
+                                            <On Platform="iOS" Value="-15,8,0,0"/>
+                                            <On Platform="Android" Value="-5,1,0,0"/>
                                         </OnPlatform.Platforms>
                                     </OnPlatform>
                                 </Label.Margin>
+                                <Label.FontSize>
+                                    <OnPlatform x:TypeArguments="x:Double">
+                                        <OnPlatform.Platforms>
+                                            <On Platform="iOS" Value="22"/>
+                                            <On Platform="Android" Value="18"/>
+                                        </OnPlatform.Platforms>
+                                    </OnPlatform>
+                                </Label.FontSize>
                             </Label>
                         </StackLayout>
                     </Frame>
@@ -231,37 +279,61 @@
                     <Frame Style="{DynamicResource EstiloFrame}" BackgroundColor="#3f4bdf">
                         <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
                             <CheckBox IsChecked="{Binding RAFRuim}" Style="{DynamicResource EstiloCheckBox}" Color="#0495cf" IsEnabled="{Binding EmEdicao}" CheckedChanged="CheckBox_CheckedChanged" />
-                            <Label Text="{Binding Textos.Ruim}" Style="{DynamicResource EstiloLabelCampoClaro}" Margin="1" FontAttributes="Bold" TextColor="Gray" FontSize="Medium">
+                            <Label Text="{Binding Textos.Ruim}" Style="{DynamicResource EstiloLabelCampoClaro}" Margin="1" FontAttributes="Bold" TextColor="Gray">
                                 <Label.Margin>
                                     <OnPlatform x:TypeArguments="Thickness">
                                         <OnPlatform.Platforms>
-                                            <On Platform="iOS" Value="0,0,0,0"/>
-                                            <On Platform="Android" Value="-5,0,0,0"/>
+                                            <On Platform="iOS" Value="-15,8,0,0"/>
+                                            <On Platform="Android" Value="-5,1,0,0"/>
                                         </OnPlatform.Platforms>
                                     </OnPlatform>
                                 </Label.Margin>
+                                <Label.FontSize>
+                                    <OnPlatform x:TypeArguments="x:Double">
+                                        <OnPlatform.Platforms>
+                                            <On Platform="iOS" Value="22"/>
+                                            <On Platform="Android" Value="18"/>
+                                        </OnPlatform.Platforms>
+                                    </OnPlatform>
+                                </Label.FontSize>
                             </Label>
                             <CheckBox IsChecked="{Binding RAFRegular}" Style="{DynamicResource EstiloCheckBox}" Color="#0495cf" IsEnabled="{Binding EmEdicao}" CheckedChanged="CheckBox_CheckedChanged" />
-                            <Label Text="{Binding Textos.Regular}" Style="{DynamicResource EstiloLabelCampoClaro}" Margin="1" FontAttributes="Bold" TextColor="Gray" FontSize="Medium">
+                            <Label Text="{Binding Textos.Regular}" Style="{DynamicResource EstiloLabelCampoClaro}" Margin="1" FontAttributes="Bold" TextColor="Gray">
                                 <Label.Margin>
                                     <OnPlatform x:TypeArguments="Thickness">
                                         <OnPlatform.Platforms>
-                                            <On Platform="iOS" Value="0,0,0,0"/>
-                                            <On Platform="Android" Value="-5,0,0,0"/>
+                                            <On Platform="iOS" Value="-15,8,0,0"/>
+                                            <On Platform="Android" Value="-5,1,0,0"/>
                                         </OnPlatform.Platforms>
                                     </OnPlatform>
                                 </Label.Margin>
+                                <Label.FontSize>
+                                    <OnPlatform x:TypeArguments="x:Double">
+                                        <OnPlatform.Platforms>
+                                            <On Platform="iOS" Value="22"/>
+                                            <On Platform="Android" Value="18"/>
+                                        </OnPlatform.Platforms>
+                                    </OnPlatform>
+                                </Label.FontSize>
                             </Label>
                             <CheckBox IsChecked="{Binding RAFBom}" Style="{DynamicResource EstiloCheckBox}" Color="#0495cf" IsEnabled="{Binding EmEdicao}" CheckedChanged="CheckBox_CheckedChanged" />
-                            <Label Text="{Binding Textos.Bom}" Style="{DynamicResource EstiloLabelCampoClaro}" Margin="1" FontAttributes="Bold" TextColor="Gray" FontSize="Medium">
+                            <Label Text="{Binding Textos.Bom}" Style="{DynamicResource EstiloLabelCampoClaro}" Margin="1" FontAttributes="Bold" TextColor="Gray">
                                 <Label.Margin>
                                     <OnPlatform x:TypeArguments="Thickness">
                                         <OnPlatform.Platforms>
-                                            <On Platform="iOS" Value="0,0,0,0"/>
-                                            <On Platform="Android" Value="-5,0,0,0"/>
+                                            <On Platform="iOS" Value="-15,8,0,0"/>
+                                            <On Platform="Android" Value="-5,1,0,0"/>
                                         </OnPlatform.Platforms>
                                     </OnPlatform>
                                 </Label.Margin>
+                                <Label.FontSize>
+                                    <OnPlatform x:TypeArguments="x:Double">
+                                        <OnPlatform.Platforms>
+                                            <On Platform="iOS" Value="22"/>
+                                            <On Platform="Android" Value="18"/>
+                                        </OnPlatform.Platforms>
+                                    </OnPlatform>
+                                </Label.FontSize>
                             </Label>
                         </StackLayout>
                     </Frame>
@@ -285,37 +357,61 @@
                     <Frame Style="{DynamicResource EstiloFrame}" BackgroundColor="#3f4bdf">
                         <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
                             <CheckBox IsChecked="{Binding QATRuim}" Style="{DynamicResource EstiloCheckBox}" Color="#0495cf" IsEnabled="{Binding EmEdicao}" CheckedChanged="CheckBox_CheckedChanged" />
-                            <Label Text="{Binding Textos.Ruim}" Style="{DynamicResource EstiloLabelCampoClaro}" Margin="1" FontAttributes="Bold" TextColor="Gray" FontSize="Medium">
+                            <Label Text="{Binding Textos.Ruim}" Style="{DynamicResource EstiloLabelCampoClaro}" Margin="1" FontAttributes="Bold" TextColor="Gray">
                                 <Label.Margin>
                                     <OnPlatform x:TypeArguments="Thickness">
                                         <OnPlatform.Platforms>
-                                            <On Platform="iOS" Value="0,0,0,0"/>
-                                            <On Platform="Android" Value="-5,0,0,0"/>
+                                            <On Platform="iOS" Value="-15,8,0,0"/>
+                                            <On Platform="Android" Value="-5,1,0,0"/>
                                         </OnPlatform.Platforms>
                                     </OnPlatform>
                                 </Label.Margin>
+                                <Label.FontSize>
+                                    <OnPlatform x:TypeArguments="x:Double">
+                                        <OnPlatform.Platforms>
+                                            <On Platform="iOS" Value="22"/>
+                                            <On Platform="Android" Value="18"/>
+                                        </OnPlatform.Platforms>
+                                    </OnPlatform>
+                                </Label.FontSize>
                             </Label>
                             <CheckBox IsChecked="{Binding QATRegular}" Style="{DynamicResource EstiloCheckBox}" Color="#0495cf" IsEnabled="{Binding EmEdicao}" CheckedChanged="CheckBox_CheckedChanged" />
-                            <Label Text="{Binding Textos.Regular}" Style="{DynamicResource EstiloLabelCampoClaro}" Margin="1" FontAttributes="Bold" TextColor="Gray" FontSize="Medium">
+                            <Label Text="{Binding Textos.Regular}" Style="{DynamicResource EstiloLabelCampoClaro}" Margin="1" FontAttributes="Bold" TextColor="Gray">
                                 <Label.Margin>
                                     <OnPlatform x:TypeArguments="Thickness">
                                         <OnPlatform.Platforms>
-                                            <On Platform="iOS" Value="0,0,0,0"/>
-                                            <On Platform="Android" Value="-5,0,0,0"/>
+                                            <On Platform="iOS" Value="-15,8,0,0"/>
+                                            <On Platform="Android" Value="-5,1,0,0"/>
                                         </OnPlatform.Platforms>
                                     </OnPlatform>
                                 </Label.Margin>
+                                <Label.FontSize>
+                                    <OnPlatform x:TypeArguments="x:Double">
+                                        <OnPlatform.Platforms>
+                                            <On Platform="iOS" Value="22"/>
+                                            <On Platform="Android" Value="18"/>
+                                        </OnPlatform.Platforms>
+                                    </OnPlatform>
+                                </Label.FontSize>
                             </Label>
                             <CheckBox IsChecked="{Binding QATBom}" Style="{DynamicResource EstiloCheckBox}" Color="#0495cf" IsEnabled="{Binding EmEdicao}" CheckedChanged="CheckBox_CheckedChanged" />
-                            <Label Text="{Binding Textos.Bom}" Style="{DynamicResource EstiloLabelCampoClaro}" Margin="1" FontAttributes="Bold" TextColor="Gray" FontSize="Medium">
+                            <Label Text="{Binding Textos.Bom}" Style="{DynamicResource EstiloLabelCampoClaro}" Margin="1" FontAttributes="Bold" TextColor="Gray">
                                 <Label.Margin>
                                     <OnPlatform x:TypeArguments="Thickness">
                                         <OnPlatform.Platforms>
-                                            <On Platform="iOS" Value="0,0,0,0"/>
-                                            <On Platform="Android" Value="-5,0,0,0"/>
+                                            <On Platform="iOS" Value="-15,8,0,0"/>
+                                            <On Platform="Android" Value="-5,1,0,0"/>
                                         </OnPlatform.Platforms>
                                     </OnPlatform>
                                 </Label.Margin>
+                                <Label.FontSize>
+                                    <OnPlatform x:TypeArguments="x:Double">
+                                        <OnPlatform.Platforms>
+                                            <On Platform="iOS" Value="22"/>
+                                            <On Platform="Android" Value="18"/>
+                                        </OnPlatform.Platforms>
+                                    </OnPlatform>
+                                </Label.FontSize>
                             </Label>
                         </StackLayout>
                     </Frame>

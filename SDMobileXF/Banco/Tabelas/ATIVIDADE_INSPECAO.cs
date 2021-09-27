@@ -11,6 +11,7 @@ namespace SDMobileXF.Banco.Tabelas
         public Guid ID_ATIVIDADE_INSPECAO { get; set; }
         public string CD_ATIVIDADE_INSPECAO { get; set; }
         public string DS_ATIVIDADE_INSPECAO { get; set; }
+        public Guid ID_SEGMENTO { get; set; }
 
         [Ignore]
         public string CD_DS_ATIVIDADE_INSPECAO { get { return string.Concat(this.CD_ATIVIDADE_INSPECAO.ToStringNullSafe(), " - ", this.DS_ATIVIDADE_INSPECAO.ToStringNullSafe()); } }
@@ -22,6 +23,7 @@ namespace SDMobileXF.Banco.Tabelas
             this.ID_ATIVIDADE_INSPECAO = modelo.Id;
             this.CD_ATIVIDADE_INSPECAO = modelo.Codigo;
             this.DS_ATIVIDADE_INSPECAO = modelo.Descricao;
+            this.ID_SEGMENTO = modelo.IdPai;
         }
 
         public ModeloObj ToModeloObj() { return new ModeloObj(this.ID_ATIVIDADE_INSPECAO, this.CD_ATIVIDADE_INSPECAO, this.DS_ATIVIDADE_INSPECAO); }

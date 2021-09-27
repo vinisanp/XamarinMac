@@ -1136,6 +1136,10 @@ namespace SDMobileXF.Classes
                         if (o.ID_TIPO_AVALIADOR.HasValue)
                             parametros.Add("ID_TIPO_AVALIADOR", o.ID_TIPO_AVALIADOR.Value.ToString());
 
+                        parametros.Add("DS_EMAIL_AVALIADOR", o.DS_EMAIL_AVALIADOR);
+                        if (o.ID_EMPRESA_FORNECEDOR != null)
+                            parametros.Add("ID_EMPRESA_FORNECEDOR", o.ID_EMPRESA_FORNECEDOR.Value.ToString());
+                        parametros.Add("DS_AVALIADO", o.DS_AVALIADO);
 
                         List<CampoOpa> camposApi = new List<CampoOpa>();
 
@@ -1158,8 +1162,8 @@ namespace SDMobileXF.Classes
                                     Dictionary<string, string> colunas = Newtonsoft.Json.JsonConvert.DeserializeObject<Dictionary<string, string>>(campoSqLite.COLUNAS);
                                     campoApi.Colunas = colunas;
                                 }
-                            }
-
+                            }                   
+                            
                             camposApi.Add(campoApi);
                         }
 
@@ -1175,19 +1179,20 @@ namespace SDMobileXF.Classes
 
                             if (resposta.StatusCode == System.Net.HttpStatusCode.OK)
                             {
-                                string idApi = string.Empty;
+                                string idOpa = string.Empty;
                                 if (conteudo.Contains("|"))
                                 {
                                     string[] valores = conteudo.Split(new string[] { "|" }, StringSplitOptions.None);
                                     if (valores.Length > 2)
                                     {
-                                        idApi = valores[0];
+                                        idOpa = valores[0];
                                         o.NU_OPA = valores[1];
                                         for (int j = 2; j < valores.Length; j++)
                                             try { camposSqLite[j - 2].NU_DNA = valores[j]; } catch { }
                                     }
                                 }
 
+                                this.EnviarImagensOPA(o, idOpa, camposSqLite);
                                 await App.Banco.ApagarAsync(o);
                                 countSucesso++;
                             }
@@ -1201,7 +1206,7 @@ namespace SDMobileXF.Classes
                         App.Log("Enviada Opa: " + o.ID_OPA);
                     }
                     catch (Exception ex)
-                    {
+                    {                        
                         App.Log("Erro ao enviar Opa: " + ex.Message);
                         countErro++;
                     }
@@ -1232,6 +1237,53 @@ namespace SDMobileXF.Classes
             App.Log("Final OffLine.SincronizarOpas");
         }
 
+        private async void EnviarImagensOPA(OPA i, string idOpa, List<CAMPO_OPA> camposSqLite)
+        {
+            int count = 0;
+            foreach (CAMPO_OPA campoSqLite in camposSqLite)
+            {
+                if (campoSqLite.BYTES_IMAGEM != null)
+                {
+                    try
+                    {
+                        Dictionary<string, string> colunas = Newtonsoft.Json.JsonConvert.DeserializeObject<Dictionary<string, string>>(campoSqLite.COLUNAS);
+                        string url = string.Concat(App.__EnderecoWebApi, "/Opa/UploadImagem");
+                        using (HttpClient client = new HttpClient())
+                        {
+                            using (MultipartFormDataContent formData = new MultipartFormDataContent())
+                            {
+                                CancellationToken cancellationToken = CancellationToken.None;
+
+                                FileInfo fi = new FileInfo(campoSqLite.CAMINHO);
+                                string nmArquivo = string.Concat("SDST_Mobile_img_Opa_", count, fi.Extension);
+
+                                HttpContent imageContent = new StreamContent(new MemoryStream(campoSqLite.BYTES_IMAGEM));
+                                ContentDispositionHeaderValue conteudo = new ContentDispositionHeaderValue("form-data") { Name = "file", FileName = nmArquivo };
+                                imageContent.Headers.ContentDisposition = conteudo;
+                                imageContent.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
+                                formData.Add(imageContent);
+                                client.DefaultRequestHeaders.Add("idChaveSessao", UsuarioLogado.Instancia.ID_CHAVE_SESSAO);
+                                client.DefaultRequestHeaders.Add("ID_OPA", idOpa);
+                                client.DefaultRequestHeaders.Add("NM_COLUNA", colunas["Multimidia"]);
+                                try
+                                {
+                                    HttpResponseMessage resposta = await client.PostAsync(url, formData);
+                                    string conteudoResposta = await resposta.Content.ReadAsStringAsync();
+                                }
+                                catch
+                                {
+
+                                }
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                    }
+                }
+                count++;
+            }
+        }
         #endregion Métodos Opa
     }
 }

@@ -21,13 +21,12 @@ namespace SDMobileXF.Classes
                 case 0: return Color.Black; //Sem aceite
                 case 1: return Color.FromHex("#02c308"); //Ação imediata
                 case 2: return Color.Red; //Sem plano de ação
-                case 3: return Color.DarkTurquoise; //Pendente
+                case 3: return Color.DarkTurquoise; //Vencido
                 case 4: return Color.Blue; //Em andamento
                 case 5: return Color.Orange; //A executar
                 case 6: return Color.Green; //Liberado para eficácia
-                case 7: return Color.DarkViolet; //Realizado com atraso
-                case 8: return Color.DarkGoldenrod; //Realizado no prazo
-                case 9: return Color.DarkGray; //Rejeitada
+                case 7: return Color.DarkViolet; //Realizado                
+                case 8: return Color.DarkGray; //Rejeitada
                 default: return Color.White;
             }            
         }
@@ -47,12 +46,11 @@ namespace SDMobileXF.Classes
                 case 0: return "Sem aceite";
                 case 1: return "Ação imediata";
                 case 2: return "Sem plano de ação";
-                case 3: return "Pendente";
+                case 3: return "Vencido";
                 case 4: return "Em andamento";
                 case 5: return "A executar";
-                case 6: return "Liberado para eficácia";
-                case 7: return "Realizado com atraso";
-                case 8: return "Realizado no prazo";
+                case 6: return "Liberado para eficácia";                
+                case 7: return "Realizado";
                 case 9: return "Rejeitada";
                 default: return string.Empty;
             }

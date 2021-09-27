@@ -1130,12 +1130,16 @@ else if (tabela == Enumerados.Tabela." + n + @") obj = m.To" + n + @"();";
 
         public Task<List<ATIVIDADE_INSPECAO>> BuscarAtividadeInspecoesAsync() { return this._conn.Table<ATIVIDADE_INSPECAO>().ToListAsync(); }
 
-        public Task<List<ATIVIDADE_INSPECAO>> BuscarAtividadeInspecoesAsync(string filtro)
-        {
-            if (string.IsNullOrEmpty(filtro))
+        public Task<List<ATIVIDADE_INSPECAO>> BuscarAtividadeInspecoesAsync(Guid idUnidadeRegional, string filtro)
+        {            
+            REGIONAL regional = this._conn.Table<REGIONAL>().FirstOrDefaultAsync(r => r.ID_REGIONAL == idUnidadeRegional).Result;
+            
+            if (regional == null)
                 return this._conn.Table<ATIVIDADE_INSPECAO>().ToListAsync();
+            else if (string.IsNullOrEmpty(filtro))
+                return this._conn.Table<ATIVIDADE_INSPECAO>().Where(v => v.ID_SEGMENTO == regional.ID_SEGMENTO).ToListAsync();
             else
-                return this._conn.Table<ATIVIDADE_INSPECAO>().Where(v => v.CD_ATIVIDADE_INSPECAO.ToUpper().Contains(filtro.ToUpper()) || v.DS_ATIVIDADE_INSPECAO.ToUpper().Contains(filtro.ToUpper())).ToListAsync();
+                return this._conn.Table<ATIVIDADE_INSPECAO>().Where(v => v.ID_SEGMENTO == regional.ID_SEGMENTO && v.CD_ATIVIDADE_INSPECAO.ToUpper().Contains(filtro.ToUpper()) || v.DS_ATIVIDADE_INSPECAO.ToUpper().Contains(filtro.ToUpper())).ToListAsync();
         }
 
         public Task<int> QuantidadeAtividadeInspecaoAsync(string filtro)
@@ -1586,12 +1590,13 @@ else if (tabela == Enumerados.Tabela." + n + @") obj = m.To" + n + @"();";
 
         public Task<List<TAREFA_OBSERVADA>> BuscarTarefaObservadasAsync() { return this._conn.Table<TAREFA_OBSERVADA>().ToListAsync(); }
 
-        public Task<List<TAREFA_OBSERVADA>> BuscarTarefasObservadasAsync(string filtro)
+        public Task<List<TAREFA_OBSERVADA>> BuscarTarefasObservadasAsync(Guid IdAtividade, string filtro)
         {
             if (string.IsNullOrEmpty(filtro))
-                return this._conn.Table<TAREFA_OBSERVADA>().ToListAsync();
+                return this._conn.Table<TAREFA_OBSERVADA>().Where(t => t.ID_ATIVIDADE == IdAtividade).ToListAsync();
             else
-                return this._conn.Table<TAREFA_OBSERVADA>().Where(t => t.CD_TAREFA_OBSERVADA.ToUpper().Contains(filtro.ToUpper()) || t.DS_TAREFA_OBSERVADA.ToUpper().Contains(filtro.ToUpper())).ToListAsync();
+                return this._conn.Table<TAREFA_OBSERVADA>().Where(t => t.ID_ATIVIDADE == IdAtividade && 
+                    t.CD_TAREFA_OBSERVADA.ToUpper().Contains(filtro.ToUpper()) || t.DS_TAREFA_OBSERVADA.ToUpper().Contains(filtro.ToUpper())).ToListAsync();
         }
 
         public Task<TAREFA_OBSERVADA> BuscarTarefaObservadaAsync(Guid id) { return this._conn.FindAsync<TAREFA_OBSERVADA>(id); }

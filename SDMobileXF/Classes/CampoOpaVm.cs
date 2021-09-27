@@ -25,6 +25,8 @@ namespace SDMobileXF.Classes
         private bool _emEdicao = false;
         private bool _podeAtualizarPai = true;
         private bool _comentarioVisivel = true;
+        private byte[] _image;
+        private ImageSource _imageSource;
 
         public virtual bool ComentarioVisivel
         {
@@ -42,6 +44,7 @@ namespace SDMobileXF.Classes
         public string Titulo { get; set; }
         public string TituloNumeroDNA { get; set; }
         public string TituloComentarios { get; set; }
+        public string TituloFoto { get; set; }
 
         public string Comentario
         {
@@ -89,8 +92,41 @@ namespace SDMobileXF.Classes
                 this.Resposta = null;
             this._podeAtualizarPai = true;
         }
+        public ImageSource ImageSource
+        {
+            get { return this._imageSource; }
+            set { this.DefinirPropriedade(ref this._imageSource, value); }
+        }
 
-		public CampoOpaVm()
+        public byte[] Image
+        {
+            get
+            {
+                return this._image;
+            }
+            set
+            {
+                this._image = value;
+
+                try
+                {
+                    if (value == null || value.Length == 0)
+                        this.ImageSource = null;
+                    else
+                        this.ImageSource = ImageSource.FromStream(() => new MemoryStream(value));
+                }
+                catch (Exception e)
+                {
+                    Debug.WriteLine(e);
+                    this.ImageSource = null;
+                }
+            }
+        }
+
+        public string CaminhoImagem { get; set; }
+
+
+        public CampoOpaVm()
         {
         }
 
@@ -108,15 +144,15 @@ namespace SDMobileXF.Classes
             this.TituloComentarios = Textos.Instancia.Comentarios;
             this.TituloNumeroDNA = Textos.Instancia.NumeroDNA;
             this.RespostasDaPergunta = lstRespostas;
+            this.TituloFoto = Textos.Instancia.Foto;
+            this.Image = c.Image;
 
-            if(!string.IsNullOrEmpty(c.IdConforme))
+            if (!string.IsNullOrEmpty(c.IdConforme))
                 this.Resposta = lstRespostas.FirstOrDefault(r => r.Id.ToStringNullSafe() == c.IdConforme);
         }
 
-        public CampoOpa ToCampoOpa()
+        public void ToCampoOpa(CampoOpa c)
         {
-            CampoOpa c = new CampoOpa();
-
             c.IdCampo   = this.IdCampo;
             c.Titulo    = this.Titulo;
             c.Comentario = this.Comentario;
@@ -127,8 +163,6 @@ namespace SDMobileXF.Classes
 
             if (!string.IsNullOrEmpty(c.Comentario) || !string.IsNullOrEmpty(c.NumeroDNA) || !string.IsNullOrEmpty(c.IdConforme))
                 c.Colunas = this.Colunas;
-
-            return c;
         }
 
         protected virtual void OnPropertyChanged([CallerMemberName] string nomePropriedade = null)
