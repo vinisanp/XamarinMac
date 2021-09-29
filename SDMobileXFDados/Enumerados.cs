@@ -42,7 +42,7 @@ namespace SDMobileXFDados
             Probabilidade = 31,
             Severidade = 32,
             TarefaObservada = 33,
-            TipoAvaliador = 34,
+            TipoAvaliador = 34
         }
 
         public enum OrigemDados

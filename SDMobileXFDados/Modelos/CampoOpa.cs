@@ -16,6 +16,8 @@ namespace SDMobileXFDados.Modelos
         public string Comentario { get; set; }
         public string NumeroDNA { get; set; }
 
+        public byte[] Image { get; set; }
+
         public Dictionary<string, string> Colunas { get; set; }
     }
 }
