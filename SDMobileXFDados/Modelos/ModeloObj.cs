@@ -12,6 +12,7 @@ namespace SDMobileXFDados.Modelos
         public string Descricao { get; set; }
         public bool Marcado { get; set; }
         public int valorInt { get; set; }
+        public string ValorString { get; set; }
 
         public string CodigoDescricao 
         {
@@ -49,6 +50,11 @@ namespace SDMobileXFDados.Modelos
         public ModeloObj(Guid id, string codigo, string descricao, bool marcado) : this(id, codigo, descricao)
         {
             this.Marcado = marcado;
+        }
+
+        public ModeloObj(Guid id, string codigo, string descricao, string valorString) : this(id, codigo, descricao)
+        {
+            this.ValorString = valorString;
         }
 
         public override string ToString()

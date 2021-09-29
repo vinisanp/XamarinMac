@@ -18,10 +18,15 @@ namespace SDMobileXFDados.Modelos
         public ModeloObj ATIVIDADE { get; set; }
         public ModeloObj TAREFA_OBSERVADA { get; set; }
 
-        public List<CampoOpa> CAMPOS { get; set; }
+        public ModeloOpa ModeloOpa { get; set; }
 
         public ModeloObj AVALIADOR { get; set; }
         public ModeloObj TIPO_AVALIADOR { get; set; }
+        public ModeloObj EMPRESA_FORNECEDOR { get; set; }
+
+        public string DS_EMAIL_AVALIADOR { get; set; }
+        public string DS_AVALIADO { get; set; }
+
 
         public override string ToString()
         {
